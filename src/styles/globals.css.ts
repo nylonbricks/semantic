@@ -23,11 +23,11 @@ globalStyle('img', {
   userSelect: 'none',
 });
 
-globalStyle('[data-color-scheme="dark"]', {
+globalStyle('[data-theme="dark"]', {
   colorScheme: 'dark',
 });
 
-globalStyle('[data-color-scheme="light"]', {
+globalStyle('[data-theme="light"]', {
   colorScheme: 'light',
 });
 
@@ -40,36 +40,36 @@ globalStyle('article', {
 globalStyle('article h1', {
   fontSize: rem(28),
   lineHeight: 1.25,
-  marginTop: rem(32),
-  marginBottom: rem(16),
+  paddingTop: rem(32),
+  paddingBottom: rem(16),
 });
 
 globalStyle('article h2', {
   fontSize: rem(22.4),
   lineHeight: 1.2,
-  marginTop: rem(40),
-  marginBottom: rem(19.2),
+  paddingTop: rem(40),
+  paddingBottom: rem(18),
 });
 
 globalStyle('article h3', {
   fontSize: rem(19.2),
   lineHeight: 1.1,
-  marginTop: rem(48),
-  marginBottom: rem(24),
+  paddingTop: rem(48),
+  paddingBottom: rem(24),
 });
 
 globalStyle('article h4', {
   fontSize: rem(16),
   lineHeight: 1.3,
-  marginTop: rem(56),
-  marginBottom: rem(28),
+  paddingTop: rem(56),
+  paddingBottom: rem(28),
 });
 
 globalStyle('article h5, article h6', {
   fontSize: rem(16),
   lineHeight: 1.3,
-  marginTop: rem(56),
-  marginBottom: rem(28),
+  paddingTop: rem(56),
+  paddingBottom: rem(28),
 });
 
 globalStyle('article h1, article h2, article h3, article h4, article h5, article h6', {
@@ -77,21 +77,35 @@ globalStyle('article h1, article h2, article h3, article h4, article h5, article
 });
 
 globalStyle('article p', {
-  margin: `0 0 ${rem(28)}`,
+  paddingBottom: rem(28),
+});
+
+globalStyle('article a', {
+  opacity: 0.8,
+  textDecoration: 'underline',
+  transition: 'opacity 0.2s',
+});
+
+globalStyle('article a:hover', {
+  opacity: 1,
+});
+
+globalStyle('article strong', {
+  fontWeight: 600,
 });
 
 globalStyle('article > div[data-content] > :first-child', {
-  marginTop: 0,
+  paddingTop: 0,
 });
 
 globalStyle('article > div[data-content] > :last-child', {
-  marginBottom: 0,
+  paddingBottom: 0,
 });
 
 globalStyle('article table', {
   maxWidth: '100%',
   borderCollapse: 'collapse',
-  marginBottom: rem(28),
+  paddingBottom: rem(28),
 });
 
 globalStyle('article th, article td', {
@@ -108,18 +122,18 @@ globalStyle('article th', {
 globalStyle('article blockquote', {
   paddingLeft: rem(16),
   borderLeft: `${rem(4)} solid ${theme.colors.gray.accent}`,
-  margin: `0 0 ${rem(28)}`,
+  paddingBottom: rem(28),
   color: theme.colors.gray.accent,
   fontStyle: 'italic',
 });
 
 globalStyle('article ul, article ol', {
   paddingLeft: rem(24),
-  margin: `0 0 ${rem(28)}`,
+  paddingBottom: rem(28),
 });
 
 globalStyle('article ul li, article ol li', {
-  marginBottom: rem(8),
+  paddingBottom: rem(8),
 });
 
 globalStyle('article p > code', {
@@ -138,11 +152,4 @@ globalStyle('article p > code::before', {
 
 globalStyle('article p > code::after', {
   content: '`',
-});
-
-globalStyle('article div[data-markdown-alert] > p', {
-  padding: 0,
-  margin: 0,
-  fontFamily: theme.fonts.mono,
-  fontSize: rem(14.5),
 });
