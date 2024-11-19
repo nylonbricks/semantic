@@ -51,6 +51,7 @@ export const middot = style({
 globalStyle(`${description} a`, {
   opacity: 1,
   transition: 'opacity 0.2s',
+  textDecoration: 'none',
 });
 
 globalStyle(`${description} a:hover`, {
