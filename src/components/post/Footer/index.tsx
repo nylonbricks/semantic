@@ -18,7 +18,7 @@ const Footer = ({ slug, title, subtitle }: FooterProps) => {
     const shareData = {
       title,
       text: subtitle,
-      url: `${siteUrl}/blog/${slug}/`,
+      url: `${siteUrl}/posts/${slug}/`,
     };
 
     await navigator.share(shareData);
