@@ -15,11 +15,12 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
+    "@hakui/eslint-config": "^0.0.4",
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "eslint": "^9.24.0",
-    "eslint-config-next": "15.3.1",
+    "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }
 }
