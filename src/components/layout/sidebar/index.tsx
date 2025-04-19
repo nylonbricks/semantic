@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
-import { METADATA } from '@semantic/constants';
+import { METADATA, ROUTES } from '@semantic/constants';
 
 import * as styles from './styles.css';
 import { Divider } from '../divider';
@@ -12,7 +12,7 @@ export const Sidebar = () => {
   return (
     <aside className={styles.root}>
       <div className={styles.topContainer}>
-        <Link href="/public" className={styles.branding}>
+        <Link href={ROUTES.HOME} className={styles.branding}>
           {METADATA.SITE.NAME}
         </Link>
         <Divider />

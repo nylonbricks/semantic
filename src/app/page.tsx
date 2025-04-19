@@ -6,6 +6,8 @@ import { PostGrid } from '@semantic/components/ui';
 
 import { ProfileGrid } from './_components/profile-grid';
 import * as styles from './page.css';
+import { ROUTES } from '@semantic/constants';
+import { PlusIcon } from '@semantic/components/icon';
 
 const HomePage = () => {
   const posts: Post[] = getSortedPosts(allPosts);
@@ -17,8 +19,9 @@ const HomePage = () => {
       <section className={styles.root}>
         <div className={styles.titleContainer}>
           <h3 className={styles.title}>Update</h3>
-          <Link href="/posts" className={styles.expandLink}>
+          <Link href={ROUTES.POSTS} className={styles.expandLink}>
             Expand
+            <PlusIcon />
           </Link>
         </div>
         <PostGrid posts={posts} />

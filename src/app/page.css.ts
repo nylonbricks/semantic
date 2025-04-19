@@ -27,5 +27,5 @@ export const expandLink = style({
   border: `${rem(1)} solid ${theme.color.border}`,
   borderRadius: rem(10),
   backgroundColor: theme.color.toggle,
-  gap: rem(8),
+  gap: rem(6),
 });

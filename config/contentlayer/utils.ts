@@ -18,6 +18,25 @@ export const getBlurDataUrl = async (src: string): Promise<string> => {
   }
 };
 
+export const isUrl = (path: string): boolean => {
+  try {
+    new URL(path);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+export const resolveImagePath = (mdxFile: string, imgPath: string): string => {
+  if (isUrl(imgPath)) {
+    return imgPath;
+  }
+
+  const dir = path.dirname(mdxFile).replace(/^content[\\/]/, '');
+  const rel = imgPath.startsWith('./') ? imgPath.slice(2) : imgPath;
+  return `/content/${path.join(dir, rel)}`;
+};
+
 export const getMdxImagePaths = (mdx: string): string[] => {
   const re = /!\[.*?]\((.*?)\)/g;
   const paths: string[] = [];
@@ -30,6 +49,10 @@ export const getMdxImagePaths = (mdx: string): string[] => {
 };
 
 export const resolveMdxImagePath = (mdxFile: string, imgRel: string): string => {
+  if (isUrl(imgRel)) {
+    return imgRel;
+  }
+
   const dir = path.dirname(mdxFile).replace(/^content[\\/]/, '');
   const rel = imgRel.startsWith('./') ? imgRel.slice(2) : imgRel;
   return path.join(process.cwd(), 'content', dir, rel);

@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 
-import { METADATA } from '@semantic/constants';
+import { METADATA, ROUTES } from '@semantic/constants';
 
 import { Divider } from '../divider';
 import { NavigateMenu } from '../navigate-menu';
@@ -34,7 +34,7 @@ export const Header = () => {
 
         <header className={styles.root}>
           <div className={styles.inner}>
-            <Link href="/public" className={styles.branding}>
+            <Link href={ROUTES.HOME} className={styles.branding}>
               {METADATA.SITE.NAME}
             </Link>
 

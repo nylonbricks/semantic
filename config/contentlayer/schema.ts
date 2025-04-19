@@ -1,6 +1,6 @@
 import { defineDocumentType } from 'contentlayer2/source-files';
 
-import { getMdxImagePaths, getBlurMap, resolveMdxImagePath, getBlurDataUrl } from './utils';
+import { getBlurDataUrl, getBlurMap, getMdxImagePaths, resolveMdxImagePath, resolveImagePath } from './utils';
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
@@ -15,7 +15,7 @@ export const Page = defineDocumentType(() => ({
       resolve: (doc) =>
         doc._raw.sourceFileDir.split('/')[1] ?? doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-    blurDataURLs: {
+    coverBlurDataURL: {
       type: 'json',
       resolve: async (doc) => {
         const images = getMdxImagePaths(doc.body.raw);
@@ -44,7 +44,11 @@ export const Post = defineDocumentType(() => ({
       resolve: (doc) =>
         doc._raw.sourceFileDir.split('/')[1] ?? doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-    blurDataURL: {
+    coverImage: {
+      type: 'string',
+      resolve: (doc) => resolveImagePath(doc._raw.sourceFilePath, doc.coverImage),
+    },
+    coverBlurDataURL: {
       type: 'string',
       resolve: async (doc) => {
         const imgPath = resolveMdxImagePath(doc._raw.sourceFilePath, doc.coverImage);
