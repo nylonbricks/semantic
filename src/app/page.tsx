@@ -9,6 +9,12 @@ import { ROUTES } from '@semantic/constants';
 import { ProfileGrid } from './_components/profile-grid';
 import * as styles from './page.css';
 
+const getSortedPosts = (posts: Post[]) => {
+  return posts
+    .sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1))
+    .slice(0, 4);
+};
+
 const HomePage = () => {
   const posts: Post[] = getSortedPosts(allPosts);
 
@@ -31,9 +37,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-const getSortedPosts = (posts: Post[]): Post[] => {
-  return posts
-    .sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1))
-    .slice(0, 4);
-};
