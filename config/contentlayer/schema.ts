@@ -1,20 +1,10 @@
 import { defineDocumentType } from 'contentlayer2/source-files';
 
-import {
-  parseMdxImagePaths,
-  generateBlurMap,
-  getAbsoluteImagePath,
-  createBlurPlaceholder,
-} from './utils';
-
-const deriveSlug = (sourceDir: string, sourceFile: string): string => {
-  const [, dirName] = sourceDir.split('/');
-  return dirName ?? sourceFile.replace(/\.mdx$/, '');
-};
+import { getMdxImagePaths, getBlurMap, resolveMdxImagePath, getBlurDataUrl } from './utils';
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
-  filePathPattern: 'pages/**/*.mdx',
+  filePathPattern: `pages/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     createdAt: { type: 'date', required: true },
@@ -22,13 +12,14 @@ export const Page = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => deriveSlug(doc._raw.sourceFileDir, doc._raw.sourceFileName),
+      resolve: (doc) =>
+        doc._raw.sourceFileDir.split('/')[1] ?? doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
     blurDataURLs: {
       type: 'json',
       resolve: async (doc) => {
-        const paths = parseMdxImagePaths(doc.body.raw);
-        return generateBlurMap(doc._raw.sourceFilePath, paths);
+        const images = getMdxImagePaths(doc.body.raw);
+        return getBlurMap(doc._raw.sourceFilePath, images);
       },
     },
   },
@@ -36,7 +27,7 @@ export const Page = defineDocumentType(() => ({
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: 'posts/**/*.mdx',
+  filePathPattern: `posts/**/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -45,25 +36,26 @@ export const Post = defineDocumentType(() => ({
     modifiedAt: { type: 'date', required: true },
     coverImage: { type: 'string', required: true },
     category: { type: 'string', required: true },
-    tags: { type: 'list', of: { type: 'string' } },
+    tags: { type: 'list', of: { type: 'string' }, required: false },
   },
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (doc) => deriveSlug(doc._raw.sourceFileDir, doc._raw.sourceFileName),
+      resolve: (doc) =>
+        doc._raw.sourceFileDir.split('/')[1] ?? doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-    blurCover: {
+    blurDataURL: {
       type: 'string',
       resolve: async (doc) => {
-        const abs = getAbsoluteImagePath(doc._raw.sourceFilePath, doc.coverImage);
-        return createBlurPlaceholder(abs);
+        const imgPath = resolveMdxImagePath(doc._raw.sourceFilePath, doc.coverImage);
+        return getBlurDataUrl(imgPath);
       },
     },
     blurDataURLs: {
       type: 'json',
       resolve: async (doc) => {
-        const paths = parseMdxImagePaths(doc.body.raw);
-        return generateBlurMap(doc._raw.sourceFilePath, paths);
+        const images = getMdxImagePaths(doc.body.raw);
+        return getBlurMap(doc._raw.sourceFilePath, images);
       },
     },
   },

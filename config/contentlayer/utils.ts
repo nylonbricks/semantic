@@ -2,63 +2,49 @@ import path from 'path';
 import sharp from 'sharp';
 
 export interface BlurMap {
-  [originalPath: string]: string;
+  [key: string]: string;
 }
 
-export const createBlurPlaceholder = async (imageFilePath: string): Promise<string> => {
+export const getBlurDataUrl = async (src: string): Promise<string> => {
   try {
-    const { data: buffer, info: metadata } = await sharp(imageFilePath)
+    const { data: buf, info: meta } = await sharp(src)
       .resize(60, 60, { fit: 'inside' })
       .blur(5)
       .toBuffer({ resolveWithObject: true });
-
-    const mime = `image/${metadata.format}`;
-    return `data:${mime};base64,${buffer.toString('base64')}`;
+    return `data:image/${meta.format};base64,${buf.toString('base64')}`;
   } catch (err) {
-    console.error(`❌ Failed to generate blur data URL for: ${imageFilePath}`, err);
+    console.error(`❌ Failed blur URL: ${src}`, err);
     throw err;
   }
 };
 
-export const parseMdxImagePaths = (mdxContent: string): string[] => {
-  const imageRegex = /!\[.*?]\((.*?)\)/g;
-  const imagePaths: string[] = [];
-  let match: RegExpExecArray | null;
-
-  while ((match = imageRegex.exec(mdxContent))) {
-    const rawPath = match[1].trim();
-    if (rawPath) {
-      imagePaths.push(rawPath);
-    }
+export const getMdxImagePaths = (mdx: string): string[] => {
+  const re = /!\[.*?]\((.*?)\)/g;
+  const paths: string[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(mdx))) {
+    const p = m[1].trim();
+    if (p) paths.push(p);
   }
-
-  return imagePaths;
+  return paths;
 };
 
-export const getAbsoluteImagePath = (sourceFile: string, relativeImagePath: string): string => {
-  const contentDir = path.dirname(sourceFile).replace(/^content[\\/]/, '');
-  const normalizedPath = relativeImagePath.startsWith('./')
-    ? relativeImagePath.substring(2)
-    : relativeImagePath;
-
-  return path.join(process.cwd(), 'content', contentDir, normalizedPath);
+export const resolveMdxImagePath = (mdxFile: string, imgRel: string): string => {
+  const dir = path.dirname(mdxFile).replace(/^content[\\/]/, '');
+  const rel = imgRel.startsWith('./') ? imgRel.slice(2) : imgRel;
+  return path.join(process.cwd(), 'content', dir, rel);
 };
 
-export const generateBlurMap = async (
-  mdxSourcePath: string,
-  imagePaths: string[],
-): Promise<BlurMap> => {
-  const blurMap: BlurMap = {};
-
-  for (const relativePath of imagePaths) {
+export const getBlurMap = async (mdxFile: string, imagePaths: string[]): Promise<BlurMap> => {
+  const map: BlurMap = {};
+  for (const img of imagePaths) {
     try {
-      const absolutePath = getAbsoluteImagePath(mdxSourcePath, relativePath);
-      blurMap[relativePath] = await createBlurPlaceholder(absolutePath);
+      const abs = resolveMdxImagePath(mdxFile, img);
+      map[img] = await getBlurDataUrl(abs);
     } catch (err) {
-      console.error(`⚠️ Failed to process image: ${relativePath}`, err);
-      blurMap[relativePath] = '';
+      console.error(`❌ Failed image: ${img}`, err);
+      map[img] = '';
     }
   }
-
-  return blurMap;
+  return map;
 };

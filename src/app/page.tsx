@@ -8,7 +8,7 @@ import { ProfileGrid } from './_components/profile-grid';
 import * as styles from './page.css';
 
 const HomePage = () => {
-  const posts = getSortedPosts(allPosts).splice(0, 4);
+  const posts: Post[] = getSortedPosts(allPosts);
 
   return (
     <>
@@ -29,6 +29,6 @@ const HomePage = () => {
 
 export default HomePage;
 
-const getSortedPosts = (posts: Post[]) => {
+const getSortedPosts = (posts: Post[]): Post[] => {
   return posts.sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1));
 };
