@@ -9,7 +9,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
     <div className={styles.root}>
       <Sidebar />
       <Header />
-      <main className={styles.main} data-animate={true} data-animate-speed="slow">
+      <main className={styles.main} data-animate={true}>
         {children}
       </main>
     </div>
