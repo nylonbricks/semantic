@@ -3,18 +3,22 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 1113 --hostname 0.0.0.0",
     "build": "next build",
     "build:content": "contentlayer2 build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.7",
+    "@vanilla-extract/css": "^1.17.1",
+    "clsx": "^2.1.1",
     "contentlayer2": "^0.5.7",
+    "dayjs": "^1.11.13",
+    "motion": "^12.7.4",
     "next": "15.3.1",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "sharp": "^0.34.1"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -22,9 +26,11 @@
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@vanilla-extract/next-plugin": "^2.4.10",
     "eslint": "^9.25.0",
     "next-contentlayer2": "^0.5.7",
     "prettier": "^3.5.3",
+    "sharp": "^0.34.1",
     "typescript": "^5.8.3"
   }
 }
