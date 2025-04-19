@@ -13,6 +13,19 @@ const fontFamily = {
   sans: `pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
 };
 
+const fontSize = {
+  xxxl: rem(28),
+  xxl: rem(24),
+  xl: rem(20),
+  lg: rem(18),
+  md: rem(16),
+  base: rem(15),
+  sm: rem(14),
+  xs: rem(12),
+  xxs: rem(10),
+  xxxs: rem(8),
+};
+
 const typography = {
   h7: {
     fontFamily: fontFamily.mono,
@@ -71,7 +84,7 @@ const typography = {
   post_body: {
     fontFamily: fontFamily.sans,
     fontWeight: '400',
-    fontSize: rem(16),
+    fontSize: rem(15),
     lineHeight: '180%',
   },
   profile_sub: {
@@ -237,6 +250,7 @@ export const darkMode = createTheme(modeColor, {
 
 export const theme = createGlobalTheme(':root', {
   fontFamily,
+  fontSize,
   typography,
   size,
   color,

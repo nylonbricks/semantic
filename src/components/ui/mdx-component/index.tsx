@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
-import { ComponentProps } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 
 import * as styles from './styles.css';
 
@@ -13,6 +13,12 @@ type MdxComponentProps = {
 
 export const MdxComponent = ({ code, blurDataURLs = {} }: MdxComponentProps) => {
   const components = {
+    h2: ({ children }: { children: ReactNode }) => <h2 className={styles.h2}>{children}</h2>,
+    h3: ({ children }: { children: ReactNode }) => <h3 className={styles.h3}>{children}</h3>,
+    h4: ({ children }: { children: ReactNode }) => <h4 className={styles.h4}>{children}</h4>,
+    h5: ({ children }: { children: ReactNode }) => <h5 className={styles.h5}>{children}</h5>,
+    h6: ({ children }: { children: ReactNode }) => <h6 className={styles.h6}>{children}</h6>,
+    p: ({ children }: { children: ReactNode }) => <p className={styles.p}>{children}</p>,
     img: ({
       src,
       alt,
@@ -47,7 +53,7 @@ export const MdxComponent = ({ code, blurDataURLs = {} }: MdxComponentProps) => 
   const MDXComponent = useMDXComponent(code);
 
   return (
-    <div>
+    <div className={styles.root}>
       <MDXComponent components={components} />
     </div>
   );
