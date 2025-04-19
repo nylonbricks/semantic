@@ -4,16 +4,16 @@ import * as Accordion from '@radix-ui/react-accordion';
 import dayjs from 'dayjs';
 import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
-import React, { Fragment, useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import { METADATA } from '@semantic/constants';
 
-import Divider from '../divider';
-import NavigateMenu from '../navigate-menu';
+import { Divider } from '../divider';
+import { NavigateMenu } from '../navigate-menu';
 import * as styles from './styles.css';
-import ThemeToggle from '../theme-toggle';
+import { ThemeToggle } from '../theme-toggle';
 
-const Header = () => {
+export const Header = () => {
   const [accordionOpen, setAccordionOpen] = useState<boolean>(false);
 
   return (
@@ -34,7 +34,7 @@ const Header = () => {
 
         <header className={styles.root}>
           <div className={styles.inner}>
-            <Link href="/" className={styles.branding}>
+            <Link href="/public" className={styles.branding}>
               {METADATA.SITE.NAME}
             </Link>
 
@@ -77,5 +77,3 @@ const Header = () => {
     </Fragment>
   );
 };
-
-export default Header;

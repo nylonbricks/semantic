@@ -7,9 +7,8 @@ type DividerProps = {
   className?: string;
 } & ComponentPropsWithoutRef<'hr'>;
 
-const Divider = forwardRef<HTMLHRElement, DividerProps>(({ className, ...props }, ref) => {
+export const Divider = forwardRef<HTMLHRElement, DividerProps>(({ className, ...props }, ref) => {
   return <hr ref={ref} className={clsx(styles.divider, className)} {...props} />;
 });
-Divider.displayName = 'Divider';
 
-export default Divider;
+Divider.displayName = 'Divider';

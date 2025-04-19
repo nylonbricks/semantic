@@ -1,19 +1,18 @@
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import React from 'react';
 
 import { METADATA } from '@semantic/constants';
 
 import * as styles from './styles.css';
-import Divider from '../divider';
-import NavigateMenu from '../navigate-menu';
-import ThemeToggle from '../theme-toggle';
+import { Divider } from '../divider';
+import { NavigateMenu } from '../navigate-menu';
+import { ThemeToggle } from '../theme-toggle';
 
-const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <aside className={styles.root}>
       <div className={styles.topContainer}>
-        <Link href="/" className={styles.branding}>
+        <Link href="/public" className={styles.branding}>
           {METADATA.SITE.NAME}
         </Link>
         <Divider />
@@ -29,5 +28,3 @@ const Sidebar = () => {
     </aside>
   );
 };
-
-export default Sidebar;

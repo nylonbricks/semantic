@@ -6,9 +6,9 @@ import { Roboto_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import { PropsWithChildren } from 'react';
 
+import { Layout } from '@semantic/components/layout';
 import { METADATA } from '@semantic/constants';
 
-import AppLayout from './_components/app-layout';
 import { themeBootstrapScript, ThemeProvider } from './theme-provider';
 
 const pretendard = localFont({
@@ -86,7 +86,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       </head>
       <body className={clsx(roboto.variable, pretendard.variable)}>
         <ThemeProvider>
-          <AppLayout>{children}</AppLayout>
+          <Layout>{children}</Layout>
         </ThemeProvider>
       </body>
     </html>

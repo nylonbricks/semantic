@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
 
-import Header from './header';
-import Sidebar from './sidebar';
+import { Header } from './header';
+import { Sidebar } from './sidebar';
 import * as styles from './styles.css';
 
-const AppLayout = ({ children }: PropsWithChildren) => {
+export const Layout = ({ children }: PropsWithChildren) => {
   return (
     <div className={styles.root}>
       <Sidebar />
@@ -15,5 +15,3 @@ const AppLayout = ({ children }: PropsWithChildren) => {
     </div>
   );
 };
-
-export default AppLayout;

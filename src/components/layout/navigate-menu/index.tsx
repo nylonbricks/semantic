@@ -3,13 +3,12 @@
 import { clsx } from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
 
 import { MENU } from '@semantic/constants';
 
 import * as styles from './styles.css';
 
-const NavigateMenu = () => {
+export const NavigateMenu = () => {
   const pathname = usePathname();
   const path: string = pathname.split('/')[1].trim();
 
@@ -34,5 +33,3 @@ const NavigateMenu = () => {
     </nav>
   );
 };
-
-export default NavigateMenu;
