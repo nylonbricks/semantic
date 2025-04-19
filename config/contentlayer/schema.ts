@@ -1,10 +1,12 @@
 import { defineDocumentType } from 'contentlayer2/source-files';
 
 import {
-  extractImagesFromMdx,
-  processImages,
-  resolveImagePath,
-  generateBlurDataURL,
+  generateBlurredImageDataUrl,
+  generateImageBlurMap,
+  extractImagePathsFromMdx,
+  resolveMdxImageAbsolutePath,
+  resolveContentImagePath,
+  processMdxImages,
 } from './utils';
 
 export const Page = defineDocumentType(() => ({
@@ -20,12 +22,16 @@ export const Page = defineDocumentType(() => ({
       resolve: (doc) =>
         doc._raw.sourceFileDir.split('/')[1] ?? doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-    blurDataURLs: {
+    blurMap: {
       type: 'json',
       resolve: async (doc) => {
-        const images = extractImagesFromMdx(doc.body.raw);
-        return processImages(doc._raw.sourceFilePath, images);
+        const images = extractImagePathsFromMdx(doc.body.raw);
+        return generateImageBlurMap(doc._raw.sourceFilePath, images);
       },
+    },
+    body: {
+      type: 'mdx',
+      resolve: (doc) => processMdxImages(doc),
     },
   },
 }));
@@ -49,19 +55,27 @@ export const Post = defineDocumentType(() => ({
       resolve: (doc) =>
         doc._raw.sourceFileDir.split('/')[1] ?? doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-    blurDataURL: {
+    coverImage: {
+      type: 'string',
+      resolve: (doc) => resolveContentImagePath(doc._raw.sourceFilePath, doc.coverImage),
+    },
+    coverBlur: {
       type: 'string',
       resolve: async (doc) => {
-        const imgPath = resolveImagePath(doc._raw.sourceFilePath, doc.coverImage);
-        return generateBlurDataURL(imgPath);
+        const imgPath = resolveMdxImageAbsolutePath(doc._raw.sourceFilePath, doc.coverImage);
+        return generateBlurredImageDataUrl(imgPath);
       },
     },
-    blurDataURLs: {
+    blurMap: {
       type: 'json',
       resolve: async (doc) => {
-        const images = extractImagesFromMdx(doc.body.raw);
-        return processImages(doc._raw.sourceFilePath, images);
+        const images = extractImagePathsFromMdx(doc.body.raw);
+        return generateImageBlurMap(doc._raw.sourceFilePath, images);
       },
+    },
+    body: {
+      type: 'mdx',
+      resolve: (doc) => processMdxImages(doc),
     },
   },
 }));

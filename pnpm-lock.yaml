@@ -17,15 +17,12 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      contentlayer2:
-        specifier: ^0.5.7
-        version: 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
       motion:
         specifier: ^12.7.4
-        version: 12.7.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 12.7.4(@emotion/is-prop-valid@1.3.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       next:
         specifier: 15.3.1
         version: 15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -35,7 +32,13 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
+      sharp:
+        specifier: ^0.34.1
+        version: 0.34.1
     devDependencies:
+      '@emotion/is-prop-valid':
+        specifier: ^1.3.1
+        version: 1.3.1
       '@eslint/eslintrc':
         specifier: ^3.3.1
         version: 3.3.1
@@ -54,18 +57,18 @@ importers:
       '@vanilla-extract/next-plugin':
         specifier: ^2.4.10
         version: 2.4.10(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.99.6(esbuild@0.25.2))
+      contentlayer2:
+        specifier: 0.5.4
+        version: 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
       eslint:
         specifier: ^9.25.0
         version: 9.25.0
       next-contentlayer2:
-        specifier: ^0.5.7
-        version: 0.5.7(acorn@8.14.1)(contentlayer2@0.5.7(acorn@8.14.1)(esbuild@0.25.2))(esbuild@0.25.2)(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 0.5.4
+        version: 0.5.4(acorn@8.14.1)(contentlayer2@0.5.4(acorn@8.14.1)(esbuild@0.25.2))(esbuild@0.25.2)(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
-      sharp:
-        specifier: ^0.34.1
-        version: 0.34.1
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -153,14 +156,14 @@ packages:
     resolution: {integrity: sha512-H45s8fVLYjbhFH62dIJ3WtmJ6RSPt/3DRO0ZcT2SUiYiQyz3BLVb9ADEnLl91m74aQPS3AzzeajZHYOalWe3bg==}
     engines: {node: '>=6.9.0'}
 
-  '@contentlayer2/cli@0.5.7':
-    resolution: {integrity: sha512-JNsBZ2Axfjw5ig9fmawzNafmq+m5zL1/5viMKyVAC0be95DET2Lnkn5ySLB3Uv72m3WaYGDc4Qi3+ZAhMDdgYQ==}
+  '@contentlayer2/cli@0.5.4':
+    resolution: {integrity: sha512-eU1oc7EEtlQFKHaDEJwkTPKeMqTEgQmWsztQtNMscP1Xn5IKxWGjbJyY+uaGG038j2cWUIgARNnvE4xRrwrMdw==}
 
-  '@contentlayer2/client@0.5.7':
-    resolution: {integrity: sha512-eavZk1L8EqWvfz7IKR4+9MIMwObSRGl7WNuXOAGF7YAalYq8uul2cNpy9YO9HsxCWG3M8fcovXCp2Wsg/aJjZg==}
+  '@contentlayer2/client@0.5.4':
+    resolution: {integrity: sha512-dM9Mj0hfJnRAJIeEyIsbJhBvk9r2dUVf5YP50n4kljyiteGJ4m7GgfPpKr8m+I1qQY6GfMkUgyIGq9gUbJlhng==}
 
-  '@contentlayer2/core@0.5.7':
-    resolution: {integrity: sha512-tJnIHnW/n5hywQX3fPnV5D4n5jfuOggPSMdSdS09hs8UEBcmac4JD74P3yXyktjHVUPE8206vyy+vlZEvNtJFA==}
+  '@contentlayer2/core@0.5.4':
+    resolution: {integrity: sha512-O3mRdkWXTt7QdLExOb0VKi9lfZ1C+pbeoG5d16/Ekb8KMky1LpYYxaONw1ZOjfXrovJ7WC20k2MO4prypHhh5A==}
     peerDependencies:
       esbuild: '>=0.17'
       markdown-wasm: 1.x
@@ -170,14 +173,14 @@ packages:
       markdown-wasm:
         optional: true
 
-  '@contentlayer2/source-files@0.5.7':
-    resolution: {integrity: sha512-/PxhfjHFU6E7adDDPtbTNBBwCfgC08lsYMyiztDu3Sl/aucSj5T4ySr9KNDHRgxGuBP7hL094frD1BRuckUWRw==}
+  '@contentlayer2/source-files@0.5.4':
+    resolution: {integrity: sha512-Pw+yUzsVY5DuX87l0zVTvWB/4ZpWAUW8mN/kDoqFE2QU8A3b0MS/IRMewocDTP6y+m/gV3/W9c0QPCyQ+scySA==}
 
-  '@contentlayer2/source-remote-files@0.5.7':
-    resolution: {integrity: sha512-ckWHVumgUDW8NNEOW7yELUuHsV80OkDot5rGFrgct5mTbRQmRTjVZioCQ2iMnNJC8rBL0rRDacR8kPqZboG51Q==}
+  '@contentlayer2/source-remote-files@0.5.4':
+    resolution: {integrity: sha512-pzvZf3tqHATJP8ZrEIA3/Hs+hqT4N6wKwLPS4bR3XvYf80mAmtfZ4AaL9zUABCQR0unEygKSSZ+WWZ6CHDbp2A==}
 
-  '@contentlayer2/utils@0.5.7':
-    resolution: {integrity: sha512-H2FO1DPglqrUI92OLqv/jGANioAzgrYBgkoYbpKuTsvX5BnGShw4aLWq797thhrrm9w2q5JSDhZOwP+WGbH2XQ==}
+  '@contentlayer2/utils@0.5.4':
+    resolution: {integrity: sha512-4fPo7sTqXc/V3aEVEOSJdilhL2IBR4YagY7qI/GAvAZ7joE1x1reaxMaCQszHu8NiGSdzIvL86G9oVHDwF55jw==}
     peerDependencies:
       '@effect-ts/otel-node': '*'
     peerDependenciesMeta:
@@ -218,6 +221,12 @@ packages:
 
   '@emotion/hash@0.9.2':
     resolution: {integrity: sha512-MyqliTZGuOm3+5ZRSaaBGP3USLw6+EGykkwZns2EPC5g8jJ4z9OrdZY9apkl3+UP9+sdz76YYkwCKP5gh8iY3g==}
+
+  '@emotion/is-prop-valid@1.3.1':
+    resolution: {integrity: sha512-/ACwoqx7XQi9knQs/G0qKvv5teDMhD7bXYns9N/wM8ah8iNb8jZ2uNO0YOgiq2o2poIvVtJS2YALasQuMSQ7Kw==}
+
+  '@emotion/memoize@0.9.0':
+    resolution: {integrity: sha512-30FAj7/EoJ5mwVPOWhAyCX+FPfMDrVecJAM+Iw9NRoSl4BBAQeqj4cApHHUXOVvIPgLVDsCFoz/hGD+5QQD1GQ==}
 
   '@esbuild-plugins/node-resolve@0.2.2':
     resolution: {integrity: sha512-+t5FdX3ATQlb53UFDBRb4nqjYBz492bIrnVWvpQHpzZlu9BQL5HasMZhqc409ygUwOWCXZhrWr6NyZ6T6Y+cxw==}
@@ -1442,8 +1451,8 @@ packages:
   confbox@0.1.8:
     resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
 
-  contentlayer2@0.5.7:
-    resolution: {integrity: sha512-V9IyQtJBlRg3+vbvVb0sjKj/guFAJdCRCuXt4jKEJqMxYZ6Rp7SRAZRd4uhX67b7g6s3ss5jeBYNaPvM8A5s5Q==}
+  contentlayer2@0.5.4:
+    resolution: {integrity: sha512-d6yz82Hrsyi3Z0UHq/C02qH0kupuULDwj6TcaG8gdbwg7lK8HmzEhHihwujWmZ7qy58i1yWmE2xkW5Oz3ROn8Q==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2467,10 +2476,10 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  next-contentlayer2@0.5.7:
-    resolution: {integrity: sha512-xgM5NvYl++Wl03t8erIUPcIo9XrA0MLbrgz0aRye/JeqzmqzSkBDDjVVU94WVhAl7kjg5bUrGj3Ob6d75NS7/A==}
+  next-contentlayer2@0.5.4:
+    resolution: {integrity: sha512-Zxo5TOUVzb5fuaCqqTOgvsTsnfWTWbt1C+QPYxOus6ydREaDHX/wZu+onO4BQyhyVUj26Xu8SQMXMxSGZ3Aytw==}
     peerDependencies:
-      contentlayer2: 0.5.7
+      contentlayer2: 0.5.4
       next: '>=12.0.0'
       react: ^18 || ^19 || ^19.0.0-rc
       react-dom: ^18 || ^19 || ^19.0.0-rc
@@ -3267,10 +3276,10 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@contentlayer2/cli@0.5.7(acorn@8.14.1)(esbuild@0.25.2)':
+  '@contentlayer2/cli@0.5.4(acorn@8.14.1)(esbuild@0.25.2)':
     dependencies:
-      '@contentlayer2/core': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/utils': 0.5.7
+      '@contentlayer2/core': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/utils': 0.5.4
       clipanion: 3.2.1(typanion@3.14.0)
       typanion: 3.14.0
     transitivePeerDependencies:
@@ -3280,9 +3289,9 @@ snapshots:
       - markdown-wasm
       - supports-color
 
-  '@contentlayer2/client@0.5.7(acorn@8.14.1)(esbuild@0.25.2)':
+  '@contentlayer2/client@0.5.4(acorn@8.14.1)(esbuild@0.25.2)':
     dependencies:
-      '@contentlayer2/core': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/core': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
       - acorn
@@ -3290,9 +3299,9 @@ snapshots:
       - markdown-wasm
       - supports-color
 
-  '@contentlayer2/core@0.5.7(acorn@8.14.1)(esbuild@0.25.2)':
+  '@contentlayer2/core@0.5.4(acorn@8.14.1)(esbuild@0.25.2)':
     dependencies:
-      '@contentlayer2/utils': 0.5.7
+      '@contentlayer2/utils': 0.5.4
       camel-case: 4.1.2
       comment-json: 4.2.5
       gray-matter: 4.0.3
@@ -3311,10 +3320,10 @@ snapshots:
       - acorn
       - supports-color
 
-  '@contentlayer2/source-files@0.5.7(acorn@8.14.1)(esbuild@0.25.2)':
+  '@contentlayer2/source-files@0.5.4(acorn@8.14.1)(esbuild@0.25.2)':
     dependencies:
-      '@contentlayer2/core': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/utils': 0.5.7
+      '@contentlayer2/core': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/utils': 0.5.4
       chokidar: 3.6.0
       fast-glob: 3.3.3
       gray-matter: 4.0.3
@@ -3331,11 +3340,11 @@ snapshots:
       - markdown-wasm
       - supports-color
 
-  '@contentlayer2/source-remote-files@0.5.7(acorn@8.14.1)(esbuild@0.25.2)':
+  '@contentlayer2/source-remote-files@0.5.4(acorn@8.14.1)(esbuild@0.25.2)':
     dependencies:
-      '@contentlayer2/core': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/source-files': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/utils': 0.5.7
+      '@contentlayer2/core': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/source-files': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/utils': 0.5.4
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
       - acorn
@@ -3343,7 +3352,7 @@ snapshots:
       - markdown-wasm
       - supports-color
 
-  '@contentlayer2/utils@0.5.7':
+  '@contentlayer2/utils@0.5.4':
     dependencies:
       '@effect-ts/core': 0.60.5
       '@effect-ts/otel': 0.15.1(@effect-ts/core@0.60.5)(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))
@@ -3403,6 +3412,12 @@ snapshots:
     optional: true
 
   '@emotion/hash@0.9.2': {}
+
+  '@emotion/is-prop-valid@1.3.1':
+    dependencies:
+      '@emotion/memoize': 0.9.0
+
+  '@emotion/memoize@0.9.0': {}
 
   '@esbuild-plugins/node-resolve@0.2.2(esbuild@0.25.2)':
     dependencies:
@@ -3556,7 +3571,7 @@ snapshots:
       eslint: 9.25.0
       eslint-config-prettier: 10.1.2(eslint@9.25.0)
       eslint-import-resolver-typescript: 4.3.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint@9.25.0))(eslint@9.25.0)
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.2)(eslint@9.25.0)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint@9.25.0))(eslint@9.25.0))(eslint@9.25.0)
       eslint-plugin-only-warn: 1.1.0
       eslint-plugin-react: 7.37.5(eslint@9.25.0)
       eslint-plugin-react-hooks: 5.2.0(eslint@9.25.0)
@@ -4633,14 +4648,14 @@ snapshots:
 
   confbox@0.1.8: {}
 
-  contentlayer2@0.5.7(acorn@8.14.1)(esbuild@0.25.2):
+  contentlayer2@0.5.4(acorn@8.14.1)(esbuild@0.25.2):
     dependencies:
-      '@contentlayer2/cli': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/client': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/core': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/source-files': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/source-remote-files': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/utils': 0.5.7
+      '@contentlayer2/cli': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/client': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/core': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/source-files': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/source-remote-files': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/utils': 0.5.4
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
       - acorn
@@ -4915,7 +4930,7 @@ snapshots:
       tinyglobby: 0.2.12
       unrs-resolver: 1.5.0
     optionalDependencies:
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.2)(eslint@9.25.0)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint@9.25.0))(eslint@9.25.0))(eslint@9.25.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -4930,7 +4945,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.2)(eslint@9.25.0):
+  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.30.1(eslint@9.25.0)(typescript@5.8.3))(eslint@9.25.0))(eslint@9.25.0))(eslint@9.25.0):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.8
@@ -5175,12 +5190,13 @@ snapshots:
 
   format@0.2.2: {}
 
-  framer-motion@12.7.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  framer-motion@12.7.4(@emotion/is-prop-valid@1.3.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       motion-dom: 12.7.4
       motion-utils: 12.7.2
       tslib: 2.8.1
     optionalDependencies:
+      '@emotion/is-prop-valid': 1.3.1
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
@@ -6006,11 +6022,12 @@ snapshots:
 
   motion-utils@12.7.2: {}
 
-  motion@12.7.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  motion@12.7.4(@emotion/is-prop-valid@1.3.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
-      framer-motion: 12.7.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      framer-motion: 12.7.4(@emotion/is-prop-valid@1.3.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       tslib: 2.8.1
     optionalDependencies:
+      '@emotion/is-prop-valid': 1.3.1
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
@@ -6022,11 +6039,11 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-contentlayer2@0.5.7(acorn@8.14.1)(contentlayer2@0.5.7(acorn@8.14.1)(esbuild@0.25.2))(esbuild@0.25.2)(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  next-contentlayer2@0.5.4(acorn@8.14.1)(contentlayer2@0.5.4(acorn@8.14.1)(esbuild@0.25.2))(esbuild@0.25.2)(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
-      '@contentlayer2/core': 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
-      '@contentlayer2/utils': 0.5.7
-      contentlayer2: 0.5.7(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/core': 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
+      '@contentlayer2/utils': 0.5.4
+      contentlayer2: 0.5.4(acorn@8.14.1)(esbuild@0.25.2)
       next: 15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)

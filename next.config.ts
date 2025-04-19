@@ -4,6 +4,15 @@ import { withContentlayer } from 'next-contentlayer2';
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+    ],
+  },
+};
 
 export default withContentlayer(withVanillaExtract(nextConfig));

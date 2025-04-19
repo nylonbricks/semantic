@@ -6,7 +6,7 @@ import { useTheme } from '@semantic/app/theme-provider';
 
 import * as styles from './styles.css';
 
-const ThemeToggle = () => {
+export const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
   const [isClient, setIsClient] = useState(false);
 
@@ -18,5 +18,3 @@ const ThemeToggle = () => {
     </button>
   );
 };
-
-export default ThemeToggle;
