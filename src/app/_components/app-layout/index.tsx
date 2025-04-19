@@ -1,0 +1,19 @@
+import { PropsWithChildren } from 'react';
+
+import Header from './header';
+import Sidebar from './sidebar';
+import * as styles from './styles.css';
+
+const AppLayout = ({ children }: PropsWithChildren) => {
+  return (
+    <div className={styles.root}>
+      <Sidebar />
+      <Header />
+      <main className={styles.main} data-animate={true} data-animate-speed="slow">
+        {children}
+      </main>
+    </div>
+  );
+};
+
+export default AppLayout;

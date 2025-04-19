@@ -1,9 +1,31 @@
 import '@semantic/styles/global.css';
 
+import clsx from 'clsx';
 import { Metadata, Viewport } from 'next';
+import { Roboto_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { PropsWithChildren } from 'react';
 
-import { METADATA } from '@semantic/constants/metadata';
+import { METADATA } from '@semantic/constants';
+
+import AppLayout from './_components/app-layout';
+import { themeBootstrapScript, ThemeProvider } from './theme-provider';
+
+const pretendard = localFont({
+  src: './_fonts/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  preload: true,
+  variable: '--font-pretendard',
+});
+
+const roboto = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600'],
+  preload: true,
+  variable: '--font-roboto-mono',
+});
 
 export const metadata: Metadata = {
   title: METADATA.SITE.NAME,
@@ -58,8 +80,15 @@ export const viewport: Viewport = {
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
+      </head>
+      <body className={clsx(roboto.variable, pretendard.variable)}>
+        <ThemeProvider>
+          <AppLayout>{children}</AppLayout>
+        </ThemeProvider>
+      </body>
     </html>
   );
 };

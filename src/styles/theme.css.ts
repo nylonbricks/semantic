@@ -9,93 +9,93 @@ const size = {
 };
 
 const fontFamily = {
-  mono: `"Roboto Mono", "Pretendard Variable", "Courier New", Courier, monospace`,
-  sans: `"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
+  mono: `"Roboto Mono", pretendard, "Courier New", Courier, monospace`,
+  sans: `pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif`,
 };
 
 const typography = {
   h7: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(10),
+    fontSize: rem(10),
     lineHeight: rem(18),
   },
   h6: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(11),
+    fontSize: rem(11),
     lineHeight: rem(18),
   },
   h5: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(12),
+    fontSize: rem(12),
     lineHeight: 'auto',
   },
   h4: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(13),
+    fontSize: rem(13),
     lineHeight: 'auto',
   },
   h3: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(15),
+    fontSize: rem(15),
     lineHeight: rem(15),
   },
   post_subtitle: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(15),
+    fontSize: rem(15),
     lineHeight: rem(26),
   },
   post_title: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(24),
+    fontSize: rem(24),
     lineHeight: rem(40),
   },
   post_description: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(13),
+    fontSize: rem(13),
     lineHeight: rem(26),
   },
   post_image_description: {
     fontFamily: fontFamily.sans,
     fontWeight: '400',
-    fontFamilyize: rem(15),
+    fontSize: rem(15),
     lineHeight: rem(13),
   },
   post_body: {
     fontFamily: fontFamily.sans,
     fontWeight: '400',
-    fontFamilyize: rem(16),
+    fontSize: rem(16),
     lineHeight: '180%',
   },
   profile_sub: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(11),
+    fontSize: rem(11),
     lineHeight: rem(20),
   },
   profile_name: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(13),
+    fontSize: rem(13),
     lineHeight: rem(13),
   },
   profile_title: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(13),
+    fontSize: rem(13),
     lineHeight: rem(20),
   },
   a: {
     fontFamily: fontFamily.mono,
     fontWeight: '500',
-    fontFamilyize: rem(14),
+    fontSize: rem(14),
     lineHeight: 'auto',
   },
 };
@@ -177,6 +177,8 @@ export const modeColor = createThemeContract({
 export const color = {
   white: '#FFFFFF',
   black: '#000000',
+
+  ...modeColor,
 };
 
 export const lightMode = createTheme(modeColor, {
