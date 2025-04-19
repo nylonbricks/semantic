@@ -77,6 +77,7 @@ globalStyle(`${root} ol li::before`, {
   counterIncrement: 'basics-ol',
   position: 'absolute',
   left: 0,
+  color:theme.color.gray.mid,
   fontSize: theme.fontSize.base,
 });
 
@@ -84,5 +85,6 @@ globalStyle(`${root} ul li::before`, {
   content: '•',
   position: 'absolute',
   left: 0,
+  color:theme.color.gray.mid,
   fontSize: theme.fontSize.base,
 });
