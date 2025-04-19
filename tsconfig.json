@@ -16,7 +16,7 @@
     "plugins": [{"name": "next"}],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
+      "@semantic/*": ["./src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"],
     }
   },
