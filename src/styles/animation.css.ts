@@ -10,7 +10,7 @@ const enter = keyframes({
 globalStyle('[data-animate] > *', {
   vars: {
     '--stagger': '0',
-    '--delay': '120ms',
+    '--delay': '150ms',
     '--start': '0ms',
   },
   '@media': {

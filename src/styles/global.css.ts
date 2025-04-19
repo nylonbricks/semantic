@@ -1,4 +1,5 @@
 import './reset.css';
+import './animation.css';
 
 import { globalStyle } from '@vanilla-extract/css';
 
