@@ -33,7 +33,7 @@ export const h6 = style({
   paddingTop: rem(24),
 });
 
-globalStyle(` :is(${h2}, ${h3}, ${h4}, ${h5}, ${h6})`, {
+globalStyle(`:is(${h2}, ${h3}, ${h4}, ${h5}, ${h6})`, {
   color: theme.color.gray.accent,
   scrollMarginTop: rem(67),
 });
