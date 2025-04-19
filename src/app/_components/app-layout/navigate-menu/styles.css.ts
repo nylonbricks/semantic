@@ -14,7 +14,7 @@ export const navItem = style({
   height: rem(40),
   color: theme.color.gray.mid,
   borderRadius: rem(10),
-  transition: 'background-color 0.2s',
+  transition: 'background-color 200ms',
 });
 
 export const navItemActive = style({

@@ -10,6 +10,6 @@ type DividerProps = {
 const Divider = forwardRef<HTMLHRElement, DividerProps>(({ className, ...props }, ref) => {
   return <hr ref={ref} className={clsx(styles.divider, className)} {...props} />;
 });
-Divider.displayName = 'Sidebar Divider';
+Divider.displayName = 'Divider';
 
 export default Divider;
