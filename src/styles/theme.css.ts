@@ -24,6 +24,8 @@ const fontSize = {
   xs: rem(12),
   xxs: rem(10),
   xxxs: rem(8),
+
+  code: rem(12.5),
 };
 
 const typography = {
@@ -240,7 +242,7 @@ export const darkMode = createTheme(modeColor, {
   background06: 'rgba(255, 255, 255, 0.06)',
   background08: 'rgba(255, 255, 255, 0.08)',
 
-  toggle: color.black,
+  toggle: 'rgb(12, 12, 12)',
   license: '#B2B2B2',
 
   gradient: {
