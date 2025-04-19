@@ -17,7 +17,7 @@ const HomePage = () => {
       <section className={styles.root}>
         <div className={styles.titleContainer}>
           <h3 className={styles.title}>Update</h3>
-          <Link href="" className={styles.expandLink}>
+          <Link href="/posts" className={styles.expandLink}>
             Expand
           </Link>
         </div>
