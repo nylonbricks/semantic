@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 1113 --hostname 0.0.0.0",
     "build": "next build",
     "build:content": "contentlayer2 build",
     "start": "next start",
