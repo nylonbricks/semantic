@@ -1,5 +1,30 @@
-const PostPage = () => {
-  return <></>;
+import { notFound } from 'next/navigation';
+
+import { allPosts } from '@contentlayer/generated';
+import { MdxComponent } from '@semantic/components/ui';
+
+type PostPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+const PostPage = async ({ params }: PostPageProps) => {
+  const { slug } = await params;
+
+  const post = allPosts.find((post) => post.slug === slug);
+
+  if (!post) notFound();
+
+  return (
+    <>
+      <MdxComponent code={post.body.code} blurDataURLs={post.blurMap} />
+    </>
+  );
 };
 
 export default PostPage;
+
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}

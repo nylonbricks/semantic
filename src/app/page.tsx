@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 
 import { allPosts, type Post } from '@contentlayer/generated';
+import { PlusIcon } from '@semantic/components/icon';
 import { PostGrid } from '@semantic/components/ui';
+import { ROUTES } from '@semantic/constants';
 
 import { ProfileGrid } from './_components/profile-grid';
 import * as styles from './page.css';
-import { ROUTES } from '@semantic/constants';
-import { PlusIcon } from '@semantic/components/icon';
 
 const HomePage = () => {
   const posts: Post[] = getSortedPosts(allPosts);
