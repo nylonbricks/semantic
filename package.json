@@ -5,13 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:content": "contentlayer2 build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "contentlayer2": "^0.5.7",
     "next": "15.3.1",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "sharp": "^0.34.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -19,7 +22,8 @@
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "eslint": "^9.24.0",
+    "eslint": "^9.25.0",
+    "next-contentlayer2": "^0.5.7",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }
