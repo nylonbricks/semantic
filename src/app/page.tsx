@@ -33,5 +33,7 @@ const HomePage = () => {
 export default HomePage;
 
 const getSortedPosts = (posts: Post[]): Post[] => {
-  return posts.sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1));
+  return posts
+    .sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1))
+    .slice(0, 4);
 };

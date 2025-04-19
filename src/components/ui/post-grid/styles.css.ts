@@ -22,8 +22,9 @@ export const cover = style({
   width: '100%',
   aspectRatio: '1.8 / 1',
   borderRadius: rem(14),
+  border: `${rem(1)} solid ${theme.color.border}`,
+  transition: 'border-width 250ms ease-in-out',
   overflow: 'hidden',
-  transition: 'filter 150ms ease-in-out',
 });
 
 export const title = style({
@@ -40,7 +41,7 @@ export const title = style({
   textOverflow: 'ellipsis',
   borderRadius: rem(8),
   overflow: 'hidden',
-  transition: 'background-color 150ms ease-in-out',
+  transition: 'background-color 250ms ease-in-out',
 });
 
 export const description = style({
@@ -53,11 +54,11 @@ export const description = style({
   marginBottom: rem(-2),
   color: theme.color.gray.light,
   borderRadius: rem(8),
-  transition: 'background-color 150ms ease-in-out',
+  transition: 'background-color 250ms ease-in-out',
 });
 
 globalStyle(`${container}:hover ${cover}, ${container}:active ${cover}`, {
-  filter: 'brightness(1.2)',
+  borderWidth: rem(1.5),
 });
 
 globalStyle(`${container}:hover ${title}`, {
