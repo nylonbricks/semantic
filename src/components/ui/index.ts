@@ -1,2 +1,4 @@
 export * from './mdx-component';
 export * from './post-grid';
+export * from './post-list';
+export * from './pagination';

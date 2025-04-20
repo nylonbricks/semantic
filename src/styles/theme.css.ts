@@ -242,7 +242,7 @@ export const darkMode = createTheme(modeColor, {
   background06: 'rgba(255, 255, 255, 0.06)',
   background08: 'rgba(255, 255, 255, 0.08)',
 
-  toggle: 'rgb(12, 12, 12)',
+  toggle: 'rgb(1, 1, 1)',
   license: '#B2B2B2',
 
   gradient: {
