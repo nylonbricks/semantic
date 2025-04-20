@@ -11,3 +11,7 @@ export const METADATA = {
     TWITTER: 'https://twitter.com/masonthecode',
   },
 };
+
+export const POST = {
+  PER_PAGE: 10,
+};

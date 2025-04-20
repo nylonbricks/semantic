@@ -23,7 +23,6 @@ export const cover = style({
   aspectRatio: '1.8 / 1',
   borderRadius: rem(14),
   border: `${rem(1)} solid ${theme.color.border}`,
-  transition: 'border-width 250ms ease-in-out',
   overflow: 'hidden',
 });
 
@@ -55,10 +54,6 @@ export const description = style({
   color: theme.color.gray.light,
   borderRadius: rem(8),
   transition: 'background-color 250ms ease-in-out',
-});
-
-globalStyle(`${container}:hover ${cover}, ${container}:active ${cover}`, {
-  borderWidth: rem(1.5),
 });
 
 globalStyle(`${container}:hover ${title}`, {

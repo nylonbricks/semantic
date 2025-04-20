@@ -17,6 +17,7 @@ globalStyle('body', {
   MozOsxFontSmoothing: 'grayscale',
   overflowX: 'hidden',
   overflowY: 'scroll',
+  backgroundColor: theme.color.background,
 });
 
 globalStyle('[data-theme="light"]', {

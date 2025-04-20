@@ -12,7 +12,7 @@ import * as styles from './page.css';
 const getSortedPosts = (posts: Post[]) => {
   return posts
     .sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1))
-    .slice(0, 4);
+    .slice(0, 2);
 };
 
 const HomePage = () => {
