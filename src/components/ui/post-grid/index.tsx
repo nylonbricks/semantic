@@ -15,7 +15,7 @@ type PostGridProps = ComponentProps<'div'> & {
 
 export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
   return (
-    <div className={clsx(styles.grid, className)} {...props}>
+    <div className={clsx(className, styles.grid)} {...props}>
       {posts.map(({ _id, slug, title, coverImage, coverBlur, createdAt }) => {
         return (
           <Link key={_id} className={styles.container} href={`/posts/${slug}`}>

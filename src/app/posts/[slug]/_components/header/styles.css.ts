@@ -12,8 +12,8 @@ export const cover = style({
   position: 'relative',
   width: '100%',
   aspectRatio: '1.8 / 1',
+  border: `${rem(1)} solid ${theme.color.border}`,
   borderRadius: rem(14),
-  backgroundColor: theme.color.border,
   userSelect: 'none',
   overflow: 'hidden',
 });

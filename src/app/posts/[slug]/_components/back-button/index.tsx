@@ -1,7 +1,14 @@
 'use client';
 
-export const BackButton = () => {
-  return <button>
+import { ChevronLeftIcon } from '@semantic/components/icon';
 
-  </button>;
+import * as styles from './styles.css';
+
+export const BackButton = () => {
+  return (
+    <button className={styles.root}>
+      <ChevronLeftIcon size={18} />
+      <span>Back</span>
+    </button>
+  );
 };
