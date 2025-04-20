@@ -1,6 +1,7 @@
 import { allPosts } from '@contentlayer/generated';
 import { Pagination, PostList } from '@semantic/components/ui';
 import { POST, ROUTES } from '@semantic/constants';
+import dayjs from 'dayjs';
 
 import * as styles from './page.css';
 
@@ -13,7 +14,8 @@ const PostsListPage = async ({ params }: Props) => {
   const currentPage = parseInt(page || '1', 10);
   const start = (currentPage - 1) * POST.PER_PAGE;
   const end = start + POST.PER_PAGE;
-  const currentPosts = allPosts.slice(start, end);
+  const sortedPosts = allPosts.sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1));
+  const currentPosts = sortedPosts.slice(start, end);
 
   return (
     <>
