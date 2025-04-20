@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Build
 
 on:
   push:
@@ -30,4 +30,4 @@ jobs:
         with:
           publish_dir: ./out
           publish_branch: deploy
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.SEMANTIC_DEPLOY_TOKEN }}
