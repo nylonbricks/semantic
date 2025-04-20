@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ComponentProps } from 'react';
 
 import { type Post } from '@contentlayer/generated';
-import { formatRelativeTime } from '@semantic/utils';
+import { RelativeTime } from '@semantic/components/ui';
 
 import * as styles from './styles.css';
 
@@ -29,7 +29,7 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
               />
             </div>
             <h2 className={styles.title}>{title}</h2>
-            <p className={styles.description}>{formatRelativeTime(createdAt)}</p>
+            <RelativeTime className={styles.description} time={createdAt} />
           </Link>
         );
       })}

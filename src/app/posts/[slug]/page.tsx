@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { allPosts } from '@contentlayer/generated';
 import { MdxComponent } from '@semantic/components/ui';
 
+import { Header } from './_components/header';
+
 type PostPageProps = {
   params: Promise<{ slug: string }>;
 };
@@ -16,7 +18,10 @@ const PostPage = async ({ params }: PostPageProps) => {
 
   return (
     <>
-      <MdxComponent code={post.body.code} blurDataURLs={post.blurMap} />
+      <article>
+        <Header {...post} />
+        <MdxComponent code={post.body.code} blurDataURLs={post.blurMap} />
+      </article>
     </>
   );
 };
