@@ -1,0 +1,30 @@
+"eslint":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - 'eslint.*'
+
+"tsconfig":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - 'tsconfig.json'
+
+"dependencies":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - 'pnpm-lock.yaml'
+
+"workflows":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - '.github/workflows/**/*'
+
+"contentlayer":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - 'contentlayer.config.ts'
+              - 'config/contentlayer/**'
