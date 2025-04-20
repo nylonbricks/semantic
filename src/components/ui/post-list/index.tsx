@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { ComponentProps } from 'react';
 
 import { Post } from '@contentlayer/generated';
+import { RelativeTime } from '@semantic/components/ui';
 import { ROUTES } from '@semantic/constants';
-import { formatRelativeTime } from '@semantic/utils';
 
 import * as styles from './page.css';
 
@@ -37,7 +37,7 @@ export const PostList = ({ posts, className, ...props }: PostListProps) => {
                 <h2 className={styles.title}>{title}</h2>
                 <p className={styles.subtitle}>{subtitle}</p>
                 <p className={styles.description}>
-                  <time>{formatRelativeTime(createdAt)}</time>
+                  <RelativeTime time={createdAt} />
                   {category && (
                     <>
                       <span className={styles.middot}>&nbsp;&middot;&nbsp;</span>

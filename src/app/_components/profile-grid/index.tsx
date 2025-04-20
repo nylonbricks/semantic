@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { METADATA, PLAYLIST, PROFILE } from '@semantic/constants';
-import { getBlurDataURL } from '@semantic/utils';
+import { getBlurDataURL } from '@semantic/libs';
 
 import Card from './card';
 import * as styles from './styles.css';

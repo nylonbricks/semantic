@@ -6,9 +6,9 @@ import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 
+import { Divider } from '@semantic/components/ui';
 import { METADATA, ROUTES } from '@semantic/constants';
 
-import { Divider } from '../divider';
 import { NavigateMenu } from '../navigate-menu';
 import * as styles from './styles.css';
 import { ThemeToggle } from '../theme-toggle';

@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
+import { Divider } from '@semantic/components/ui';
 import { METADATA, ROUTES } from '@semantic/constants';
 
 import * as styles from './styles.css';
-import { Divider } from '../divider';
 import { NavigateMenu } from '../navigate-menu';
 import { ThemeToggle } from '../theme-toggle';
 

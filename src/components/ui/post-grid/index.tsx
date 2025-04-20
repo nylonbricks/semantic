@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ComponentProps } from 'react';
 
 import { type Post } from '@contentlayer/generated';
-import { formatRelativeTime } from '@semantic/utils';
+import { RelativeTime } from '@semantic/components/ui';
 
 import * as styles from './styles.css';
 
@@ -15,7 +15,7 @@ type PostGridProps = ComponentProps<'div'> & {
 
 export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
   return (
-    <div className={clsx(styles.grid, className)} {...props}>
+    <div className={clsx(className, styles.grid)} {...props}>
       {posts.map(({ _id, slug, title, coverImage, coverBlur, createdAt }) => {
         return (
           <Link key={_id} className={styles.container} href={`/posts/${slug}`}>
@@ -29,7 +29,7 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
               />
             </div>
             <h2 className={styles.title}>{title}</h2>
-            <p className={styles.description}>{formatRelativeTime(createdAt)}</p>
+            <RelativeTime className={styles.description} time={createdAt} />
           </Link>
         );
       })}
