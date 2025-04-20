@@ -1,8 +1,7 @@
 name: Labeler
 
 on:
-  pull_request:
-    types: [ opened, synchronize, reopened ]
+  - pull_request_target
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -12,8 +11,8 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: write
       contents: read
+      pull-requests: write
     steps:
       - uses: actions/labeler@v5
         with:
