@@ -30,5 +30,5 @@ contentlayer:
               - 'config/contentlayer/**'
 
 v2:
-  any:
-    head-branch: ['^wip/v2$']
+  - any:
+      - head-branch: [ '^wip/v2$' ]
