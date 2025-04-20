@@ -10,7 +10,7 @@ export const Header = ({ coverImage, title, subtitle, createdAt, category }: Pos
   return (
     <header className={styles.root}>
       <div className={styles.cover}>
-        <Image src={coverImage} alt={`${title} Cover Image`} fill />
+        <Image src={coverImage} alt={`${title} Cover Image`} draggable={false} fill />
       </div>
       <h1 className={styles.title}>{title}</h1>
       <h2 className={styles.subtitle}>{subtitle}</h2>
