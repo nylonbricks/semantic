@@ -1,13 +1,11 @@
-name: Build
+name: Deploy
 
 on:
   push:
-    branches: [ wip/v2 ]
-  pull_request:
-    branches: [ wip/v2 ]
+    branches: [ main ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +23,7 @@ jobs:
       - name: Build static site
         run: pnpm build
 
-      - name: Deploy to deploy branch
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: ./out
