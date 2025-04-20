@@ -1,3 +1,22 @@
+contentlayer:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - 'contentlayer.config.ts'
+              - 'config/contentlayer/**'
+
+dependencies:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - 'pnpm-lock.yaml'
+
+documentation:
+  - any:
+      - changed-files:
+          - any-glob-to-any-file:
+              - 'content/**/*'
+
 eslint:
   - any:
       - changed-files:
@@ -10,25 +29,12 @@ tsconfig:
           - any-glob-to-any-file:
               - 'tsconfig.json'
 
-dependencies:
+v2:
   - any:
-      - changed-files:
-          - any-glob-to-any-file:
-              - 'pnpm-lock.yaml'
+      - head-branch: [ '^wip/v2$' ]
 
 workflows:
   - any:
       - changed-files:
           - any-glob-to-any-file:
               - '.github/workflows/**/*'
-
-contentlayer:
-  - any:
-      - changed-files:
-          - any-glob-to-any-file:
-              - 'contentlayer.config.ts'
-              - 'config/contentlayer/**'
-
-v2:
-  - any:
-      - head-branch: [ '^wip/v2$' ]
