@@ -18,6 +18,13 @@ export const cover = style({
   overflow: 'hidden',
 });
 
+globalStyle(`${cover} img`, {
+  objectFit: 'cover',
+  objectPosition: 'center',
+  width: '100%',
+  height: '100%',
+});
+
 export const title = style({
   ...theme.typography.post_title,
   padding: 0,

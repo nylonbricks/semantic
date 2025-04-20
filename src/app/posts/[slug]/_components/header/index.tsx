@@ -6,11 +6,21 @@ import { RelativeTime } from '@semantic/components/ui';
 
 import * as styles from './styles.css';
 
-export const Header = ({ coverImage, title, subtitle, createdAt, category }: Post) => {
+export const Header = ({ coverImage, coverBlur, title, subtitle, createdAt, category }: Post) => {
   return (
     <header className={styles.root}>
       <div className={styles.cover}>
-        <Image src={coverImage} alt={`${title} Cover Image`} fill />
+        <Image
+          src={coverImage}
+          alt={`${title} Cover Image`}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          placeholder="blur"
+          blurDataURL={coverBlur}
+          draggable={false}
+          quality={100}
+          priority={false}
+          fill
+        />
       </div>
       <h1 className={styles.title}>{title}</h1>
       <h2 className={styles.subtitle}>{subtitle}</h2>

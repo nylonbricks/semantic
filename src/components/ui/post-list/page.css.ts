@@ -27,6 +27,13 @@ export const cover = style({
   ...breakpoint({ tablet: { width: rem(346) } }),
 });
 
+globalStyle(`${cover} img`, {
+  objectFit: 'cover',
+  objectPosition: 'center',
+  width: '100%',
+  height: '100%',
+});
+
 export const frontmatter = style({
   ...theme.layout.column,
   flex: 1,

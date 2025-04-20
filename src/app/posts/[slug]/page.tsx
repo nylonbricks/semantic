@@ -13,31 +13,45 @@ type PostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const getPostsInRange = (posts: Post[], start: number, end: number) =>
-  posts.slice(Math.max(0, start), Math.min(posts.length, end));
-
 const getRecommendedPosts = (posts: Post[], slug: string) => {
-  const sortedPosts = posts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
-  const currentIndex = sortedPosts.findIndex((post) => post.slug === slug);
+  const sorted = posts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+  const idx = sorted.findIndex((p) => p.slug === slug);
 
-  if (currentIndex === -1) return sortedPosts.slice(0, 4);
+  if (idx === -1) return sorted.slice(0, 4);
 
-  const prevPosts = getPostsInRange(sortedPosts, currentIndex - 2, currentIndex).reverse();
-  const nextPosts = getPostsInRange(sortedPosts, currentIndex + 1, currentIndex + 3);
+  const getPosts = (start: number, end: number) =>
+    sorted.slice(Math.max(0, start), Math.min(sorted.length, end));
 
-  const recommendedPosts = [...prevPosts, ...nextPosts];
+  const prev = getPosts(idx - 2, idx).reverse();
+  const next = getPosts(idx + 1, idx + 3);
 
-  if (recommendedPosts.length < 4) {
-    const remainingCount = 4 - recommendedPosts.length;
-    const isFrontHalf = currentIndex < sortedPosts.length / 2;
-    const additionalPosts = isFrontHalf
-      ? getPostsInRange(sortedPosts, currentIndex + 3, currentIndex + 3 + remainingCount)
-      : getPostsInRange(sortedPosts, currentIndex - 2 - remainingCount, currentIndex - 2).reverse();
+  const rec = [...prev, ...next];
 
-    recommendedPosts.push(...additionalPosts);
+  if (rec.length < 4) {
+    const need = 4 - rec.length;
+    const isFront = idx < sorted.length / 2;
+
+    const isIncluded = (p: Post) => rec.some((r) => r.slug === p.slug);
+
+    if (isFront) {
+      const start = idx + 3;
+      const more = getPosts(start, start + need * 2)
+        .filter((p) => !isIncluded(p))
+        .slice(0, need);
+
+      return [...rec, ...more];
+    } else {
+      const end = idx - 2;
+      const more = getPosts(end - need * 2, end)
+        .reverse()
+        .filter((p) => !isIncluded(p))
+        .slice(0, need);
+
+      return [...more, ...rec];
+    }
   }
 
-  return recommendedPosts;
+  return rec;
 };
 
 export async function generateStaticParams() {
