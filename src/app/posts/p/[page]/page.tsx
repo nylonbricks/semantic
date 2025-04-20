@@ -1,7 +1,8 @@
+import dayjs from 'dayjs';
+
 import { allPosts } from '@contentlayer/generated';
 import { Pagination, PostList } from '@semantic/components/ui';
 import { POST, ROUTES } from '@semantic/constants';
-import dayjs from 'dayjs';
 
 import * as styles from './page.css';
 
