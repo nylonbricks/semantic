@@ -4,12 +4,12 @@ import clsx from 'clsx';
 import { Metadata, Viewport } from 'next';
 import { Roboto_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
+import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren } from 'react';
 
 import { Layout } from '@semantic/components/layout';
 import { METADATA } from '@semantic/constants';
-
-import { themeBootstrapScript, ThemeProvider } from './theme-provider';
+import { darkMode, lightMode } from '@semantic/styles';
 
 const pretendard = localFont({
   src: './_fonts/PretendardVariable.woff2',
@@ -81,11 +81,15 @@ export const viewport: Viewport = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
-      </head>
       <body className={clsx(roboto.variable, pretendard.variable)}>
-        <ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          enableSystem={false}
+          value={{
+            light: lightMode,
+            dark: darkMode,
+          }}
+        >
           <Layout>{children}</Layout>
         </ThemeProvider>
       </body>
