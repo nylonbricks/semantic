@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { allPosts } from '@contentlayer/generated';
 import { Pagination, PostList } from '@semantic/components/ui';
 import { POST, ROUTES } from '@semantic/constants';
+import { slugify } from '@semantic/utils';
 
 import * as styles from './page.css';
 
@@ -13,16 +14,20 @@ type CategoriesPageProps = {
 const CategoriesPage = async ({ params }: CategoriesPageProps) => {
   const { category, page } = await params;
   const currentPage = parseInt(page || '1', 10);
-  
-  const categoryPosts = allPosts.filter((post) => post.category === category);
+
+  const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
   const start = (currentPage - 1) * POST.PER_PAGE;
   const end = start + POST.PER_PAGE;
-  const sortedPosts = categoryPosts.sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1));
+  const sortedPosts = categoryPosts.sort((a, b) =>
+    dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1,
+  );
   const currentPosts = sortedPosts.slice(start, end);
 
   return (
     <>
-      <h1 className={styles.title}>{category} ({categoryPosts.length})</h1>
+      <h1 className={styles.title}>
+        {categoryPosts[0].category ?? category} ({categoryPosts.length})
+      </h1>
       <PostList posts={currentPosts} />
       <Pagination
         currentPage={currentPage}
@@ -37,13 +42,13 @@ export default CategoriesPage;
 
 export const generateStaticParams = () => {
   const categories = [...new Set(allPosts.map((post) => post.category))];
-  
+
   return categories.flatMap((category) => {
     const categoryPosts = allPosts.filter((post) => post.category === category);
     const totalPages = Math.ceil(categoryPosts.length / POST.PER_PAGE);
-    
+
     return Array.from({ length: totalPages }, (_, i) => ({
-      category,
+      category: slugify(category),
       page: (i + 1).toString(),
     }));
   });
