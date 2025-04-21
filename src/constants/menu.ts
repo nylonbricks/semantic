@@ -8,4 +8,6 @@ export const ROUTES = {
   HOME: '/',
   ABOUT: '/about',
   POSTS: '/posts',
+  CATEGORIES: '/categories',
+  TAGS: '/tags',
 } as const;
