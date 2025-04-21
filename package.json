@@ -8,7 +8,12 @@
     "build": "next build",
     "build:content": "contentlayer2 build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json,css,md}": "prettier --write",
+    "**/*.{ts,tsx}": "eslint --fix --max-warnings 0"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.7",
@@ -32,6 +37,8 @@
     "contentlayer2": "0.5.4",
     "copy-webpack-plugin": "^13.0.0",
     "eslint": "^9.25.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
     "next-contentlayer2": "0.5.4",
     "prettier": "^3.5.3",
     "rehype-autolink-headings": "^7.1.0",
