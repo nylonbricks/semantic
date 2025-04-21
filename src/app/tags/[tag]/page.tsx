@@ -4,11 +4,12 @@ import { slugify } from '@semantic/utils';
 import TagsPage from './p/[page]/page';
 
 type TagRootPageProps = {
-  params: { tag: string };
+  params: Promise<{ tag: string }>;
 };
 
-const TagRootPage = ({ params }: TagRootPageProps) => {
-  return <TagsPage params={Promise.resolve({ ...params, page: '1' })} />;
+const TagRootPage = async ({ params }: TagRootPageProps) => {
+  const resolvedParams = await params;
+  return await TagsPage({ params: Promise.resolve({ ...resolvedParams, page: '1' }) });
 };
 
 export default TagRootPage;

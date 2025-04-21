@@ -4,11 +4,12 @@ import { slugify } from '@semantic/utils';
 import CategoriesPage from './p/[page]/page';
 
 type CategoryRootProps = {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 };
 
-const CategoryRootPage = ({ params }: CategoryRootProps) => {
-  return <CategoriesPage params={Promise.resolve({ ...params, page: '1' })} />;
+const CategoryRootPage = async ({ params }: CategoryRootProps) => {
+  const resolvedParams = await params;
+  return await CategoriesPage({ params: Promise.resolve({ ...resolvedParams, page: '1' }) });
 };
 
 export default CategoryRootPage;
