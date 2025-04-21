@@ -3,11 +3,20 @@ import Link from 'next/link';
 
 import { Post } from '@contentlayer/generated';
 import { RelativeTime } from '@semantic/components/ui';
+import { ROUTES } from '@semantic/constants';
 import { slugify } from '@semantic/utils';
 
 import * as styles from './styles.css';
 
-export const Header = ({ coverImage, coverBlur, title, subtitle, createdAt, category,tags }: Post) => {
+export const Header = ({
+  coverImage,
+  coverBlur,
+  title,
+  subtitle,
+  createdAt,
+  category,
+  tags,
+}: Post) => {
   return (
     <header className={styles.root}>
       <div className={styles.cover}>
@@ -37,7 +46,7 @@ export const Header = ({ coverImage, coverBlur, title, subtitle, createdAt, cate
       <ul className={styles.tags}>
         {tags?.map((tag) => (
           <li key={tag} className={styles.tag}>
-            <Link href={`/tags/${slugify(tag)}`}>{tag}</Link>
+            <Link href={`${ROUTES.TAGS}/${slugify(tag)}`}>{tag}</Link>
           </li>
         ))}
       </ul>
