@@ -7,7 +7,7 @@ import path from 'path';
 const withVanillaExtract = createVanillaExtractPlugin();
 
 const nextConfig: NextConfig = {
-  basePath: '/',
+  basePath: '',
   output: 'export',
   images: {
     remotePatterns: [
