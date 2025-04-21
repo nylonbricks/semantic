@@ -61,3 +61,27 @@ globalStyle(`${description} a`, {
 globalStyle(`${description} a:hover`, {
   opacity: 0.7,
 });
+
+export const tags = style({
+  ...theme.layout.centerY,
+  width: '100%',
+  marginTop: rem(24),
+  gap: rem(8),
+});
+
+export const tag = style({
+  ...theme.layout.center,
+  paddingBlock: rem(2),
+  paddingInline: rem(6),
+  color: theme.color.gray.mid,
+  fontSize: theme.fontSize.xs,
+  fontWeight: 500,
+  border: `${rem(1)} solid ${theme.color.background03}`,
+  borderRadius: rem(8),
+  background: theme.color.background02,
+  transition: 'background-color 150ms ease-in-out',
+
+  ':hover': {
+    background: theme.color.background04,
+  },
+});
