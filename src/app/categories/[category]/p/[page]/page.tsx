@@ -26,7 +26,9 @@ const CategoriesPage = async ({ params }: CategoriesPageProps) => {
   return (
     <>
       <h1 className={styles.title}>
-        {categoryPosts[0].category ?? category} ({categoryPosts.length})
+        {categoryPosts.length > 0 
+          ? `${categoryPosts[0].category} (${categoryPosts.length})` 
+          : `${category} (0 posts)`}
       </h1>
       <PostList posts={currentPosts} />
       <Pagination
