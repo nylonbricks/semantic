@@ -6,11 +6,11 @@ import { POST, ROUTES } from '@semantic/constants';
 
 import * as styles from './page.css';
 
-type Props = {
+type PostsPageProps = {
   params: Promise<{ page: string }>;
 };
 
-const PostsListPage = async ({ params }: Props) => {
+const PostsPage = async ({ params }: PostsPageProps) => {
   const { page } = await params;
   const currentPage = parseInt(page || '1', 10);
   const start = (currentPage - 1) * POST.PER_PAGE;
@@ -31,7 +31,7 @@ const PostsListPage = async ({ params }: Props) => {
   );
 };
 
-export default PostsListPage;
+export default PostsPage;
 
 export const generateStaticParams = () => {
   const totalPages = Math.ceil(allPosts.length / POST.PER_PAGE);

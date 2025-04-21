@@ -11,7 +11,7 @@ import {
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
-  filePathPattern: `pages/**/*.mdx`,
+  filePathPattern: `pages/**/*.{md,mdx}`,
   contentType: 'mdx',
   fields: {
     createdAt: { type: 'date', required: true },
@@ -38,7 +38,7 @@ export const Page = defineDocumentType(() => ({
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `posts/**/*.mdx`,
+  filePathPattern: `posts/**/*.{md,mdx}`,
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },

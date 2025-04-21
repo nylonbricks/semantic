@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { Post } from '@contentlayer/generated';
 import { RelativeTime } from '@semantic/components/ui';
+import { slugify } from '@semantic/utils';
 
 import * as styles from './styles.css';
 
@@ -29,7 +30,7 @@ export const Header = ({ coverImage, coverBlur, title, subtitle, createdAt, cate
         {category && (
           <>
             <span className={styles.middot}>&nbsp;&middot;&nbsp;</span>
-            <Link href={`/categories/${category}`}>{category}</Link>
+            <Link href={`/categories/${slugify(category)}`}>{category}</Link>
           </>
         )}
       </p>
