@@ -34,6 +34,11 @@ globalStyle('[class^=blockquote-]::before', {
   transform: 'translateY(-50%)',
 });
 
+globalStyle(`[class^=blockquote-] code`, {
+  borderColor: `${theme.color.background06} !important`,
+  backgroundColor: `${theme.color.background03} !important`,
+});
+
 // TIP
 globalStyle('.blockquote-tip', {
   borderColor: 'hsl(221, 91%, 93%)',
