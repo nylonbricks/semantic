@@ -89,6 +89,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
             light: lightMode,
             dark: darkMode,
           }}
+          storageKey="semantic-theme"
         >
           <Layout>{children}</Layout>
         </ThemeProvider>

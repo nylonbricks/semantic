@@ -1,6 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
-import { rem, theme } from '@semantic/styles';
+import { darkMode, rem, theme } from '@semantic/styles';
 
 export const root = style({
   ...theme.layout.column,
@@ -100,4 +100,44 @@ globalStyle(`${root} p > code`, {
   border: `${rem(1)} solid ${theme.color.border}`,
   borderRadius: rem(4),
   backgroundColor: theme.color.toggle,
+});
+
+export const blockquote = style({
+  ...theme.layout.column,
+  padding: rem(16),
+  border: `${rem(1)} solid ${theme.color.background04}`,
+  borderRadius: rem(10),
+  backgroundColor: theme.color.background02,
+});
+
+globalStyle(`${root} a`, {
+  color: theme.color.gray.bold,
+  lineHeight: 1.8,
+  opacity: 1,
+  transition: 'opacity 150ms ease-in-out',
+});
+
+globalStyle(`${root} a:hover`, {
+  opacity: 0.7,
+});
+
+globalStyle(`${root} a[target="_blank"]`, {
+  textDecoration: 'underline',
+});
+
+globalStyle(`${root} a[target="_blank"]::after`, {
+  display: 'inline-block',
+  width: rem(12),
+  height: rem(12),
+  margin: 0,
+  content: '',
+  background: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23393960" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>')`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
+});
+
+globalStyle(`${darkMode} ${root} a[target="_blank"]::after`, {
+  background: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>')`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
 });
