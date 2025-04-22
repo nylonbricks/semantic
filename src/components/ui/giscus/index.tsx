@@ -30,10 +30,10 @@ export const Giscus = ({ ...props }: GiscusProps) => {
       'data-theme': theme,
       'data-lang': 'en',
       crossorigin: 'anonymous',
-      async: 'true',
     };
 
     const script = document.createElement('script');
+    script.async = true;
 
     Object.entries(attributes).forEach(([key, value]) => script.setAttribute(key, value));
     ref.current.appendChild(script);
