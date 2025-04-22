@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 
 import { allPosts, Post } from '@contentlayer/generated';
 import { Divider, MdxComponent } from '@semantic/components/ui';
+import { Giscus } from '@semantic/components/ui/giscus';
 
 import { BackButton } from './_components/back-button';
 import { Footer } from './_components/footer';
@@ -73,6 +74,7 @@ const PostPage = async ({ params }: PostPageProps) => {
       <article>
         <Header {...post} />
         <MdxComponent code={post.body.code} blurDataURLs={post.blurMap} />
+        {post.comment && <Giscus className={styles.comment} />}
         <Divider className={styles.divider} />
         <Footer {...post} />
       </article>
