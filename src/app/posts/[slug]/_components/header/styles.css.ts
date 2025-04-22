@@ -64,6 +64,7 @@ globalStyle(`${description} a:hover`, {
 
 export const tags = style({
   ...theme.layout.centerY,
+  flexWrap: 'wrap',
   width: '100%',
   marginTop: rem(24),
   gap: rem(8),
