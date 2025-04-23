@@ -21,6 +21,8 @@ const nextConfig: NextConfig = {
   webpack: (config) => {
     config.plugins.push(
       new CleanWebpackPlugin({
+        dry: false,
+        dangerouslyAllowCleanPatternsOutsideProject: true,
         cleanOnceBeforeBuildPatterns: [path.join(process.cwd(), 'public', 'content')],
       }),
       new CopyWebpackPlugin({
