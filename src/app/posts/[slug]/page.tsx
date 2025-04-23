@@ -77,7 +77,7 @@ const PostPage = async ({ params }: PostPageProps) => {
       <article>
         <Header {...post} />
         <MdxComponent code={post.body.code} blurDataURLs={post.blurMap} />
-        {post.comment && <Giscus className={styles.comment} />}
+        {post.comments && <Giscus className={styles.comment} />}
         <Divider className={styles.divider} />
         <Footer {...post} />
       </article>

@@ -43,13 +43,16 @@ export const Header = ({
           </>
         )}
       </p>
-      <ul className={styles.tags}>
-        {tags?.map((tag) => (
-          <li key={tag} className={styles.tag}>
-            <Link href={`${ROUTES.TAGS}/${slugify(tag)}`}>{tag}</Link>
-          </li>
+      {!tags ||
+        (tags.length > 0 && (
+          <ul className={styles.tags}>
+            {tags?.map((tag) => (
+              <li key={tag} className={styles.tag}>
+                <Link href={`${ROUTES.TAGS}/${slugify(tag)}`}>{tag}</Link>
+              </li>
+            ))}
+          </ul>
         ))}
-      </ul>
     </header>
   );
 };

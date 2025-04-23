@@ -35,7 +35,14 @@ globalStyle('[class^=blockquote-]::before', {
 });
 
 globalStyle(`[class^=blockquote-] code`, {
+  display: 'inline-flex',
+  alignItems: 'center',
+  paddingBlock: `${rem(4)} !important`,
+  paddingInline: `${rem(4)} !important`,
+  lineHeight: `1 !important`,
+  border: `${rem(1)} solid`,
   borderColor: `${theme.color.background06} !important`,
+  borderRadius: rem(4),
   backgroundColor: `${theme.color.background03} !important`,
 });
 
