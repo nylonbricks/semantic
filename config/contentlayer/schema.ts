@@ -48,7 +48,7 @@ export const Post = defineDocumentType(() => ({
     coverImage: { type: 'string', required: true },
     category: { type: 'string', required: true },
     tags: { type: 'list', of: { type: 'string' }, required: false },
-    comment: { type: 'boolean', required: false, default: false },
+    comments: { type: 'boolean', required: false, default: false },
   },
   computedFields: {
     slug: {
