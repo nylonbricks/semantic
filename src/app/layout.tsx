@@ -1,7 +1,7 @@
 import '@semantic/styles/global.css';
 
 import clsx from 'clsx';
-import { Metadata, Viewport } from 'next';
+import { type Metadata, type Viewport } from 'next';
 import { Roboto_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import { ThemeProvider } from 'next-themes';
@@ -26,6 +26,28 @@ const roboto = Roboto_Mono({
   preload: true,
   variable: '--font-roboto-mono',
 });
+
+const RootLayout = ({ children }: PropsWithChildren) => {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={clsx(roboto.variable, pretendard.variable)}>
+        <ThemeProvider
+          attribute="class"
+          enableSystem={false}
+          value={{
+            light: lightMode,
+            dark: darkMode,
+          }}
+          storageKey="semantic-theme"
+        >
+          <Layout>{children}</Layout>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+};
+
+export default RootLayout;
 
 export const metadata: Metadata = {
   title: METADATA.SITE.NAME,
@@ -77,25 +99,3 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
 };
-
-const RootLayout = ({ children }: PropsWithChildren) => {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={clsx(roboto.variable, pretendard.variable)}>
-        <ThemeProvider
-          attribute="class"
-          enableSystem={false}
-          value={{
-            light: lightMode,
-            dark: darkMode,
-          }}
-          storageKey="semantic-theme"
-        >
-          <Layout>{children}</Layout>
-        </ThemeProvider>
-      </body>
-    </html>
-  );
-};
-
-export default RootLayout;

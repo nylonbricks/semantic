@@ -1,9 +1,10 @@
 import dayjs from 'dayjs';
+import { type Metadata } from 'next';
 
 import { allPosts } from '@contentlayer/generated';
 import { Pagination, PostList } from '@semantic/components/ui';
 import { POST, ROUTES } from '@semantic/constants';
-import { slugify } from '@semantic/utils';
+import { generatePageMetadata, slugify } from '@semantic/utils';
 
 import * as styles from './page.css';
 
@@ -53,3 +54,20 @@ export const generateStaticParams = () => {
     }));
   });
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { tag: string; page: string };
+}): Promise<Metadata> {
+  const { tag, page } = params;
+  const currentPage = parseInt(page || '1', 10);
+  const tagPosts = allPosts.filter((post) => post.tags?.some((t) => slugify(t) === tag));
+  const tagName = tagPosts[0]?.tags?.find((t) => slugify(t) === tag) ?? tag;
+  const title = currentPage === 1 ? `${tagName} Posts` : `${tagName} Posts - Page ${currentPage}`;
+
+  return generatePageMetadata({
+    title,
+    path: currentPage === 1 ? `${ROUTES.TAGS}/${tag}` : `${ROUTES.TAGS}/${tag}/p/${currentPage}`,
+  });
+}

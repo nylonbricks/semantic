@@ -1,8 +1,11 @@
+import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { allPosts, Post } from '@contentlayer/generated';
 import { Divider, MdxComponent } from '@semantic/components/ui';
 import { Giscus } from '@semantic/components/ui/giscus';
+import { ROUTES, METADATA } from '@semantic/constants';
+import { generatePageMetadata } from '@semantic/utils';
 
 import { BackButton } from './_components/back-button';
 import { Footer } from './_components/footer';
@@ -86,3 +89,26 @@ const PostPage = async ({ params }: PostPageProps) => {
 };
 
 export default PostPage;
+
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = allPosts.find((post) => post.slug === slug);
+
+  if (!post) {
+    return generatePageMetadata({});
+  }
+
+  return generatePageMetadata({
+    title: post.title,
+    description: post.subtitle,
+    path: `${ROUTES.POSTS}/${post.slug}`,
+    image: post.coverImage,
+    type: 'article',
+    openGraph: {
+      publishedTime: post.createdAt,
+      modifiedTime: post.modifiedAt,
+      authors: [METADATA.AUTHOR.NAME],
+      tags: post.tags,
+    },
+  });
+}

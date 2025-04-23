@@ -1,8 +1,9 @@
+import { type Metadata } from 'next';
 import Link from 'next/link';
 
 import { allPosts } from '@contentlayer/generated';
 import { ROUTES } from '@semantic/constants';
-import { slugify } from '@semantic/utils';
+import { generatePageMetadata, slugify } from '@semantic/utils';
 
 import * as styles from './page.css';
 
@@ -46,3 +47,10 @@ const TagListPage = () => {
 };
 
 export default TagListPage;
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generatePageMetadata({
+    title: 'Tags',
+    path: ROUTES.TAGS,
+  });
+}

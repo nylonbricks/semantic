@@ -3,16 +3,7 @@ import { slugify } from '@semantic/utils';
 
 import TagsPage from './p/[page]/page';
 
-type TagRootPageProps = {
-  params: Promise<{ tag: string }>;
-};
-
-const TagRootPage = async ({ params }: TagRootPageProps) => {
-  const resolvedParams = await params;
-  return await TagsPage({ params: Promise.resolve({ ...resolvedParams, page: '1' }) });
-};
-
-export default TagRootPage;
+export default TagsPage;
 
 export const generateStaticParams = () => {
   const tags = [...new Set(allPosts.flatMap((post) => post.tags || []))];
