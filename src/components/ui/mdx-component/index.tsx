@@ -28,11 +28,6 @@ export const MdxComponent = ({ code, blurDataURLs = {} }: MdxComponentProps) => 
         {children}
       </p>
     ),
-    strong: ({ children, ...props }: ComponentProps<'strong'>) => (
-      <strong className={styles.strong} {...props}>
-        {children}
-      </strong>
-    ),
     blockquote: ({ children, ...props }: ComponentProps<'blockquote'>) => (
       <blockquote className={styles.blockquote} {...props}>
         {children}
