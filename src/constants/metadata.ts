@@ -7,7 +7,7 @@ export const METADATA = {
   },
 
   AUTHOR: {
-    NAME: 'HAKI',
+    NAME: 'Knesssn',
     TWITTER: 'https://twitter.com/masonthecode',
   },
 };
