@@ -57,23 +57,17 @@ export const generateStaticParams = () => {
   });
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { category: string; page: string };
-}): Promise<Metadata> {
-  const { category, page } = params;
-  const currentPage = parseInt(page || '1', 10);
+export const generateMetadata = async ({ params }: CategoriesPageProps): Promise<Metadata> => {
+  const { category, page } = await params;
+  const current = parseInt(page || '1', 10);
   const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
   const categoryName = categoryPosts[0]?.category ?? category;
-  const title =
-    currentPage === 1 ? `${categoryName} Posts` : `${categoryName} Posts - Page ${currentPage}`;
 
   return generatePageMetadata({
-    title,
+    title: categoryName,
     path:
-      currentPage === 1
+      current === 1
         ? `${ROUTES.CATEGORIES}/${category}`
-        : `${ROUTES.CATEGORIES}/${category}/p/${currentPage}`,
+        : `${ROUTES.CATEGORIES}/${category}/p/${current}`,
   });
-}
+};

@@ -7,9 +7,6 @@ import PostsPage from './p/[page]/page';
 
 export default PostsPage;
 
-export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata({
-    title: 'Posts',
-    path: ROUTES.POSTS,
-  });
-}
+export const generateMetadata = async (): Promise<Metadata> => {
+  return generatePageMetadata({ title: 'Posts', path: ROUTES.POSTS });
+};

@@ -90,7 +90,7 @@ const PostPage = async ({ params }: PostPageProps) => {
 
 export default PostPage;
 
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+export const generateMetadata = async ({ params }: PostPageProps): Promise<Metadata> => {
   const { slug } = await params;
   const post = allPosts.find((post) => post.slug === slug);
 
@@ -111,4 +111,4 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       tags: post.tags,
     },
   });
-}
+};

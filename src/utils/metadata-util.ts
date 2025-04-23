@@ -27,11 +27,11 @@ export const generatePageMetadata = ({
   const url = `${METADATA.SITE.URL}${path}`;
 
   return {
-    title: title === METADATA.SITE.NAME ? title : `${title} — ${METADATA.SITE.NAME}`,
+    title: title === METADATA.SITE.NAME ? title : `${title} - ${METADATA.SITE.NAME}`,
     description,
     metadataBase: new URL(METADATA.SITE.URL),
     openGraph: {
-      title: title === METADATA.SITE.NAME ? title : `${title} — ${METADATA.SITE.NAME}`,
+      title: title === METADATA.SITE.NAME ? title : `${title} - ${METADATA.SITE.NAME}`,
       description,
       url,
       siteName: METADATA.SITE.NAME,
@@ -53,7 +53,7 @@ export const generatePageMetadata = ({
     },
     twitter: {
       card: 'summary_large_image',
-      title: title === METADATA.SITE.NAME ? title : `${title} — ${METADATA.SITE.NAME}`,
+      title: title === METADATA.SITE.NAME ? title : `${title} - ${METADATA.SITE.NAME}`,
       description,
       images: [image],
     },

@@ -45,16 +45,13 @@ export const generateStaticParams = () => {
   }));
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { page: string };
-}): Promise<Metadata> {
-  const currentPage = parseInt(params.page || '1', 10);
-  const title = currentPage === 1 ? 'Posts' : `Posts - Page ${currentPage}`;
+export const generateMetadata = async ({ params }: PostsPageProps): Promise<Metadata> => {
+  const { page } = await params;
+  const current = parseInt(page || '1', 10);
+  const title = current === 1 ? 'Posts' : `Posts - Page ${current}`;
 
   return generatePageMetadata({
     title,
-    path: currentPage === 1 ? ROUTES.POSTS : `${ROUTES.POSTS}/p/${currentPage}`,
+    path: current === 1 ? ROUTES.POSTS : `${ROUTES.POSTS}/p/${current}`,
   });
-}
+};

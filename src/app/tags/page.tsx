@@ -48,9 +48,6 @@ const TagListPage = () => {
 
 export default TagListPage;
 
-export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata({
-    title: 'Tags',
-    path: ROUTES.TAGS,
-  });
-}
+export const generateMetadata = async (): Promise<Metadata> => {
+  return generatePageMetadata({ title: 'Tags', path: ROUTES.TAGS });
+};

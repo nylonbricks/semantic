@@ -16,9 +16,6 @@ const AboutPage = () => {
 
 export default AboutPage;
 
-export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata({
-    title: 'About',
-    path: ROUTES.ABOUT,
-  });
-}
+export const generateMetadata = async (): Promise<Metadata> => {
+  return generatePageMetadata({ title: 'About', path: ROUTES.ABOUT });
+};

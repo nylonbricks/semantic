@@ -55,19 +55,14 @@ export const generateStaticParams = () => {
   });
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { tag: string; page: string };
-}): Promise<Metadata> {
-  const { tag, page } = params;
-  const currentPage = parseInt(page || '1', 10);
+export const generateMetadata = async ({ params }: TagsPageProps): Promise<Metadata> => {
+  const { tag, page } = await params;
+  const current = parseInt(page || '1', 10);
   const tagPosts = allPosts.filter((post) => post.tags?.some((t) => slugify(t) === tag));
   const tagName = tagPosts[0]?.tags?.find((t) => slugify(t) === tag) ?? tag;
-  const title = currentPage === 1 ? `${tagName} Posts` : `${tagName} Posts - Page ${currentPage}`;
 
   return generatePageMetadata({
-    title,
-    path: currentPage === 1 ? `${ROUTES.TAGS}/${tag}` : `${ROUTES.TAGS}/${tag}/p/${currentPage}`,
+    title: tagName,
+    path: current === 1 ? `${ROUTES.TAGS}/${tag}` : `${ROUTES.TAGS}/${tag}/p/${current}`,
   });
-}
+};
