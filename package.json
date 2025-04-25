@@ -33,7 +33,6 @@
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "@vanilla-extract/esbuild-plugin": "^2.3.15",
     "@vanilla-extract/next-plugin": "^2.4.10",
     "clean-webpack-plugin": "^4.0.0",
     "contentlayer2": "0.5.4",

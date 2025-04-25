@@ -54,9 +54,6 @@ importers:
       '@types/react-dom':
         specifier: ^19.1.2
         version: 19.1.2(@types/react@19.1.2)
-      '@vanilla-extract/esbuild-plugin':
-        specifier: ^2.3.15
-        version: 2.3.15(esbuild@0.25.3)
       '@vanilla-extract/next-plugin':
         specifier: ^2.4.10
         version: 2.4.10(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.99.6(esbuild@0.25.3))
@@ -1221,14 +1218,6 @@ packages:
 
   '@vanilla-extract/css@1.17.1':
     resolution: {integrity: sha512-tOHQXHm10FrJeXKFeWE09JfDGN/tvV6mbjwoNB9k03u930Vg021vTnbrCwVLkECj9Zvh/SHLBHJ4r2flGqfovw==}
-
-  '@vanilla-extract/esbuild-plugin@2.3.15':
-    resolution: {integrity: sha512-Kgq86janU5KwAfHy4DuPYhY/WJQN5yRht3OntnKpC7NUL4R5BJeiLcmTY6oeRUlcGnrrDfWEfc4fbxJxD8PDXQ==}
-    peerDependencies:
-      esbuild: '>=0.17.6'
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
 
   '@vanilla-extract/integration@8.0.1':
     resolution: {integrity: sha512-ag64t+AM96XGOiloc5ryZHP5rbfleFyfoPKa42QqOuyAlLx/UpW5epSY+RUldizP4P/uLy5WFRiYlNddK1eQUQ==}
@@ -4727,15 +4716,6 @@ snapshots:
       picocolors: 1.1.1
     transitivePeerDependencies:
       - babel-plugin-macros
-
-  '@vanilla-extract/esbuild-plugin@2.3.15(esbuild@0.25.3)':
-    dependencies:
-      '@vanilla-extract/integration': 8.0.1
-    optionalDependencies:
-      esbuild: 0.25.3
-    transitivePeerDependencies:
-      - babel-plugin-macros
-      - supports-color
 
   '@vanilla-extract/integration@8.0.1':
     dependencies:

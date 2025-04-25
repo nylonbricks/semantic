@@ -29,5 +29,14 @@ export default makeSource({
         },
       ],
     ],
+    esbuildOptions: (options) => {
+      options.loader = {
+        ...options.loader,
+        '.mdx': 'tsx',
+        '.js': 'jsx',
+        '.ts': 'tsx',
+      };
+      return options;
+    },
   },
 });
