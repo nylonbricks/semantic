@@ -1,19 +1,19 @@
 export const PROFILE = {
-  cardBackgroundColor: '#FAEE5D',
+  cardBackgroundColor: '#DECEEA',
 
-  profileImage: '/static/profile.webp',
-  profileImageShadowColor: 'rgba(232, 114, 24, 0.43)',
-  profileImageFilter: '',
-  authorTextColor: '#302C1D',
+  profileImage: '/static/profile.png',
+  profileImageShadowColor: 'rgba(59, 34, 73, 0.43)',
+  profileImageFilter: '#6c4980',
+  authorTextColor: '#3b2249',
 
-  titleTextColor: '#CAA937',
-  contentTextColor: '#302C1D',
+  titleTextColor: '#ad85c7',
+  contentTextColor: '#3b2249',
 
   userDetails: [
-    { title: 'Studying', content: 'Product design\nUI/UX design' },
+    { title: 'Studying', content: 'Digital Product \nDesign & Planning' },
     { title: 'Location', content: 'Seoul, South Korea' },
   ],
 };
 
 export const PLAYLIST =
-  'https://embed.music.apple.com/kr/playlist/chestnut/pl.u-Zmblx9rUl6Y0zq?l=en-GB';
+  'https://embed.music.apple.com/jp/album/%E5%A7%8B%E3%81%BE%E3%82%8A%E3%81%AF%E5%90%9B%E3%81%AE%E7%A9%BA-11-ver-single/1784616302';

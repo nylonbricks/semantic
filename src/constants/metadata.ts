@@ -1,15 +1,15 @@
 export const METADATA = {
   SITE: {
-    URL: 'https://semantic.nylonbricks.com',
-    NAME: 'semantic',
+    URL: 'https://blog.stile.im',
+    NAME: 'stile Blog',
     DESCRIPTION: 'Make your ✨gorgeous blog with semantic',
     PREVIEW_IMAGE: 'https://semantic.nylonbricks.com/static/preview.png',
     LANGUAGE: 'en-US',
   },
 
   AUTHOR: {
-    NAME: 'Knesssn',
-    TWITTER: 'https://twitter.com/masonthecode',
+    NAME: 'Kwon Roh',
+    TWITTER: 'https://twitter.com/stile__',
   },
 };
 
