@@ -1,0 +1,137 @@
+@layer utilities {
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .center-x {
+    display: flex;
+    justify-content: center;
+  }
+
+  .center-y {
+    display: flex;
+    align-items: center;
+  }
+
+  .row-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .column-center-x {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column-center-y {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .h7 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 18px;
+  }
+
+  .h6 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 18px;
+  }
+
+  .h5 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .h4 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  .h3 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 15px;
+  }
+
+  .post-subtitle {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: var(--text-base);
+  }
+
+  .post-title {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: var(--text-xxl);
+  }
+
+  .post-description {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: var(--text-code);
+  }
+
+  .post-image-description {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-base);
+  }
+
+  .post-body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-base);
+    line-height: 180%;
+  }
+
+  .profile-sub {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11px;
+  }
+
+  .profile-name {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+  }
+
+  .profile-title {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .a {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 14px;
+  }
+}

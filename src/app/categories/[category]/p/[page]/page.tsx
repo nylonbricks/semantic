@@ -6,8 +6,6 @@ import { Pagination, PostList } from '@semantic/components/ui';
 import { POST, ROUTES } from '@semantic/constants';
 import { generatePageMetadata, slugify } from '@semantic/utils';
 
-import * as styles from './page.css';
-
 type CategoriesPageProps = {
   params: Promise<{ category: string; page: string }>;
 };
@@ -17,21 +15,25 @@ const CategoriesPage = async ({ params }: CategoriesPageProps) => {
   const currentPage = parseInt(page || '1', 10);
 
   const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
-  const start = (currentPage - 1) * POST.PER_PAGE;
-  const end = start + POST.PER_PAGE;
+
   const sortedPosts = categoryPosts.sort((a, b) =>
     dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1,
   );
+
+  const start = (currentPage - 1) * POST.PER_PAGE;
+  const end = start + POST.PER_PAGE;
   const currentPosts = sortedPosts.slice(start, end);
 
   return (
     <>
-      <h1 className={styles.title}>
+      <h1 className="h3 mb-[1.875rem] text-[var(--color-gray-light)]">
         {categoryPosts.length > 0
           ? `${categoryPosts[0].category} (${categoryPosts.length})`
           : `${category} (0 posts)`}
       </h1>
+
       <PostList posts={currentPosts} />
+
       <Pagination
         currentPage={currentPage}
         totalPages={Math.ceil(categoryPosts.length / POST.PER_PAGE)}

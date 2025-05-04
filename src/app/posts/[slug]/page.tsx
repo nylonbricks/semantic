@@ -11,7 +11,6 @@ import { BackButton } from './_components/back-button';
 import { Footer } from './_components/footer';
 import { Header } from './_components/header';
 import { Recommend } from './_components/recommend';
-import * as styles from './page.css';
 
 type PostPageProps = {
   params: Promise<{ slug: string }>;
@@ -42,7 +41,6 @@ const getRecommendedPosts = (posts: Post[], slug: string) => {
       const more = getPosts(start, start + need * 2)
         .filter((p) => !isIncluded(p))
         .slice(0, need);
-
       return [...rec, ...more];
     } else {
       const end = idx - 2;
@@ -50,7 +48,6 @@ const getRecommendedPosts = (posts: Post[], slug: string) => {
         .reverse()
         .filter((p) => !isIncluded(p))
         .slice(0, need);
-
       return [...more, ...rec];
     }
   }
@@ -77,12 +74,14 @@ const PostPage = async ({ params }: PostPageProps) => {
       <article>
         <Header {...post} />
         <MdxComponent code={post.body.code} blurDataURLs={post.blurMap} />
-        {post.comments && <Giscus className={styles.comment} />}
-        <Divider className={styles.divider} />
+
+        {post.comments && <Giscus className="mt-[3.5rem]" />}
+
+        <Divider className="mb-[3.5rem]" />
         <Footer {...post} />
       </article>
 
-      <Divider className={styles.divider} />
+      <Divider className="my-[3.5rem]" />
       <Recommend posts={getRecommendedPosts(allPosts, slug)} />
     </>
   );
