@@ -6,7 +6,7 @@
 </p>
 <h1 align="center">semantic</h1>
 <h4 align="center">
-  Make your ✨gorgeous blog with semantic. Make your ✨gorgeous blog with semantic.
+  Make your ✨gorgeous blog with semantic.
 </h4>
 
 <br>
