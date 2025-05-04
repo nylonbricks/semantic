@@ -1,4 +1,4 @@
-import '@semantic/styles/global.css';
+import '@semantic/styles/globals.css';
 
 import clsx from 'clsx';
 import { type Metadata, type Viewport } from 'next';
@@ -9,7 +9,6 @@ import { PropsWithChildren } from 'react';
 
 import { Layout } from '@semantic/components/layout';
 import { METADATA } from '@semantic/constants';
-import { darkMode, lightMode } from '@semantic/styles';
 
 const pretendard = localFont({
   src: './_fonts/PretendardVariable.woff2',
@@ -31,15 +30,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={clsx(roboto.variable, pretendard.variable)}>
-        <ThemeProvider
-          attribute="class"
-          enableSystem={false}
-          value={{
-            light: lightMode,
-            dark: darkMode,
-          }}
-          storageKey="semantic-theme"
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Layout>{children}</Layout>
         </ThemeProvider>
       </body>

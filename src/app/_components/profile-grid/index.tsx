@@ -4,28 +4,38 @@ import { METADATA, PLAYLIST, PROFILE } from '@semantic/constants';
 import { getBlurDataURL } from '@semantic/libs';
 
 import Card from './card';
-import * as styles from './styles.css';
 
 export const ProfileGrid = async () => {
   const blurDataURL = await getBlurDataURL(PROFILE.profileImage);
 
   return (
-    <section className={styles.root}>
-      <div className={styles.container}>
-        <h3 className={styles.title}>Profile</h3>
+    <section
+      className="grid grid-cols-1 w-full gap-[4.0625rem] tablet:grid-cols-2"
+      aria-label={`${METADATA.AUTHOR.NAME}'s profile and playlist`}
+    >
+      <div className="column w-full">
+        <h3 id="profile-heading" className="h3 text-[var(--color-gray-light)]">
+          Profile
+        </h3>
         <Card.Root style={{ backgroundColor: PROFILE.cardBackgroundColor }}>
           <Card.Content>
-            <div className={styles.cardProfileContainer}>
+            <div
+              className="row-between flex-col h-full items-start"
+              role="group"
+              aria-labelledby="profile-heading"
+            >
               <div
-                className={styles.cardProfileImage}
+                className="relative w-[6.0625rem] h-[6.0625rem] select-none rounded overflow-hidden"
                 style={{
                   boxShadow: `0px 10px 39px ${PROFILE.profileImageShadowColor}`,
                   filter: PROFILE.profileImageFilter,
                 }}
               >
                 <Image
+                  className="w-full h-full object-cover"
                   src={PROFILE.profileImage}
-                  alt="Profile Image"
+                  alt={`${METADATA.AUTHOR.NAME} profile image`}
+                  role="img"
                   placeholder="blur"
                   blurDataURL={blurDataURL}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -35,38 +45,45 @@ export const ProfileGrid = async () => {
                 />
               </div>
 
-              <p className={styles.cardProfileAuthor} style={{ color: PROFILE.authorTextColor }}>
+              <p
+                className="profile-name w-full text-center"
+                style={{ color: PROFILE.authorTextColor }}
+              >
                 {METADATA.AUTHOR.NAME}
               </p>
             </div>
-            <div className={styles.cardProfileContainer}>
+
+            <dl className="row-between flex-col h-full items-start">
               {PROFILE.userDetails.map((item) => (
-                <div key={item.title}>
-                  <h3 className={styles.cardProfileTitle} style={{ color: PROFILE.titleTextColor }}>
+                <div key={item.title} className="w-full">
+                  <dt className="profile-sub w-full" style={{ color: PROFILE.titleTextColor }}>
                     {item.title}
-                  </h3>
-                  <p
-                    className={styles.cardProfileContent}
+                  </dt>
+                  <dd
+                    className="profile-title text-[#302C1D] whitespace-pre-wrap"
                     style={{ color: PROFILE.contentTextColor }}
                   >
                     {item.content}
-                  </p>
+                  </dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </Card.Content>
         </Card.Root>
       </div>
 
-      <div className={styles.container}>
-        <h3 className={styles.title}>Playlist</h3>
+      <div className="column w-full">
+        <h3 id="playlist-heading" className="h3 text-[var(--color-gray-light)]">
+          Playlist
+        </h3>
         <Card.Root style={{ backgroundColor: '#F8F8FA' }}>
           <iframe
-            title="playlist"
+            title={`${METADATA.AUTHOR.NAME}'s embedded music playlist`}
+            aria-label={`${METADATA.AUTHOR.NAME}'s embedded music playlist`}
+            className="w-full h-full rounded-[0.875rem] overflow-hidden"
             allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
             frameBorder="0"
-            height="182"
-            style={{ width: '100%', overflow: 'hidden', borderRadius: '14px' }}
+            height="11.375rem"
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
             src={PLAYLIST}
           />

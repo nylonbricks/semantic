@@ -1,11 +1,8 @@
-import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import type { NextConfig } from 'next';
 import { withContentlayer } from 'next-contentlayer2';
 import path from 'path';
-
-const withVanillaExtract = createVanillaExtractPlugin();
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -50,4 +47,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withContentlayer(withVanillaExtract(nextConfig));
+export default withContentlayer(nextConfig);

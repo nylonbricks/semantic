@@ -1,0 +1,127 @@
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-mobile: 40rem;
+  --breakpoint-tablet: 60rem;
+  --breakpoint-desktop: 80rem;
+
+  --color-gray-accent: var(--color-gray-accent);
+  --color-gray-bold: var(--color-gray-bold);
+  --color-gray-mid: var(--color-gray-mid);
+  --color-gray-light: var(--color-gray-light);
+  --color-gray-click: var(--color-gray-click);
+  --color-gray-hover: var(--color-gray-hover);
+
+  --color-border: var(--color-border);
+  --color-background: var(--color-background);
+  --color-background02: var(--color-background02);
+  --color-background03: var(--color-background03);
+  --color-background04: var(--color-background04);
+  --color-background05: var(--color-background05);
+  --color-background06: var(--color-background06);
+  --color-background08: var(--color-background08);
+
+  --color-toggle: var(--color-toggle);
+  --color-license: var(--color-license);
+
+  --color-gradient-sidebar-divider: var(--color-gradient-sidebar-divider);
+
+  --spacing-app: 47.375rem;
+  --spacing-inline: 1.5rem;
+  --spacing-sidebar: 13.125rem;
+
+  --font-mono: 'Roboto Mono', Pretendard, 'Courier New', Courier, monospace;
+  --font-sans:
+    Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', sans-serif;
+
+  --text-xxxl: 1.75rem;
+  --text-xxl: 1.5rem;
+  --text-xl: 1.25rem;
+  --text-lg: 1.125rem;
+  --text-md: 1rem;
+  --text-base: 0.9375rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+  --text-xxs: 0.625rem;
+  --text-xxxs: 0.5rem;
+  --text-code: 0.78125rem;
+
+  --z-overlay: 100;
+  --z-header: 150;
+  --z-modal: 200;
+
+  --animate-accordion-slide-down: accordionSlideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  --animate-accordion-slide-up: accordionSlideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+
+  @keyframes accordionSlideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordionSlideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-gray-accent: #1d1d30;
+  --color-gray-bold: #393960;
+  --color-gray-mid: #6b6b87;
+  --color-gray-light: #b5b5c3;
+  --color-gray-click: #6b6b87;
+  --color-gray-hover: #f9f9fc;
+
+  --color-border: #f4f4f8;
+  --color-background: #fcfcfd;
+  --color-background02: rgba(0, 0, 0, 0.02);
+  --color-background03: rgba(0, 0, 0, 0.03);
+  --color-background04: rgba(0, 0, 0, 0.04);
+  --color-background05: rgba(0, 0, 0, 0.05);
+  --color-background06: rgba(0, 0, 0, 0.06);
+  --color-background08: rgba(0, 0, 0, 0.08);
+
+  --color-toggle: #ffffff;
+  --color-license: #b5b5c3;
+
+  --color-gradient-sidebar-divider: radial-gradient(
+    circle,
+    #d9dbe7 0%,
+    rgba(217, 219, 231, 0) 100%
+  );
+}
+
+.dark {
+  --color-gray-accent: #ffffff;
+  --color-gray-bold: #dddddd;
+  --color-gray-mid: #b2b2b2;
+  --color-gray-light: #888888;
+  --color-gray-click: #1b1b1b;
+  --color-gray-hover: #141414;
+
+  --color-border: #1b1b1b;
+  --color-background: #0f0f0f;
+  --color-background02: rgba(255, 255, 255, 0.02);
+  --color-background03: rgba(255, 255, 255, 0.03);
+  --color-background04: rgba(255, 255, 255, 0.04);
+  --color-background05: rgba(255, 255, 255, 0.05);
+  --color-background06: rgba(255, 255, 255, 0.06);
+  --color-background08: rgba(255, 255, 255, 0.08);
+
+  --color-toggle: rgb(1, 1, 1);
+  --color-license: #b2b2b2;
+
+  --color-gradient-sidebar-divider: radial-gradient(circle, #36363a 0%, rgba(61, 61, 67, 0) 100%);
+}

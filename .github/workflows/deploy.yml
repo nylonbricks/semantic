@@ -2,7 +2,12 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pages: write
 
 jobs:
   deploy:
@@ -26,4 +31,4 @@ jobs:
         with:
           publish_dir: ./out
           publish_branch: deploy
-          github_token: ${{ secrets.SEMANTIC_DEPLOY_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}

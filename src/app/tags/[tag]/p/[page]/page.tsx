@@ -6,8 +6,6 @@ import { Pagination, PostList } from '@semantic/components/ui';
 import { POST, ROUTES } from '@semantic/constants';
 import { generatePageMetadata, slugify } from '@semantic/utils';
 
-import * as styles from './page.css';
-
 type TagsPageProps = {
   params: Promise<{ tag: string; page: string }>;
 };
@@ -17,17 +15,21 @@ const TagsPage = async ({ params }: TagsPageProps) => {
   const currentPage = parseInt(page || '1', 10);
 
   const tagPosts = allPosts.filter((post) => post.tags?.some((t) => slugify(t) === tag));
-  const start = (currentPage - 1) * POST.PER_PAGE;
-  const end = start + POST.PER_PAGE;
+
   const sortedPosts = tagPosts.sort((a, b) =>
     dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1,
   );
+
+  const start = (currentPage - 1) * POST.PER_PAGE;
+  const end = start + POST.PER_PAGE;
   const currentPosts = sortedPosts.slice(start, end);
+
+  const tagName = tagPosts[0]?.tags?.find((t) => slugify(t) === tag) ?? tag;
 
   return (
     <>
-      <h1 className={styles.title}>
-        {tagPosts[0]?.tags?.find((t) => slugify(t) === tag) ?? tag} ({tagPosts.length})
+      <h1 className="h3 mb-[1.875rem] text-[var(--color-gray-light)]">
+        {tagName} ({tagPosts.length})
       </h1>
       <PostList posts={currentPosts} />
       <Pagination
@@ -58,7 +60,9 @@ export const generateStaticParams = () => {
 export const generateMetadata = async ({ params }: TagsPageProps): Promise<Metadata> => {
   const { tag, page } = await params;
   const current = parseInt(page || '1', 10);
+
   const tagPosts = allPosts.filter((post) => post.tags?.some((t) => slugify(t) === tag));
+
   const tagName = tagPosts[0]?.tags?.find((t) => slugify(t) === tag) ?? tag;
 
   return generatePageMetadata({
