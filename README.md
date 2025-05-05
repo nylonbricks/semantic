@@ -1,4 +1,4 @@
-![Netlify](https://img.shields.io/netlify/a05b3cb4-71f5-4292-9a93-746cbb6ab149)
+![Vercel](https://deploy-badge.vercel.app/?url=https%3A%2F%2Fsemantic.nylonbricks.com&logo=vercel&name=vercel)
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fsemantic.nylonbricks.com)
 
 <p align="center">
@@ -13,4 +13,3 @@
 
 Create your blog with ease and let your content take the spotlight. Whether you're a writer, creator, or enthusiast,
 `semantic` provides the tools to establish a compelling and memorable online presence.
-
