@@ -93,6 +93,6 @@ export const GET = async (): Promise<Response> => {
   const urls = generateSitemapUrls();
   const xml = sitemapToXml(urls);
   return new Response(xml, {
-    headers: { 'Content-Type': 'text/xml' },
+    headers: { 'Content-Type': 'text/xml; charset=utf-8' },
   });
 };
