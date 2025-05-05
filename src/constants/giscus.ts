@@ -1,5 +1,5 @@
 export const GISCUS = {
-  REPO: 'nylon-bricks/semantic',
+  REPO: 'nylonbricks/semantic',
   REPO_ID: 'R_kgDOMljSQQ',
   CATEGORY: 'General',
   CATEGORY_ID: 'DIC_kwDOMljSQc4CpWhQ',

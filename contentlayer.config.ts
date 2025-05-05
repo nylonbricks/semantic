@@ -8,6 +8,7 @@ import { Page, Post } from './config/contentlayer';
 
 export default makeSource({
   contentDirPath: 'content',
+  contentDirExclude: ['*.ts', '*.tsx'],
   documentTypes: [Page, Post],
   mdx: {
     remarkPlugins: [remarkAlerts],
@@ -29,14 +30,5 @@ export default makeSource({
         },
       ],
     ],
-    esbuildOptions: (options) => {
-      options.loader = {
-        ...options.loader,
-        '.mdx': 'tsx',
-        '.js': 'jsx',
-        '.ts': 'tsx',
-      };
-      return options;
-    },
   },
 });
