@@ -8,6 +8,7 @@ import { Page, Post } from './config/contentlayer';
 
 export default makeSource({
   contentDirPath: 'content',
+  contentDirExclude: ['*.ts', '*.tsx'],
   documentTypes: [Page, Post],
   mdx: {
     remarkPlugins: [remarkAlerts],

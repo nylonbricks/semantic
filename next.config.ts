@@ -27,7 +27,18 @@ const nextConfig: NextConfig = {
           {
             from: path.join(process.cwd(), 'content'),
             to: path.join(process.cwd(), 'public', 'content'),
-            globOptions: { ignore: ['**/*.md', '**/*.mdx'] },
+            globOptions: {
+              ignore: [
+                '**/*.md',
+                '**/*.mdx',
+                '**/*.ts',
+                '**/*.tsx',
+                '**/*.js',
+                '**/*.jsx',
+                '**/*.css',
+                '**/*.json',
+              ],
+            },
           },
         ],
       }),

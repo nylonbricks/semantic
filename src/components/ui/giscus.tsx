@@ -4,6 +4,8 @@
 import { useTheme } from 'next-themes';
 import { ComponentProps, useEffect, useRef, useState } from 'react';
 
+import { GISCUS } from '@semantic/constants';
+
 type GiscusProps = ComponentProps<'section'>;
 
 export const Giscus = ({ ...props }: GiscusProps) => {
@@ -18,11 +20,11 @@ export const Giscus = ({ ...props }: GiscusProps) => {
 
     const attributes = {
       src: 'https://giscus.app/client.js',
-      'data-repo': 'nylon-bricks/semantic',
-      'data-repo-id': 'R_kgDOMljSQQ',
-      'data-category': 'General',
-      'data-category-id': 'DIC_kwDOMljSQc4CpWhQ',
-      'data-mapping': 'title',
+      'data-repo': GISCUS.REPO,
+      'data-repo-id': GISCUS.REPO_ID,
+      'data-category': GISCUS.CATEGORY,
+      'data-category-id': GISCUS.CATEGORY_ID,
+      'data-mapping': GISCUS.MAPPING,
       'data-strict': '0',
       'data-reactions-enabled': '1',
       'data-emit-metadata': '0',
