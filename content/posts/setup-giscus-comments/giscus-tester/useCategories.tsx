@@ -30,7 +30,7 @@ export const useCategories = (repoInput: string) => {
     (async () => {
       try {
         const res = await fetch(
-          `https://giscus.app/api/discussions/categories?repo=${encodeURIComponent(repo)}`,
+          `https://api.semantic.nylonbricks.com?repo=${encodeURIComponent(repo)}`,
           { signal: controller.signal },
         );
         const json = (await res.json()) as CategoriesResponse | ErrorResponse;
