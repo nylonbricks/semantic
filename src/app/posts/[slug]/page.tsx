@@ -16,51 +16,6 @@ type PostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const getRecommendedPosts = (posts: Post[], slug: string) => {
-  const sorted = posts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
-  const idx = sorted.findIndex((p) => p.slug === slug);
-
-  if (idx === -1) return sorted.slice(0, 4);
-
-  const getPosts = (start: number, end: number) =>
-    sorted.slice(Math.max(0, start), Math.min(sorted.length, end));
-
-  const prev = getPosts(idx - 2, idx).reverse();
-  const next = getPosts(idx + 1, idx + 3);
-
-  const rec = [...prev, ...next];
-
-  if (rec.length < 4) {
-    const need = 4 - rec.length;
-    const isFront = idx < sorted.length / 2;
-
-    const isIncluded = (p: Post) => rec.some((r) => r.slug === p.slug);
-
-    if (isFront) {
-      const start = idx + 3;
-      const more = getPosts(start, start + need * 2)
-        .filter((p) => !isIncluded(p))
-        .slice(0, need);
-      return [...rec, ...more];
-    } else {
-      const end = idx - 2;
-      const more = getPosts(end - need * 2, end)
-        .reverse()
-        .filter((p) => !isIncluded(p))
-        .slice(0, need);
-      return [...more, ...rec];
-    }
-  }
-
-  return rec;
-};
-
-export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
 const PostPage = async ({ params }: PostPageProps) => {
   const { slug } = await params;
   const post = allPosts.find((post) => post.slug === slug);
@@ -110,4 +65,48 @@ export const generateMetadata = async ({ params }: PostPageProps): Promise<Metad
       tags: post.tags,
     },
   });
+};
+
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+const getRecommendedPosts = (posts: Post[], slug: string): Post[] => {
+  const sorted = [...posts].sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+  const idx = sorted.findIndex((p) => p.slug === slug);
+
+  if (idx === -1) {
+    return sorted.slice(0, 4);
+  }
+
+  const getPosts = (start: number, end: number) =>
+    sorted.slice(Math.max(0, start), Math.min(sorted.length, end));
+
+  const prev = getPosts(idx - 2, idx);
+  const next = getPosts(idx + 1, idx + 3);
+
+  let rec = [...prev, ...next];
+
+  if (rec.length < 4) {
+    const need = 4 - rec.length;
+    const isFront = idx < sorted.length / 2;
+    const isIncluded = (p: Post) => rec.some((r) => r.slug === p.slug);
+
+    if (isFront) {
+      const more = getPosts(idx + 3, idx + 3 + need * 2)
+        .filter((p) => !isIncluded(p))
+        .slice(0, need);
+      rec = [...rec, ...more];
+    } else {
+      const end = idx - 2;
+      const more = getPosts(end - need * 2, end)
+        .filter((p) => !isIncluded(p))
+        .slice(0, need);
+      rec = [...more, ...rec];
+    }
+  }
+
+  return rec;
 };
