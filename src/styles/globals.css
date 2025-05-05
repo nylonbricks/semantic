@@ -23,11 +23,11 @@
     background-color: var(--color-background08);
   }
 
-  [data-theme='light'] {
+  .light {
     color-scheme: light;
   }
 
-  [data-theme='dark'] {
+  .dark {
     color-scheme: dark;
   }
 
