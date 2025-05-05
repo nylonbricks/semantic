@@ -108,5 +108,5 @@ const getRecommendedPosts = (posts: Post[], slug: string): Post[] => {
     }
   }
 
-  return rec.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+  return rec;
 };
