@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title><![CDATA[semantic]]></title>
+    <link>https://semantic.nylonbricks.com</link>
+    <description><![CDATA[Make your ✨gorgeous blog with semantic]]></description>
+    <language><![CDATA[en-US]]></language>
+    <pubDate>Tue, 06 May 2025 05:34:53 GMT</pubDate>
+    <generator>semantic</generator>
+    <ttl>100</ttl>
+    <image>
+      <url>https://semantic.nylonbricks.com/static/preview.png</url>
+      <title><![CDATA[semantic]]></title>
+      <link>https://semantic.nylonbricks.com</link>
+    </image>
+
+    <item>
+      <title><![CDATA[Setting Up `Giscus` Comments]]></title>
+      <link>https://semantic.nylonbricks.com/posts/setup-giscus-comments</link>
+      <description><![CDATA[Commenting is an essential part of any blog. It's not just a way to interact with readers — it's also a window into how people are engaging with your content. That’s why `semantic` comes with built-in…]]></description>
+      <guid isPermaLink="true">setup-giscus-comments</guid>
+      <pubDate>Mon, 05 May 2025 13:37:34 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Automating Deployment with GitHub Actions]]></title>
+      <link>https://semantic.nylonbricks.com/posts/deploy-with-actions</link>
+      <description><![CDATA[To deploy your forked version of `semantic`, you'll need a server — whether that's your local machine, an EC2 instance, or a cloud platform like `Vercel` or `Netlify`. However, since `semantic` is bu…]]></description>
+      <guid isPermaLink="true">deploy-with-actions</guid>
+      <pubDate>Mon, 05 May 2025 13:34:02 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Getting Started with `semantic`]]></title>
+      <link>https://semantic.nylonbricks.com/posts/getting-started-with-semantic</link>
+      <description><![CDATA[Welcome to `semantic` — a clean, modern blog starter built with `Next.js` and `Static Site Generation (SSG)`. Create a content-focused blog that looks great and performs even better. ## ① Fork the Re…]]></description>
+      <guid isPermaLink="true">getting-started-with-semantic</guid>
+      <pubDate>Wed, 23 Apr 2025 07:55:11 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
