@@ -39,7 +39,7 @@
     "eslint": "^9.27.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
-    "next-contentlayer2": "0.5.4",
+    "next-contentlayer2": "0.5.8",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "rehype-autolink-headings": "^7.1.0",

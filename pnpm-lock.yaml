@@ -73,8 +73,8 @@ importers:
         specifier: ^16.0.0
         version: 16.0.0
       next-contentlayer2:
-        specifier: 0.5.4
-        version: 0.5.4(acorn@8.14.1)(contentlayer2@0.5.4(acorn@8.14.1)(esbuild@0.25.3))(esbuild@0.25.3)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 0.5.8
+        version: 0.5.8(acorn@8.14.1)(contentlayer2@0.5.4(acorn@8.14.1)(esbuild@0.25.3))(esbuild@0.25.3)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
@@ -134,6 +134,17 @@ packages:
       markdown-wasm:
         optional: true
 
+  '@contentlayer2/core@0.5.8':
+    resolution: {integrity: sha512-0DDlANRIceEiMhLRQ1S4nWPu2p/c6U7V469QqhtGbWcC2/kp2RAnbjhykf6cBUaXq7eeCxcQkBdg+Ns6Hn3KyQ==}
+    peerDependencies:
+      esbuild: '>=0.17'
+      markdown-wasm: 1.x
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+      markdown-wasm:
+        optional: true
+
   '@contentlayer2/source-files@0.5.4':
     resolution: {integrity: sha512-Pw+yUzsVY5DuX87l0zVTvWB/4ZpWAUW8mN/kDoqFE2QU8A3b0MS/IRMewocDTP6y+m/gV3/W9c0QPCyQ+scySA==}
 
@@ -142,6 +153,14 @@ packages:
 
   '@contentlayer2/utils@0.5.4':
     resolution: {integrity: sha512-4fPo7sTqXc/V3aEVEOSJdilhL2IBR4YagY7qI/GAvAZ7joE1x1reaxMaCQszHu8NiGSdzIvL86G9oVHDwF55jw==}
+    peerDependencies:
+      '@effect-ts/otel-node': '*'
+    peerDependenciesMeta:
+      '@effect-ts/otel-node':
+        optional: true
+
+  '@contentlayer2/utils@0.5.8':
+    resolution: {integrity: sha512-KCC4qp5oCASW2jtUn8o4PLaaF/w0r9675gKnBCpbcpalZzFpZrqeH25VrHOTTMZZp7EeKqoKpiz2/WWq8i66MA==}
     peerDependencies:
       '@effect-ts/otel-node': '*'
     peerDependenciesMeta:
@@ -2717,10 +2736,10 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  next-contentlayer2@0.5.4:
-    resolution: {integrity: sha512-Zxo5TOUVzb5fuaCqqTOgvsTsnfWTWbt1C+QPYxOus6ydREaDHX/wZu+onO4BQyhyVUj26Xu8SQMXMxSGZ3Aytw==}
+  next-contentlayer2@0.5.8:
+    resolution: {integrity: sha512-3Xh8quPCFmg/QGa4qTnOwSsT3oNYCtmm+Ii0UlbOHxX59gHYVX9M5mTzkdUKiKC1aJfiGIPPGQXhKNfc6qvWZg==}
     peerDependencies:
-      contentlayer2: 0.5.4
+      contentlayer2: 0.5.8
       next: '>=12.0.0'
       react: ^18 || ^19 || ^19.0.0-rc
       react-dom: ^18 || ^19 || ^19.0.0-rc
@@ -3589,6 +3608,27 @@ snapshots:
       - acorn
       - supports-color
 
+  '@contentlayer2/core@0.5.8(acorn@8.14.1)(esbuild@0.25.3)':
+    dependencies:
+      '@contentlayer2/utils': 0.5.8
+      camel-case: 4.1.2
+      comment-json: 4.2.5
+      gray-matter: 4.0.3
+      mdx-bundler: 10.1.1(acorn@8.14.1)(esbuild@0.25.3)
+      rehype-stringify: 10.0.1
+      remark-frontmatter: 5.0.0
+      remark-parse: 11.0.0
+      remark-rehype: 11.1.2
+      source-map-support: 0.5.21
+      type-fest: 4.41.0
+      unified: 11.0.5
+    optionalDependencies:
+      esbuild: 0.25.3
+    transitivePeerDependencies:
+      - '@effect-ts/otel-node'
+      - acorn
+      - supports-color
+
   '@contentlayer2/source-files@0.5.4(acorn@8.14.1)(esbuild@0.25.3)':
     dependencies:
       '@contentlayer2/core': 0.5.4(acorn@8.14.1)(esbuild@0.25.3)
@@ -3622,6 +3662,27 @@ snapshots:
       - supports-color
 
   '@contentlayer2/utils@0.5.4':
+    dependencies:
+      '@effect-ts/core': 0.60.5
+      '@effect-ts/otel': 0.15.1(@effect-ts/core@0.60.5)(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))
+      '@effect-ts/otel-sdk-trace-node': 0.15.1(@effect-ts/core@0.60.5)(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@1.30.1(@opentelemetry/api@1.9.0))
+      '@js-temporal/polyfill': 0.4.4
+      '@opentelemetry/api': 1.9.0
+      '@opentelemetry/core': 1.30.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/exporter-trace-otlp-grpc': 0.57.2(@opentelemetry/api@1.9.0)
+      '@opentelemetry/resources': 1.30.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/sdk-trace-base': 1.30.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/sdk-trace-node': 1.30.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/semantic-conventions': 1.33.0
+      chokidar: 3.6.0
+      hash-wasm: 4.12.0
+      inflection: 3.0.2
+      memfs: 4.17.2
+      oo-ascii-tree: 1.112.0
+      ts-pattern: 5.7.1
+      type-fest: 4.41.0
+
+  '@contentlayer2/utils@0.5.8':
     dependencies:
       '@effect-ts/core': 0.60.5
       '@effect-ts/otel': 0.15.1(@effect-ts/core@0.60.5)(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))
@@ -6564,10 +6625,10 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-contentlayer2@0.5.4(acorn@8.14.1)(contentlayer2@0.5.4(acorn@8.14.1)(esbuild@0.25.3))(esbuild@0.25.3)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  next-contentlayer2@0.5.8(acorn@8.14.1)(contentlayer2@0.5.4(acorn@8.14.1)(esbuild@0.25.3))(esbuild@0.25.3)(next@15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
-      '@contentlayer2/core': 0.5.4(acorn@8.14.1)(esbuild@0.25.3)
-      '@contentlayer2/utils': 0.5.4
+      '@contentlayer2/core': 0.5.8(acorn@8.14.1)(esbuild@0.25.3)
+      '@contentlayer2/utils': 0.5.8
       contentlayer2: 0.5.4(acorn@8.14.1)(esbuild@0.25.3)
       next: 15.3.2(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react: 19.1.0
