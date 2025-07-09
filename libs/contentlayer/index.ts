@@ -1,6 +1,13 @@
 import { defineDocumentType } from 'contentlayer2/source-files';
 
-import { createImageBlurMap, findMarkdownImagePaths, processMdxImages } from './utils';
+import {
+  createBlurData,
+  createBlurMap,
+  extractImages,
+  resolveAssetPath,
+  resolveSystemPath,
+  transformMdxImages,
+} from '../image';
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
@@ -18,13 +25,13 @@ export const Page = defineDocumentType(() => ({
     blurMap: {
       type: 'json',
       resolve: async (doc) => {
-        const images: string[] = findMarkdownImagePaths(doc.body.raw);
-        return createImageBlurMap(doc._raw.sourceFilePath, images);
+        const images: string[] = extractImages(doc.body.raw);
+        return createBlurMap(doc._raw.sourceFilePath, images);
       },
     },
     body: {
       type: 'mdx',
-      resolve: (doc) => processMdxImages(doc),
+      resolve: (doc) => transformMdxImages(doc),
     },
   },
 }));
@@ -52,29 +59,31 @@ export const Post = defineDocumentType(() => ({
     blurMap: {
       type: 'json',
       resolve: async (doc) => {
-        const images: string[] = findMarkdownImagePaths(doc.body.raw);
-        return createImageBlurMap(doc._raw.sourceFilePath, images);
+        const images: string[] = extractImages(doc.body.raw);
+        return createBlurMap(doc._raw.sourceFilePath, images);
       },
     },
     coverImage: {
       type: 'string',
-      resolve: (doc) => {
-        const originalPath = doc.coverImage;
-
-        // URL이면 그대로 반환
-        if (originalPath.startsWith('http://') || originalPath.startsWith('https://')) {
-          return originalPath;
+      resolve: (doc) => resolveAssetPath(doc._raw.sourceFileDir, doc.coverImage),
+    },
+    coverImageBlur: {
+      type: 'json',
+      resolve: async (doc) => {
+        try {
+          const systemPath = resolveSystemPath(doc._raw.sourceFilePath, doc.coverImage);
+          return await createBlurData(systemPath);
+        } catch (error) {
+          console.error(`Failed to create blur data for cover image: ${doc.coverImage}`, error);
+          return { blur: '', ratio: 0 };
         }
-
-        // 상대경로면 /content/ 경로로 변환
-        const mdxDirectory = doc._raw.sourceFileDir;
-        const cleanPath = originalPath.startsWith('./') ? originalPath.slice(2) : originalPath;
-        return `/content/${mdxDirectory}/${cleanPath}`;
       },
     },
     body: {
       type: 'mdx',
-      resolve: (doc) => processMdxImages(doc),
+      resolve: (doc) => transformMdxImages(doc),
     },
   },
 }));
+
+export * from '../image';

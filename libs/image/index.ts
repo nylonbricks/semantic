@@ -20,9 +20,9 @@ export interface BlurOptions {
   blur?: number;
 }
 
-const IMAGE_REGEX = /!\[.*?]\((.*?)\)/g;
-const DEFAULT_BLUR_SIZE = 128;
-const DEFAULT_BLUR_INTENSITY = 5;
+const MDX_IMAGE_REGEX = /!\[.*?]\((.*?)\)/g;
+const BLUR_SIZE = 128;
+const BLUR_STRENGTH = 5;
 
 export const isUrl = (value: string): boolean => {
   try {
@@ -33,19 +33,14 @@ export const isUrl = (value: string): boolean => {
   }
 };
 
-const cleanImagePath = (imagePath: string): string => {
-  return imagePath.startsWith('./') ? imagePath.slice(2) : imagePath;
+const isSystemPath = (imagePath: string): boolean => {
+  if (!path.isAbsolute(imagePath)) {
+    return false;
+  }
+  return imagePath.startsWith(process.cwd());
 };
 
-const getMdxDirectory = (mdxFilePath: string): string => {
-  return path.dirname(mdxFilePath).replace(/^content[\\/]/, '');
-};
-
-const escapeRegex = (text: string): string => {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-};
-
-const loadImageBuffer = async (imagePath: string): Promise<Buffer> => {
+const loadBuffer = async (imagePath: string): Promise<Buffer> => {
   if (isUrl(imagePath)) {
     const response = await fetch(imagePath);
     if (!response.ok) {
@@ -55,21 +50,24 @@ const loadImageBuffer = async (imagePath: string): Promise<Buffer> => {
     return Buffer.from(arrayBuffer);
   }
 
-  const fullPath = imagePath.startsWith('/')
-    ? path.join(process.cwd(), 'public', imagePath)
-    : imagePath;
+  let fullPath: string;
+
+  if (isSystemPath(imagePath)) {
+    fullPath = imagePath;
+  } else if (imagePath.startsWith('/')) {
+    fullPath = path.join(process.cwd(), 'public', imagePath);
+  } else {
+    fullPath = imagePath;
+  }
 
   return await readFile(fullPath);
 };
 
-export const createBlurDataUrl = async (
-  imagePath: string,
-  options: BlurOptions = {},
-): Promise<string> => {
-  const { width = 20, height = 20, blur = DEFAULT_BLUR_INTENSITY } = options;
+export const createBlur = async (imagePath: string, options: BlurOptions = {}): Promise<string> => {
+  const { width = 20, height = 20, blur = BLUR_STRENGTH } = options;
 
   try {
-    const buffer = await loadImageBuffer(imagePath);
+    const buffer = await loadBuffer(imagePath);
     const { data, info } = await sharp(buffer)
       .resize(width, height, { fit: 'inside' })
       .blur(blur)
@@ -78,14 +76,14 @@ export const createBlurDataUrl = async (
     return `data:image/${info.format};base64,${data.toString('base64')}`;
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    console.error(`Failed to create blur data URL for image: ${imagePath}`, error);
-    throw new Error(`createBlurDataUrl failed: ${errorMessage}`);
+    console.error(`Failed to create blur for image: ${imagePath}`, error);
+    throw new Error(`createBlur failed: ${errorMessage}`);
   }
 };
 
 export const createBlurData = async (imagePath: string): Promise<BlurData> => {
   try {
-    const buffer = await loadImageBuffer(imagePath);
+    const buffer = await loadBuffer(imagePath);
     const metadata = await sharp(buffer).metadata();
 
     if (!metadata.width || !metadata.height) {
@@ -93,8 +91,8 @@ export const createBlurData = async (imagePath: string): Promise<BlurData> => {
     }
 
     const { data, info } = await sharp(buffer)
-      .resize(DEFAULT_BLUR_SIZE, DEFAULT_BLUR_SIZE, { fit: 'inside' })
-      .blur(DEFAULT_BLUR_INTENSITY)
+      .resize(BLUR_SIZE, BLUR_SIZE, { fit: 'inside' })
+      .blur(BLUR_STRENGTH)
       .toBuffer({ resolveWithObject: true });
 
     return {
@@ -109,37 +107,37 @@ export const createBlurData = async (imagePath: string): Promise<BlurData> => {
 };
 
 export const extractImages = (mdxContent: string): string[] => {
-  const imagePaths: string[] = [];
+  const images: string[] = [];
   let match: RegExpExecArray | null;
 
-  while ((match = IMAGE_REGEX.exec(mdxContent))) {
+  while ((match = MDX_IMAGE_REGEX.exec(mdxContent))) {
     const imagePath = match[1]?.trim();
     if (imagePath) {
-      imagePaths.push(imagePath);
+      images.push(imagePath);
     }
   }
 
-  return imagePaths;
+  return images;
 };
 
-export const resolveAbsolutePath = (mdxFilePath: string, imagePath: string): string => {
+export const resolveSystemPath = (mdxFilePath: string, imagePath: string): string => {
   if (isUrl(imagePath)) {
     return imagePath;
   }
 
-  const mdxDir = getMdxDirectory(mdxFilePath);
-  const cleanPath = cleanImagePath(imagePath);
+  const mdxDir = path.dirname(mdxFilePath).replace(/^content[\\/]/, '');
+  const cleanPath = imagePath.startsWith('./') ? imagePath.slice(2) : imagePath;
 
   return path.join(process.cwd(), 'content', mdxDir, cleanPath);
 };
 
-export const resolveContentPath = (mdxFilePath: string, imagePath: string): string => {
+export const resolveWebPath = (mdxFilePath: string, imagePath: string): string => {
   if (isUrl(imagePath)) {
     return imagePath;
   }
 
-  const mdxDir = getMdxDirectory(mdxFilePath);
-  const cleanPath = cleanImagePath(imagePath);
+  const mdxDir = path.dirname(mdxFilePath).replace(/^content[\\/]/, '');
+  const cleanPath = imagePath.startsWith('./') ? imagePath.slice(2) : imagePath;
 
   return `/content/${path.join(mdxDir, cleanPath).replace(/\\/g, '/')}`;
 };
@@ -149,19 +147,16 @@ export const resolveAssetPath = (directory: string, assetPath: string): string =
     return assetPath;
   }
 
-  const cleanPath = cleanImagePath(assetPath);
+  const cleanPath = assetPath.startsWith('./') ? assetPath.slice(2) : assetPath;
   return `/content/${directory}/${cleanPath}`;
 };
 
-export const createBlurMap = async (
-  mdxFilePath: string,
-  imagePaths: string[],
-): Promise<BlurMap> => {
-  const blurEntries = await Promise.all(
-    imagePaths.map(async (imagePath) => {
+export const createBlurMap = async (mdxFilePath: string, images: string[]): Promise<BlurMap> => {
+  const entries = await Promise.all(
+    images.map(async (imagePath) => {
       try {
-        const absolutePath = resolveAbsolutePath(mdxFilePath, imagePath);
-        const blurData = await createBlurData(absolutePath);
+        const systemPath = resolveSystemPath(mdxFilePath, imagePath);
+        const blurData = await createBlurData(systemPath);
         return [imagePath, blurData] as const;
       } catch (error) {
         console.error(`Failed to process image: ${imagePath}`, error);
@@ -170,29 +165,29 @@ export const createBlurMap = async (
     }),
   );
 
-  return Object.fromEntries(blurEntries);
+  return Object.fromEntries(entries);
 };
 
-export const transformImagePaths = (document: MdxDocument) => {
-  const imagePaths = extractImages(document.body.raw);
-  let transformedRaw = document.body.raw;
-  let transformedCode = document.body.code;
+export const transformMdxImages = (document: MdxDocument) => {
+  const images = extractImages(document.body.raw);
+  let rawContent = document.body.raw;
+  let codeContent = document.body.code;
 
-  for (const imagePath of imagePaths) {
+  for (const imagePath of images) {
     if (!isUrl(imagePath)) {
-      const resolvedPath = resolveContentPath(document._raw.sourceFilePath, imagePath);
-      const escapedPath = escapeRegex(imagePath);
+      const webPath = resolveWebPath(document._raw.sourceFilePath, imagePath);
+      const escapedPath = imagePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
       const markdownRegex = new RegExp(`!\\[.*?\\]\\(${escapedPath}\\)`, 'g');
-      transformedRaw = transformedRaw.replace(markdownRegex, `![image](${resolvedPath})`);
+      rawContent = rawContent.replace(markdownRegex, `![image](${webPath})`);
 
       const jsxRegex = new RegExp(`src:\\s*["']${escapedPath}["']`, 'g');
-      transformedCode = transformedCode.replace(jsxRegex, `src:"${resolvedPath}"`);
+      codeContent = codeContent.replace(jsxRegex, `src:"${webPath}"`);
     }
   }
 
   return {
-    raw: transformedRaw,
-    code: transformedCode,
+    raw: rawContent,
+    code: codeContent,
   };
 };
