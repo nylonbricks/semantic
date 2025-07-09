@@ -14,21 +14,8 @@ export default makeSource({
     remarkPlugins: [remarkAlerts],
     rehypePlugins: [
       rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'wrap',
-        },
-      ],
-      [
-        rehypePrettyCode,
-        {
-          theme: {
-            dark: 'github-dark-dimmed',
-            light: 'github-light',
-          },
-        },
-      ],
+      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+      [rehypePrettyCode, { theme: { dark: 'github-dark-dimmed', light: 'github-light' } }],
     ],
   },
 });
