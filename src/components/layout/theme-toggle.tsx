@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import { ClientOnly } from '@semantic/components/util';
 
 export const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme: theme, setTheme } = useTheme();
 
   return (
     <ClientOnly
