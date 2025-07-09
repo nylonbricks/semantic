@@ -17,7 +17,7 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
       className={twMerge('grid grid-cols-1 w-full gap-[4.0625rem] tablet:grid-cols-2', className)}
       {...props}
     >
-      {posts.map(({ _id, slug, title, coverImage, createdAt }) => {
+      {posts.map(({ _id, slug, title, coverImage, coverImageBlur, createdAt }) => {
         return (
           <Link
             key={_id}
@@ -36,9 +36,12 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
                 className="w-full h-full object-cover object-center"
                 src={coverImage}
                 alt={`${title} Cover Image`}
+                placeholder="blur"
+                blurDataURL={coverImageBlur}
                 draggable={false}
-                quality={100}
                 priority={false}
+                quality={100}
+                sizes="100vw"
                 fill
               />
             </div>

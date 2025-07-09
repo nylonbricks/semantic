@@ -6,7 +6,15 @@ import { RelativeTime } from '@semantic/components/ui';
 import { ROUTES } from '@semantic/constants';
 import { slugify } from '@semantic/utils';
 
-export const Header = ({ coverImage, title, subtitle, createdAt, category, tags }: Post) => {
+export const Header = ({
+  coverImage,
+  coverImageBlur,
+  title,
+  subtitle,
+  createdAt,
+  category,
+  tags,
+}: Post) => {
   return (
     <header className="mt-[1.25rem] mb-[3.5rem]">
       <div className="center relative w-full aspect-[1.8/1] border border-[var(--color-border)] rounded-[0.875rem] select-none overflow-hidden">
@@ -14,9 +22,12 @@ export const Header = ({ coverImage, title, subtitle, createdAt, category, tags 
           className="object-cover object-center w-full h-full"
           src={coverImage}
           alt={`${title} Cover Image`}
+          placeholder="blur"
+          blurDataURL={coverImageBlur}
           draggable={false}
-          quality={100}
           priority={false}
+          quality={100}
+          sizes="100vw"
           fill
         />
       </div>
