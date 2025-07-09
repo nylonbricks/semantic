@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
+import { createBlur } from '@libs/image';
 import { METADATA, PLAYLIST, PROFILE } from '@semantic/constants';
-import { getBlurDataURL } from '@semantic/libs';
 
 import Card from './card';
 
 export const ProfileGrid = async () => {
-  const blurDataURL = await getBlurDataURL(PROFILE.profileImage);
+  const blurDataURL = await createBlur(PROFILE.profileImage);
 
   return (
     <section

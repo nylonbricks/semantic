@@ -1,7 +1,7 @@
 @layer base {
   [class^='blockquote-'] {
     @apply flex flex-col relative py-4 pr-4 pl-[3.125rem]
-        border border-solid rounded-[0.625rem];
+    border border-solid rounded-[0.625rem];
   }
 
   [class^='blockquote-'] > p {
@@ -24,7 +24,6 @@
     line-height: 100% !important;
   }
 
-  /* === TIP === */
   .blockquote-tip {
     border-color: hsl(221, 91%, 93%);
     background-color: hsl(208, 100%, 97%);

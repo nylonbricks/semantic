@@ -1,13 +1,13 @@
 import { defineDocumentType } from 'contentlayer2/source-files';
 
 import {
-  generateBlurredImageDataUrl,
-  generateImageBlurMap,
-  extractImagePathsFromMdx,
-  resolveMdxImageAbsolutePath,
-  resolveContentImagePath,
-  processMdxImages,
-} from './utils';
+  createBlurData,
+  createBlurMap,
+  extractImages,
+  resolveAssetPath,
+  resolveSystemPath,
+  transformMdxImages,
+} from '../image';
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
@@ -25,13 +25,13 @@ export const Page = defineDocumentType(() => ({
     blurMap: {
       type: 'json',
       resolve: async (doc) => {
-        const images = extractImagePathsFromMdx(doc.body.raw);
-        return generateImageBlurMap(doc._raw.sourceFilePath, images);
+        const images: string[] = extractImages(doc.body.raw);
+        return createBlurMap(doc._raw.sourceFilePath, images);
       },
     },
     body: {
       type: 'mdx',
-      resolve: (doc) => processMdxImages(doc),
+      resolve: (doc) => transformMdxImages(doc),
     },
   },
 }));
@@ -56,27 +56,34 @@ export const Post = defineDocumentType(() => ({
       resolve: (doc) =>
         doc._raw.sourceFileDir.split('/')[1] ?? doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-    coverImage: {
-      type: 'string',
-      resolve: (doc) => resolveContentImagePath(doc._raw.sourceFilePath, doc.coverImage),
-    },
-    coverBlur: {
-      type: 'string',
-      resolve: async (doc) => {
-        const imgPath = resolveMdxImageAbsolutePath(doc._raw.sourceFilePath, doc.coverImage);
-        return generateBlurredImageDataUrl(imgPath);
-      },
-    },
     blurMap: {
       type: 'json',
       resolve: async (doc) => {
-        const images = extractImagePathsFromMdx(doc.body.raw);
-        return generateImageBlurMap(doc._raw.sourceFilePath, images);
+        const images: string[] = extractImages(doc.body.raw);
+        return createBlurMap(doc._raw.sourceFilePath, images);
+      },
+    },
+    coverImage: {
+      type: 'string',
+      resolve: (doc) => resolveAssetPath(doc._raw.sourceFileDir, doc.coverImage),
+    },
+    coverImageBlur: {
+      type: 'json',
+      resolve: async (doc) => {
+        try {
+          const systemPath = resolveSystemPath(doc._raw.sourceFilePath, doc.coverImage);
+          return await createBlurData(systemPath);
+        } catch (error) {
+          console.error(`Failed to create blur data for cover image: ${doc.coverImage}`, error);
+          return { blur: '', ratio: 0 };
+        }
       },
     },
     body: {
       type: 'mdx',
-      resolve: (doc) => processMdxImages(doc),
+      resolve: (doc) => transformMdxImages(doc),
     },
   },
 }));
+
+export * from '../image';

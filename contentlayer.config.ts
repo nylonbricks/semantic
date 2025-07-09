@@ -4,7 +4,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkAlerts from 'remark-blockquote-alerts';
 
-import { Page, Post } from './config/contentlayer';
+import { Page, Post } from '@libs/contentlayer';
 
 export default makeSource({
   contentDirPath: 'content',
@@ -14,21 +14,8 @@ export default makeSource({
     remarkPlugins: [remarkAlerts],
     rehypePlugins: [
       rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'wrap',
-        },
-      ],
-      [
-        rehypePrettyCode,
-        {
-          theme: {
-            dark: 'github-dark-dimmed',
-            light: 'github-light',
-          },
-        },
-      ],
+      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+      [rehypePrettyCode, { theme: { dark: 'github-dark-dimmed', light: 'github-light' } }],
     ],
   },
 });

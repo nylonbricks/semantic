@@ -1,35 +1,19 @@
 import '@semantic/styles/globals.css';
 
-import clsx from 'clsx';
 import { type Metadata, type Viewport } from 'next';
-import { Roboto_Mono } from 'next/font/google';
-import localFont from 'next/font/local';
 import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-import { Layout } from '@semantic/components/layout';
+import { Layout } from '@semantic/components/layout/root';
 import { METADATA } from '@semantic/constants';
 
-const pretendard = localFont({
-  src: './_fonts/PretendardVariable.woff2',
-  display: 'swap',
-  weight: '45 920',
-  preload: true,
-  variable: '--font-pretendard',
-});
-
-const roboto = Roboto_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600'],
-  preload: true,
-  variable: '--font-roboto-mono',
-});
+import { Pretendard, RobotoMono } from './_fonts';
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang={METADATA.SITE.LANGUAGE} suppressHydrationWarning>
-      <body className={clsx(roboto.variable, pretendard.variable)}>
+      <body className={twMerge(RobotoMono.className, Pretendard.className)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Layout>{children}</Layout>
         </ThemeProvider>

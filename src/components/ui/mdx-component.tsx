@@ -6,7 +6,7 @@ import { ComponentProps } from 'react';
 
 type MdxComponentProps = {
   code: string;
-  blurDataURLs?: Record<string, string>;
+  blurDataURLs?: Record<string, { blur: string; ratio: number }>;
 };
 
 export const MdxComponent = ({ code, blurDataURLs = {} }: MdxComponentProps) => {
@@ -38,26 +38,28 @@ export const MdxComponent = ({ code, blurDataURLs = {} }: MdxComponentProps) => 
       src,
       alt,
       ...props
-    }: {
-      src: string;
-      alt?: string;
-    } & Omit<ComponentProps<typeof Image>, 'src' | 'alt'>) => {
+    }: { src: string; alt?: string } & Omit<ComponentProps<typeof Image>, 'src' | 'alt'>) => {
       if (!src) return null;
 
-      const blurDataURL = blurDataURLs[src];
+      const imageData = blurDataURLs[src];
 
       return (
-        <span className="relative inline-block w-full border border-[var(--color-border)] rounded-[0.875rem] overflow-hidden">
+        <span
+          className="relative inline-block w-full border border-[var(--color-border)] rounded-[0.875rem] overflow-hidden select-none"
+          style={imageData?.ratio ? { aspectRatio: imageData.ratio } : undefined}
+        >
           <Image
-            className="w-full h-auto object-contain"
+            className="w-full h-full object-cover"
             src={src}
             alt={alt || ''}
             width={0}
             height={0}
             quality={100}
-            placeholder={blurDataURL ? 'blur' : 'empty'}
-            blurDataURL={blurDataURL}
-            priority
+            placeholder={imageData?.blur ? 'blur' : 'empty'}
+            blurDataURL={imageData?.blur}
+            sizes="100vw"
+            loading="lazy"
+            draggable={false}
             {...props}
           />
         </span>

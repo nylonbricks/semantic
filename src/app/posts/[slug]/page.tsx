@@ -68,9 +68,7 @@ export const generateMetadata = async ({ params }: PostPageProps): Promise<Metad
 };
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post.slug,
-  }));
+  return allPosts.map((post) => ({ slug: post.slug }));
 }
 
 const getRecommendedPosts = (posts: Post[], slug: string): Post[] => {

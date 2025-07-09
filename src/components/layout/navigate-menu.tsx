@@ -1,8 +1,8 @@
 'use client';
 
-import { clsx } from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { twMerge } from 'tailwind-merge';
 
 import { MENU } from '@semantic/constants';
 
@@ -18,7 +18,7 @@ export const NavigateMenu = () => {
           return (
             <li
               key={menu.link}
-              className={clsx(
+              className={twMerge(
                 'w-full h-10 text-[var(--color-gray-mid)] rounded-[0.625rem]',
                 isActive && 'text-[var(--color-gray-accent)] bg-[var(--color-border)]',
               )}

@@ -8,7 +8,7 @@ import { slugify } from '@semantic/utils';
 
 export const Header = ({
   coverImage,
-  coverBlur,
+  coverImageBlur,
   title,
   subtitle,
   createdAt,
@@ -23,10 +23,11 @@ export const Header = ({
           src={coverImage}
           alt={`${title} Cover Image`}
           placeholder="blur"
-          blurDataURL={coverBlur}
+          blurDataURL={coverImageBlur.blur}
           draggable={false}
-          quality={100}
           priority={false}
+          quality={100}
+          sizes="100vw"
           fill
         />
       </div>
