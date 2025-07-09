@@ -11,7 +11,7 @@ type GiscusProps = ComponentProps<'section'>;
 export const Giscus = ({ ...props }: GiscusProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [mounted, setMounted] = useState<boolean>(false);
-  const { theme: appTheme } = useTheme();
+  const { resolvedTheme: appTheme } = useTheme();
 
   const theme = appTheme === 'dark' ? 'noborder_gray' : 'noborder_light';
 
