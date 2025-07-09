@@ -1,3 +1,2 @@
-export * from './image';
-export * from './path';
-export * from './mdx'; 
+export * from './image-blur-map';
+export * from './mdx-image-path';

@@ -1,5 +1,5 @@
-import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type DividerProps = {
   className?: string;
@@ -9,7 +9,7 @@ export const Divider = forwardRef<HTMLHRElement, DividerProps>(({ className, ...
   return (
     <hr
       ref={ref}
-      className={clsx('w-full h-[0.03125rem] border-none', className)}
+      className={twMerge('w-full h-[0.03125rem] border-none', className)}
       style={{ background: 'var(--color-gradient-sidebar-divider)' }}
       {...props}
     />

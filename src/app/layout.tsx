@@ -1,9 +1,9 @@
 import '@semantic/styles/globals.css';
 
-import clsx from 'clsx';
 import { type Metadata, type Viewport } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import { Layout } from '@semantic/components/layout/root';
 import { METADATA } from '@semantic/constants';
@@ -13,7 +13,7 @@ import { Pretendard, RobotoMono } from './_fonts';
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang={METADATA.SITE.LANGUAGE} suppressHydrationWarning>
-      <body className={clsx(RobotoMono.className, Pretendard.className)}>
+      <body className={twMerge(RobotoMono.className, Pretendard.className)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Layout>{children}</Layout>
         </ThemeProvider>

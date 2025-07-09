@@ -1,10 +1,10 @@
-import { clsx } from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ComponentProps } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import { type Post } from '@contentlayer/generated';
-import { RelativeTime } from '@semantic/components/ui/index';
+import { RelativeTime } from '@semantic/components/ui';
 
 type PostGridProps = ComponentProps<'div'> & {
   className?: string;
@@ -14,15 +14,15 @@ type PostGridProps = ComponentProps<'div'> & {
 export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
   return (
     <div
-      className={clsx('grid grid-cols-1 w-full gap-[4.0625rem] tablet:grid-cols-2', className)}
+      className={twMerge('grid grid-cols-1 w-full gap-[4.0625rem] tablet:grid-cols-2', className)}
       {...props}
     >
-      {posts.map(({ _id, slug, title, coverImage, coverBlur, createdAt }) => {
+      {posts.map(({ _id, slug, title, coverImage, createdAt }) => {
         return (
           <Link
             key={_id}
             href={`/posts/${slug}`}
-            className={clsx(
+            className={twMerge(
               'flex flex-col w-full cursor-pointer',
               'hover:[&_.title]:bg-[var(--color-gray-hover)]',
               'hover:[&_.description]:bg-[var(--color-gray-hover)]',
@@ -36,7 +36,6 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
                 className="w-full h-full object-cover object-center"
                 src={coverImage}
                 alt={`${title} Cover Image`}
-                blurDataURL={coverBlur}
                 draggable={false}
                 quality={100}
                 priority={false}

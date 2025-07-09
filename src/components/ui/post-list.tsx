@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ComponentProps } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import { Post } from '@contentlayer/generated';
 import { RelativeTime } from '@semantic/components/ui/index';
@@ -14,13 +14,13 @@ type PostListProps = ComponentProps<'ul'> & {
 
 export const PostList = ({ posts, className, ...props }: PostListProps) => {
   return (
-    <ul className={clsx('column list-none gap-[1.875rem]', className)} {...props} data-animate>
-      {posts.map(({ _id, slug, title, subtitle, coverImage, coverBlur, category, createdAt }) => (
+    <ul className={twMerge('column list-none gap-[1.875rem]', className)} {...props} data-animate>
+      {posts.map(({ _id, slug, title, subtitle, coverImage, category, createdAt }) => (
         <li key={_id}>
           <Link
             href={`${ROUTES.POSTS}/${slug}`}
             aria-label={`Read post: ${title}`}
-            className={clsx(
+            className={twMerge(
               'flex flex-col gap-[1.125rem] cursor-pointer tablet:flex-row tablet:gap-[2.1875rem]',
               'hover:[&_.title]:bg-[var(--color-gray-hover)]',
               'hover:[&_.subtitle]:bg-[var(--color-gray-hover)]',
@@ -35,7 +35,6 @@ export const PostList = ({ posts, className, ...props }: PostListProps) => {
                 className="w-full h-full object-cover object-center"
                 src={coverImage}
                 alt={`${title} Cover Image`}
-                blurDataURL={coverBlur}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 draggable={false}
                 quality={100}

@@ -19,12 +19,7 @@ const generateRssItems = (): {
     .map(({ title, slug, body, modifiedAt, createdAt }) => {
       const date = modifiedAt ?? createdAt;
       const pubDate = dayjs(date).toDate().toUTCString();
-      const description =
-        body.raw
-          .replace(/^\s*(import|export)\s.*$/gm, '')
-          .trim()
-          .substring(0, 200)
-          .replace(/\n+/g, ' ') + '…';
+      const description = body.raw.replace(/^\s*(import|export)\s.*$/gm, '').trim();
 
       return {
         title,

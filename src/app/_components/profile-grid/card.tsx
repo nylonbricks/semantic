@@ -1,5 +1,5 @@
-import { clsx } from 'clsx';
 import { ComponentPropsWithoutRef, ElementType, ReactNode, forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type CardProps = {
   as?: ElementType;
@@ -14,7 +14,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   return (
     <Component
       ref={ref}
-      className={clsx(
+      className={twMerge(
         'relative w-full h-[11.4375rem] mt-[1.875rem] border border-[rgba(0,0,0,0.03)] rounded-[0.875rem] shadow-[inset_0_-0.125rem_0.125rem_rgba(255,255,255,0.3),inset_0_0.125rem_0.125rem_rgba(255,255,255,0.3)] overflow-hidden',
         className,
       )}
@@ -36,7 +36,7 @@ const CardContent = forwardRef<HTMLDivElement, CardContentProps>(function CardCo
   return (
     <div
       ref={ref}
-      className={clsx('row-between w-full h-full p-[1.875rem]', className)}
+      className={twMerge('row-between w-full h-full p-[1.875rem]', className)}
       style={{ gap }}
       {...props}
     >

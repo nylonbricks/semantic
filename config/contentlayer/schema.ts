@@ -1,13 +1,6 @@
 import { defineDocumentType } from 'contentlayer2/source-files';
 
-import {
-  generateBlurredImageDataUrl,
-  generateImageBlurMap,
-  extractImagePathsFromMdx,
-  resolveMdxImageAbsolutePath,
-  resolveContentImagePath,
-  processMdxImages,
-} from './utils';
+import { createImageBlurMap, findMarkdownImagePaths, processMdxImages } from './utils';
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
@@ -25,8 +18,8 @@ export const Page = defineDocumentType(() => ({
     blurMap: {
       type: 'json',
       resolve: async (doc) => {
-        const images = extractImagePathsFromMdx(doc.body.raw);
-        return generateImageBlurMap(doc._raw.sourceFilePath, images);
+        const images: string[] = findMarkdownImagePaths(doc.body.raw);
+        return createImageBlurMap(doc._raw.sourceFilePath, images);
       },
     },
     body: {
@@ -56,22 +49,27 @@ export const Post = defineDocumentType(() => ({
       resolve: (doc) =>
         doc._raw.sourceFileDir.split('/')[1] ?? doc._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
-    coverImage: {
-      type: 'string',
-      resolve: (doc) => resolveContentImagePath(doc._raw.sourceFilePath, doc.coverImage),
-    },
-    coverBlur: {
-      type: 'string',
-      resolve: async (doc) => {
-        const imgPath = resolveMdxImageAbsolutePath(doc._raw.sourceFilePath, doc.coverImage);
-        return generateBlurredImageDataUrl(imgPath);
-      },
-    },
     blurMap: {
       type: 'json',
       resolve: async (doc) => {
-        const images = extractImagePathsFromMdx(doc.body.raw);
-        return generateImageBlurMap(doc._raw.sourceFilePath, images);
+        const images: string[] = findMarkdownImagePaths(doc.body.raw);
+        return createImageBlurMap(doc._raw.sourceFilePath, images);
+      },
+    },
+    coverImage: {
+      type: 'string',
+      resolve: (doc) => {
+        const originalPath = doc.coverImage;
+
+        // URL이면 그대로 반환
+        if (originalPath.startsWith('http://') || originalPath.startsWith('https://')) {
+          return originalPath;
+        }
+
+        // 상대경로면 /content/ 경로로 변환
+        const mdxDirectory = doc._raw.sourceFileDir;
+        const cleanPath = originalPath.startsWith('./') ? originalPath.slice(2) : originalPath;
+        return `/content/${mdxDirectory}/${cleanPath}`;
       },
     },
     body: {

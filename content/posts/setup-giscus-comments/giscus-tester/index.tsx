@@ -1,7 +1,7 @@
 'use client';
 
-import clsx from 'clsx';
 import { useState, useCallback } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import { GiscusCodeBlock } from './giscus-codeblock';
 import { StepController } from './step-controller';
@@ -77,7 +77,7 @@ export const GiscusTester = () => {
             </select>
 
             <p
-              className={clsx(
+              className={twMerge(
                 'mt-[0.5rem] text-xs font-medium',
                 category ? 'text-green-600' : 'text-[var(--color-gray-bold)]',
               )}

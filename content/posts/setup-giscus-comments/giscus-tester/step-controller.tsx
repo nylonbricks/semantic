@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 type NavProps = {
   maxStep: number;
@@ -24,11 +24,9 @@ export const StepController = ({ maxStep, step, onNext, onPrev, canNext }: NavPr
 
       {step < maxStep - 1 ? (
         <button
-          className={clsx(
+          className={twMerge(
             'px-[8px] py-[5px] text-sm text-[var(--color-gray-accent)] font-medium cursor-pointer border border-[var(--color-background04)] rounded-[6px] bg-[var(--color-background02)] transition-opacity duration-150 ease-in-out hover:opacity-70',
-            {
-              'opacity-30 cursor-not-allowed hover:!opacity-30': !canNext,
-            },
+            !canNext && 'opacity-30 cursor-not-allowed hover:!opacity-30',
           )}
           onClick={onNext}
           disabled={!canNext}
