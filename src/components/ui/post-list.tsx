@@ -37,7 +37,7 @@ export const PostList = ({ posts, className, ...props }: PostListProps) => {
                   src={coverImage}
                   alt={`${title} Cover Image`}
                   placeholder="blur"
-                  blurDataURL={coverImageBlur}
+                  blurDataURL={coverImageBlur.blur}
                   draggable={false}
                   priority={false}
                   quality={100}

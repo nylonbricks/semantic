@@ -37,7 +37,7 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
                 src={coverImage}
                 alt={`${title} Cover Image`}
                 placeholder="blur"
-                blurDataURL={coverImageBlur}
+                blurDataURL={coverImageBlur.blur}
                 draggable={false}
                 priority={false}
                 quality={100}
