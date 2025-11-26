@@ -12,6 +12,7 @@ export type BlurMap = Record<string, BlurData>;
 export type MdxDocument = {
   body: { raw: string; code: string };
   _raw: { sourceFilePath: string };
+  r2Folder?: string;
 };
 
 export interface BlurOptions {
@@ -151,6 +152,19 @@ export const resolveAssetPath = (directory: string, assetPath: string): string =
   return `/content/${directory}/${cleanPath}`;
 };
 
+export const resolveR2Path = (
+  r2Folder: string,
+  imagePath: string,
+  contentType: 'posts' | 'projects',
+): string => {
+  if (isUrl(imagePath)) {
+    return imagePath;
+  }
+
+  const cleanPath = imagePath.startsWith('./') ? imagePath.slice(2) : imagePath;
+  return `https://r2.stile.im/${contentType}/${r2Folder}/${cleanPath}`;
+};
+
 export const createBlurMap = async (mdxFilePath: string, images: string[]): Promise<BlurMap> => {
   const entries = await Promise.all(
     images.map(async (imagePath) => {
@@ -168,14 +182,22 @@ export const createBlurMap = async (mdxFilePath: string, images: string[]): Prom
   return Object.fromEntries(entries);
 };
 
-export const transformMdxImages = (document: MdxDocument) => {
+export const transformMdxImages = (
+  document: MdxDocument,
+  r2Folder?: string,
+  contentType: 'posts' | 'projects' = 'posts',
+) => {
   const images = extractImages(document.body.raw);
   let rawContent = document.body.raw;
   let codeContent = document.body.code;
 
   for (const imagePath of images) {
     if (!isUrl(imagePath)) {
-      const webPath = resolveWebPath(document._raw.sourceFilePath, imagePath);
+      // Use R2 path if r2Folder is provided, otherwise use local web path
+      const webPath = r2Folder
+        ? resolveR2Path(r2Folder, imagePath, contentType)
+        : resolveWebPath(document._raw.sourceFilePath, imagePath);
+
       const escapedPath = imagePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
       const markdownRegex = new RegExp(`!\\[.*?\\]\\(${escapedPath}\\)`, 'g');

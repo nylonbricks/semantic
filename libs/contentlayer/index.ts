@@ -49,6 +49,7 @@ export const Post = defineDocumentType(() => ({
     category: { type: 'string', required: true },
     tags: { type: 'list', of: { type: 'string' }, required: false },
     comments: { type: 'boolean', required: false, default: false },
+    r2Folder: { type: 'string', required: false },
   },
   computedFields: {
     slug: {
@@ -81,7 +82,7 @@ export const Post = defineDocumentType(() => ({
     },
     body: {
       type: 'mdx',
-      resolve: (doc) => transformMdxImages(doc),
+      resolve: (doc) => transformMdxImages(doc, doc.r2Folder),
     },
   },
 }));
