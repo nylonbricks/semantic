@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
+import { SymbolIcon } from '@semantic/components/icons/Symbol';
 import { Divider } from '@semantic/components/ui';
 import { METADATA, ROUTES } from '@semantic/constants';
 
@@ -18,7 +19,7 @@ export const Sidebar = () => {
           href={ROUTES.HOME}
           className="h3 py-[0.78125rem] px-[0.625rem] text-[var(--color-gray-accent)] break-keep user-select-none"
         >
-          {METADATA.SITE.NAME}
+          <SymbolIcon />
         </Link>
         <Divider />
         <nav>

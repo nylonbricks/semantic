@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { SymbolIcon } from '@semantic/components/icons/Symbol';
 import { Divider } from '@semantic/components/ui';
 import { METADATA, ROUTES } from '@semantic/constants';
 
@@ -37,7 +38,7 @@ export const Header = () => {
               href={ROUTES.HOME}
               className="text-[var(--color-gray-mid)] font-mono font-medium text-[0.9375rem] leading-[auto]"
             >
-              {METADATA.SITE.NAME}
+              <SymbolIcon />
             </Link>
 
             <Accordion.Item

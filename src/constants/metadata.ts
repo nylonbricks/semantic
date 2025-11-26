@@ -1,14 +1,14 @@
 export const METADATA = {
   SITE: {
-    URL: 'https://blog.stile.im',
-    NAME: 'stile Blog',
-    DESCRIPTION: 'Make your ✨gorgeous blog with semantic',
+    URL: 'https://stile.im',
+    NAME: 'stile',
+    DESCRIPTION: '경계없는, 한계없는. 기획자 노권후 입니다.',
     PREVIEW_IMAGE: 'https://semantic.nylonbricks.com/static/preview.png',
-    LANGUAGE: 'en-US',
+    LANGUAGE: 'ko-KR',
   },
 
   AUTHOR: {
-    NAME: 'Kwon Roh',
+    NAME: '노권후',
     TWITTER: 'https://twitter.com/stile__',
   },
 };

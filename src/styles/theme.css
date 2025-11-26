@@ -25,11 +25,14 @@
 
   --color-gradient-sidebar-divider: var(--color-gradient-sidebar-divider);
 
+  --color-tag-selected-bg: var(--color-tag-selected-bg);
+  --color-tag-selected-text: var(--color-tag-selected-text);
+
   --spacing-app: 47.375rem;
   --spacing-inline: 1.5rem;
   --spacing-sidebar: 13.125rem;
 
-  --font-mono: 'Roboto Mono', Pretendard, 'Courier New', Courier, monospace;
+  --font-mono: var(--font-roboto-mono), Pretendard, 'Courier New', Courier, monospace;
   --font-sans:
     Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
     'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -101,6 +104,9 @@
     #d9dbe7 0%,
     rgba(217, 219, 231, 0) 100%
   );
+
+  --color-tag-selected-bg: #393961;
+  --color-tag-selected-text: #fcfcfd;
 }
 
 .dark {
@@ -124,4 +130,7 @@
   --color-license: #b2b2b2;
 
   --color-gradient-sidebar-divider: radial-gradient(circle, #36363a 0%, rgba(61, 61, 67, 0) 100%);
+
+  --color-tag-selected-bg: #ffffff;
+  --color-tag-selected-text: #0f0f0f;
 }

@@ -1,7 +1,7 @@
 export const GISCUS = {
-  REPO: 'nylonbricks/semantic',
-  REPO_ID: 'R_kgDOMljSQQ',
+  REPO: 'sepowered/stileim-blog-comments',
+  REPO_ID: 'R_kgDOMygpng',
   CATEGORY: 'General',
-  CATEGORY_ID: 'DIC_kwDOMljSQc4CpWhQ',
-  MAPPING: 'title',
+  CATEGORY_ID: 'DIC_kwDOMygpns4CiiLp',
+  MAPPING: 'pathname',
 } as const;
