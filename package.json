@@ -16,6 +16,7 @@
     "**/*.{ts,tsx}": "eslint --fix --max-warnings 0"
   },
   "dependencies": {
+    "@channel.io/channel-web-sdk-loader": "^2.0.2",
     "@radix-ui/react-accordion": "^1.2.11",
     "dayjs": "^1.11.13",
     "motion": "^12.23.1",

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@channel.io/channel-web-sdk-loader':
+        specifier: ^2.0.2
+        version: 2.0.2
       '@radix-ui/react-accordion':
         specifier: ^1.2.11
         version: 1.2.11(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -110,6 +113,9 @@ packages:
   '@babel/runtime@7.27.6':
     resolution: {integrity: sha512-vbavdySgbTTrmFE+EsiqUTzlOr5bzlnJtUv9PynGCAKvfQqjIXbvFdumPM/GxMDfyuGMJaJAU6TO4zc1Jf1i8Q==}
     engines: {node: '>=6.9.0'}
+
+  '@channel.io/channel-web-sdk-loader@2.0.2':
+    resolution: {integrity: sha512-43xRJX+BUjb5vRw5A/LDkgE9syJYTPERf7xo49Fz5MMpA9UtzPWHWyzN2QU1/tTT2uu5tpxapT2BgMx6FfP2qg==}
 
   '@contentlayer2/cli@0.5.8':
     resolution: {integrity: sha512-sPXTe24tXPpru6hE45riBj7xjVIDuTfjQXbwitwcNkm0yd0kNJaDPBA2C4U5mRFgg1a/aftlIKeVavlkBnuZQA==}
@@ -3275,6 +3281,8 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.29
 
   '@babel/runtime@7.27.6': {}
+
+  '@channel.io/channel-web-sdk-loader@2.0.2': {}
 
   '@contentlayer2/cli@0.5.8(acorn@8.15.0)(esbuild@0.25.3)':
     dependencies:

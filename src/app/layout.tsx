@@ -4,6 +4,7 @@ import { type Metadata, type Viewport } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren } from 'react';
 
+import ChannelIO from '@semantic/components/ChannelIO';
 import { Layout } from '@semantic/components/layout/root';
 import { METADATA } from '@semantic/constants';
 
@@ -15,6 +16,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       <body className={RobotoMono.variable}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Layout>{children}</Layout>
+          <ChannelIO />
         </ThemeProvider>
       </body>
     </html>
