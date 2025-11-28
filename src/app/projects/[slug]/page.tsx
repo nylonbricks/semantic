@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { type Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -29,7 +30,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
 
       <article className="mt-4">
         <div className="mb-8">
-          <div className="relative mb-6 aspect-[3/1] w-full overflow-hidden rounded-xl border border-[var(--color-border)]">
+          <div className="relative mb-6 aspect-[1.8/1] tablet:aspect-[3/1] w-full overflow-hidden rounded-xl border border-[var(--color-border)]">
             <Image
               src={project.coverImage}
               alt={project.title}
@@ -43,17 +44,60 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
             />
           </div>
           <h1 className="mb-2 text-3xl font-bold">{project.title}</h1>
-          <p className="text-xl text-[var(--color-gray-mid)]">{project.description}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-[var(--color-border)] px-2 py-1 text-sm font-medium text-[var(--color-gray-mid)]"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="mt-4 flex items-start gap-4">
+            <span className="shrink-0 py-1 text-sm font-bold text-[var(--color-gray-title)]">
+              수행기간
+            </span>
+            <div className="py-1 text-sm font-medium text-[var(--color-gray-mid)]">
+              {dayjs(project.createdAt).format('YYYY. MM')} -{' '}
+              {project.projectDue ? dayjs(project.projectDue).format('YYYY. MM') : 'YYYY. MM'}
+            </div>
           </div>
+          <div className="mt-4 flex items-start gap-4">
+            <span className="shrink-0 py-1 text-sm font-bold text-[var(--color-gray-title)]">
+              프로젝트 분류
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-[var(--color-border)] px-3 py-1 text-sm font-medium text-[var(--color-gray-mid)]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          {project.capabilities && (
+            <div className="mt-4 flex items-start gap-4">
+              <span className="shrink-0 py-1 text-sm font-bold text-[var(--color-gray-title)]">
+                역량
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {project.capabilities.map((capability) => (
+                  <span
+                    key={capability}
+                    className="rounded-full border border-[var(--color-border)] px-3 py-1 text-sm font-medium text-[var(--color-gray-mid)]"
+                  >
+                    {capability}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          {project.awards && (
+            <div className="mt-4 flex items-start gap-4">
+              <span className="shrink-0 py-1 text-sm font-bold text-[var(--color-gray-title)]">
+                수상내역
+              </span>
+              <div className="flex items-center gap-2 rounded-full border border-[var(--color-border)] px-3 py-1">
+                <span className="text-base">🏆</span>
+                <span className="text-sm font-medium text-[var(--color-gray-mid)]">
+                  {project.awards}
+                </span>
+              </div>
+            </div>
+          )}
         </div>
         <MdxComponent code={project.body.code} blurDataURLs={project.blurMap} />
 

@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ComponentProps } from 'react';
@@ -49,6 +50,18 @@ export const ProjectCard = ({ project, className, ...props }: ProjectCardProps) 
           </h3>
         </Link>
         <p className="line-clamp-2 text-sm text-[var(--color-gray-text)]">{description}</p>
+        {project.awards && (
+          <div className="mt-1 flex items-center gap-2 rounded-lg bg-[var(--color-background05)] px-3 py-1">
+            <span className="text-base">🏆</span>
+            <span className="text-sm font-medium text-[var(--color-gray-bold)]">
+              {project.awards}
+            </span>
+          </div>
+        )}
+        <div className="text-sm text-[var(--color-gray-mid)]">
+          {dayjs(project.createdAt).format('YYYY. MM')} -{' '}
+          {project.projectDue ? dayjs(project.projectDue).format('YYYY. MM') : 'YYYY. MM'}
+        </div>
       </div>
     </li>
   );

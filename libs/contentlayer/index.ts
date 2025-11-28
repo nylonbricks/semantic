@@ -99,6 +99,9 @@ export const Project = defineDocumentType(() => ({
     tags: { type: 'list', of: { type: 'string' }, required: true },
     repository: { type: 'string', required: false },
     url: { type: 'string', required: false },
+    projectDue: { type: 'date', required: false },
+    awards: { type: 'string', required: false },
+    capabilities: { type: 'list', of: { type: 'string' }, required: false },
   },
   computedFields: {
     slug: {
