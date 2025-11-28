@@ -34,6 +34,35 @@ export const MdxComponent = ({ code, blurDataURLs = {} }: MdxComponentProps) => 
         {children}
       </blockquote>
     ),
+    aside: ({ children, ...props }: ComponentProps<'aside'>) => (
+      <aside
+        className="column p-4 border border-[var(--color-border)] rounded-[0.625rem] bg-[var(--color-background05)]"
+        {...props}
+      >
+        {children}
+      </aside>
+    ),
+    Aside: ({ children, ...props }: ComponentProps<'aside'>) => (
+      <aside
+        className="column p-4 border border-[var(--color-border)] rounded-[0.625rem] bg-[var(--color-background05)]"
+        {...props}
+      >
+        {children}
+      </aside>
+    ),
+    Callout: ({
+      children,
+      icon,
+      ...props
+    }: ComponentProps<'aside'> & { icon?: React.ReactNode }) => (
+      <aside
+        className="flex flex-row items-start gap-3 p-4 border border-[var(--color-border)] rounded-[0.625rem] bg-[var(--color-background05)]"
+        {...props}
+      >
+        {icon && <span className="text-xl leading-[1.6] select-none">{icon}</span>}
+        <div className="column gap-2 flex-1">{children}</div>
+      </aside>
+    ),
     img: ({
       src,
       alt,
