@@ -9,6 +9,7 @@ export const METADATA = {
 
   AUTHOR: {
     NAME: '노권후',
+    EMAIL: 'hello@stile.im',
     TWITTER: 'https://twitter.com/stile__',
   },
 };

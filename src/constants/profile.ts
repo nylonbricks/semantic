@@ -1,7 +1,7 @@
 export const PROFILE = {
   cardBackgroundColor: '#DECEEA',
 
-  profileImage: '/static/profile.png',
+  profileImage: '/static/profile.jpg',
   profileImageShadowColor: 'rgba(59, 34, 73, 0.43)',
   profileImageFilter: '#6c4980',
   authorTextColor: '#3b2249',
