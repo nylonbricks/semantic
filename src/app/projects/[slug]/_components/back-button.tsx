@@ -30,7 +30,7 @@ export const BackButton = () => {
       className="center-y h3 w-fit py-[0.3125rem] pr-[0.5625rem] text-[var(--color-gray-accent)] cursor-pointer select-none gap-[0.5rem] opacity-100 transition-opacity duration-150 ease-in-out hover:opacity-70"
     >
       <ChevronLeftIcon size={18} />
-      <span>Back</span>
+      <span>프로젝트 목록으로</span>
     </button>
   );
 };

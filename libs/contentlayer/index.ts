@@ -102,6 +102,7 @@ export const Project = defineDocumentType(() => ({
     projectDue: { type: 'date', required: false },
     awards: { type: 'string', required: false },
     capabilities: { type: 'list', of: { type: 'string' }, required: false },
+    order: { type: 'number', required: false },
   },
   computedFields: {
     slug: {

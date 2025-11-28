@@ -7,9 +7,19 @@ import { ROUTES } from '@semantic/constants';
 import { generatePageMetadata } from '@semantic/utils';
 
 const ProjectsPage = () => {
-  const sortedProjects = allProjects.sort((a, b) =>
-    dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1,
-  );
+  const sortedProjects = allProjects.sort((a, b) => {
+    // 1. If both have order, sort by order (ascending)
+    if (a.order !== undefined && b.order !== undefined) {
+      return a.order - b.order;
+    }
+
+    // 2. If only one has order, that one comes first
+    if (a.order !== undefined) return -1;
+    if (b.order !== undefined) return 1;
+
+    // 3. If neither has order, sort by createdAt (descending)
+    return dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1;
+  });
 
   return (
     <>

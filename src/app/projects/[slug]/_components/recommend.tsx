@@ -14,7 +14,7 @@ export const Recommend = ({ projects }: RecommendProps) => {
         id="recommendation-heading"
         className="text-[var(--color-gray-accent)] font-mono text-lg font-medium"
       >
-        🦾 Check them out
+        🦾 프로젝트 살펴보기
       </h3>
       <ProjectList className="mt-[2.25rem] mb-[3.5rem]" projects={projects} />
     </section>
