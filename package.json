@@ -19,6 +19,7 @@
     "@channel.io/channel-web-sdk-loader": "^2.0.2",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-select": "^2.2.6",
+    "cmdk": "^1.1.1",
     "dayjs": "^1.11.13",
     "motion": "^12.23.1",
     "next": "^15.3.5",
