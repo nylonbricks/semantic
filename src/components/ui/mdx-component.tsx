@@ -63,6 +63,25 @@ export const MdxComponent = ({ code, blurDataURLs = {} }: MdxComponentProps) => 
         <div className="column gap-2 flex-1">{children}</div>
       </aside>
     ),
+    DownloadButton: ({
+      children,
+      href,
+      type = 'default',
+      ...props
+    }: ComponentProps<'a'> & { type?: 'default' | 'pdf' }) => (
+      <a
+        href={href}
+        className="flex items-center justify-between gap-3 w-full tablet:w-fit px-4 py-3 border border-[var(--color-border)] rounded-xl bg-[var(--color-background)] hover:bg-[var(--color-gray-hover)] transition-colors duration-200 cursor-pointer no-underline"
+        target="_blank"
+        rel="noopener noreferrer"
+        {...props}
+      >
+        <div className="flex items-center gap-2">
+          <span className="text-xl">{type === 'pdf' ? '📄' : '📎'}</span>
+          <span className="font-medium text-[var(--color-gray-bold)]">{children}</span>
+        </div>
+      </a>
+    ),
     img: ({
       src,
       alt,
