@@ -18,9 +18,9 @@ export const ProjectCard = ({ project, className, ...props }: ProjectCardProps) 
     <li className={twMerge('group flex flex-col gap-4', className)} {...props}>
       <Link
         href={`${ROUTES.PROJECTS}/${slug}`}
-        className="block overflow-hidden rounded-xl border border-[var(--color-border)]"
+        className="block overflow-hidden rounded-[0.875rem] border border-[var(--color-border)]"
       >
-        <div className="relative aspect-video w-full overflow-hidden">
+        <div className="relative aspect-[1.8/1] w-full overflow-hidden">
           <Image
             src={coverImage}
             alt={title}

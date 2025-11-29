@@ -48,7 +48,7 @@ const HomePage = () => {
             <PlusIcon />
           </Link>
         </div>
-        <ProjectList projects={featuredProjects} className="desktop:grid-cols-2" />
+        <ProjectList projects={featuredProjects} className="desktop:grid-cols-2 gap-[4.0625rem]" />
       </section>
 
       <section
