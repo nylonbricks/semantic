@@ -6,6 +6,7 @@ import { PropsWithChildren } from 'react';
 
 import ChannelIO from '@semantic/components/ChannelIO';
 import { Layout } from '@semantic/components/layout/root';
+import { ToastProvider } from '@semantic/components/ui';
 import { METADATA } from '@semantic/constants';
 
 import { RobotoMono } from './_fonts';
@@ -15,8 +16,10 @@ const RootLayout = ({ children }: PropsWithChildren) => {
     <html lang={METADATA.SITE.LANGUAGE} suppressHydrationWarning>
       <body className={RobotoMono.variable}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Layout>{children}</Layout>
-          <ChannelIO />
+          <ToastProvider>
+            <Layout>{children}</Layout>
+            <ChannelIO />
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>
