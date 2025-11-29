@@ -1,9 +1,8 @@
 import Image from 'next/image';
 
 import { createBlur } from '@libs/image';
-import { CalendarIcon, LocationIcon } from '@semantic/components/icon';
+import { CalendarIcon, LocationIcon, DownloadIcon } from '@semantic/components/icon';
 import { METADATA, PROFILE } from '@semantic/constants';
-
 
 import { ContactButtons } from './_components/contact-buttons';
 import Card from '../_components/profile-grid/card';
@@ -20,11 +19,11 @@ const AboutPage = async () => {
         {/* Profile Section */}
         <section>
           <Card.Root
-            className="mt-0 h-auto tablet:h-[11.4375rem]"
+            className="mt-0 h-auto rounded-b-none shadow-[inset_0_0.125rem_0.125rem_rgba(255,255,255,0.3)]"
             style={{ backgroundColor: PROFILE.cardBackgroundColor }}
           >
-            <Card.Content>
-              <div className="flex flex-col tablet:flex-row items-center tablet:items-start justify-between w-full h-full gap-6 tablet:gap-0">
+            <Card.Content className="flex flex-col gap-6 h-auto">
+              <div className="flex flex-col tablet:flex-row items-center tablet:items-center justify-between w-full gap-6 tablet:gap-0">
                 {/* Left: Image & Name */}
                 <div className="flex flex-col items-center tablet:items-start gap-4 h-full justify-between">
                   <div className="flex items-center gap-8">
@@ -81,6 +80,37 @@ const AboutPage = async () => {
             </Card.Content>
           </Card.Root>
 
+          <div className="flex flex-col tablet:flex-row w-full">
+            <a
+              href="#"
+              className="relative overflow-hidden flex-1 flex items-center justify-center gap-2 px-4 py-3 hover:brightness-95 transition-all border-l border-b border-r border-t-0 border-[rgba(0,0,0,0.03)] rounded-none tablet:rounded-bl-[0.875rem] shadow-[inset_0_-0.125rem_0.125rem_rgba(255,255,255,0.3)]"
+              style={{
+                backgroundColor: PROFILE.cardBackgroundColor,
+                color: PROFILE.contentTextColor,
+              }}
+            >
+              <div className="absolute inset-0 bg-white/20 pointer-events-none" />
+              <div className="relative z-10 flex items-center gap-2">
+                <DownloadIcon size={20} />
+                <span className="font-medium">이력서 다운로드</span>
+              </div>
+            </a>
+            <a
+              href="#"
+              className="relative overflow-hidden flex-1 flex items-center justify-center gap-2 px-4 py-3 hover:brightness-95 transition-all border-l border-b border-r border-t-0 tablet:border-l-0 border-[rgba(0,0,0,0.03)] rounded-b-[0.875rem] tablet:rounded-bl-none tablet:rounded-br-[0.875rem] shadow-[inset_0_-0.125rem_0.125rem_rgba(255,255,255,0.3)]"
+              style={{
+                backgroundColor: PROFILE.cardBackgroundColor,
+                color: PROFILE.contentTextColor,
+              }}
+            >
+              <div className="absolute inset-0 bg-white/20 pointer-events-none" />
+              <div className="relative z-10 flex items-center gap-2">
+                <DownloadIcon size={20} />
+                <span className="font-medium">자기소개서 다운로드</span>
+              </div>
+            </a>
+          </div>
+
           <ContactButtons />
         </section>
 
@@ -102,7 +132,9 @@ const AboutPage = async () => {
           <ul className="column gap-6">
             <li className="flex flex-col tablet:flex-row tablet:justify-between gap-1 tablet:gap-4">
               <div className="column">
-                <span className="font-bold text-[var(--color-gray-bold)]">계원예술대학교</span>
+                <span className="text-lg font-bold text-[var(--color-gray-bold)]">
+                  계원예술대학교
+                </span>
                 <div className="flex items-center gap-2 text-[var(--color-gray-mid)]">
                   <span>디지털미디어디자인과</span>
                   <span className="w-[1px] h-3 bg-[var(--color-border)]" />
@@ -115,7 +147,9 @@ const AboutPage = async () => {
             </li>
             <li className="flex flex-col tablet:flex-row tablet:justify-between gap-1 tablet:gap-4">
               <div className="column">
-                <span className="font-bold text-[var(--color-gray-bold)]">운중고등학교</span>
+                <span className="text-lg font-bold text-[var(--color-gray-bold)]">
+                  운중고등학교
+                </span>
                 <span className="text-[var(--color-gray-mid)]">자연과학계열</span>
               </div>
               <span className="text-[var(--color-gray-mid)] font-mono text-sm">
@@ -460,16 +494,64 @@ const AboutPage = async () => {
           </ul>
         </section>
 
-        {/* License */}
+        {/* Certificate */}
         <section className="column gap-6">
-          <h3 className="h3 text-[var(--color-gray-light)]">License</h3>
+          <h3 className="h3 text-[var(--color-gray-light)]">Certificate</h3>
           <ul className="column gap-6">
             <li className="flex flex-col tablet:flex-row tablet:justify-between gap-1 tablet:gap-4">
               <div className="column">
-                <span className="font-bold text-[var(--color-gray-bold)]">자격증 명칭</span>
-                <span className="text-[var(--color-gray-mid)]">발급기관</span>
+                <span className="text-lg font-bold text-[var(--color-gray-bold)]">
+                  Japanese Language Proficiency Test N3
+                </span>
+                <span className="text-[var(--color-gray-mid)]">독립행정법인 일본국제교류기금</span>
               </div>
-              <span className="text-[var(--color-gray-mid)] font-mono text-sm">YYYY.MM.DD</span>
+              <span className="text-[var(--color-gray-mid)] font-mono text-sm">2023.08</span>
+            </li>
+            <li className="flex flex-col tablet:flex-row tablet:justify-between gap-1 tablet:gap-4">
+              <div className="column">
+                <span className="text-lg font-bold text-[var(--color-gray-bold)]">
+                  워드프로세서
+                </span>
+                <span className="text-[var(--color-gray-mid)]">대한상공회의소</span>
+              </div>
+              <span className="text-[var(--color-gray-mid)] font-mono text-sm">2021.12</span>
+            </li>
+            <li className="flex flex-col tablet:flex-row tablet:justify-between gap-1 tablet:gap-4">
+              <div className="column">
+                <span className="text-lg font-bold text-[var(--color-gray-bold)]">
+                  ITQ OA Master
+                </span>
+                <div className="flex items-center gap-2 text-[var(--color-gray-mid)]">
+                  <span>한국생산성본부</span>
+                  <span className="w-[1px] h-3 bg-[var(--color-border)]" />
+                  <span>Excel, PowerPoint, 인터넷</span>
+                </div>
+              </div>
+              <span className="text-[var(--color-gray-mid)] font-mono text-sm">2021.12</span>
+            </li>
+            <li className="flex flex-col tablet:flex-row tablet:justify-between gap-1 tablet:gap-4">
+              <div className="column">
+                <span className="text-lg font-bold text-[var(--color-gray-bold)]">
+                  Microsoft Office Specialist 2016 Master
+                </span>
+                <div className="flex items-center gap-2 text-[var(--color-gray-mid)]">
+                  <span>Microsoft</span>
+                  <span className="w-[1px] h-3 bg-[var(--color-border)]" />
+                  <span>Word, Excel, PowerPoint, Outlook</span>
+                </div>
+              </div>
+              <span className="text-[var(--color-gray-mid)] font-mono text-sm">2021.11</span>
+            </li>
+            <li className="flex flex-col tablet:flex-row tablet:justify-between gap-1 tablet:gap-4">
+              <div className="column">
+                <span className="text-lg font-bold text-[var(--color-gray-bold)]">
+                  자동차 운전면허증 (2종보통)
+                </span>
+                <span className="text-[var(--color-gray-mid)]">
+                  서울특별시경찰청 (구. 서울지방경찰청)
+                </span>
+              </div>
+              <span className="text-[var(--color-gray-mid)] font-mono text-sm">2020.01</span>
             </li>
           </ul>
         </section>

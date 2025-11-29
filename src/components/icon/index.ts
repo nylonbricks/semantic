@@ -9,3 +9,4 @@ export * from './components/semantic/PhoneIcon';
 export * from './components/semantic/MailIcon';
 export * from './components/semantic/CalendarIcon';
 export * from './components/semantic/LocationIcon';
+export * from './components/semantic/DownloadIcon';
