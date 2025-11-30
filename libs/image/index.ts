@@ -162,7 +162,7 @@ export const resolveR2Path = (
   }
 
   const cleanPath = imagePath.startsWith('./') ? imagePath.slice(2) : imagePath;
-  return `https://r2.stile.im/${contentType}/${r2Folder}/${cleanPath}`;
+  return `https://img.stile.im/${contentType}/${r2Folder}/${cleanPath}`;
 };
 
 export const createBlurMap = async (mdxFilePath: string, images: string[]): Promise<BlurMap> => {

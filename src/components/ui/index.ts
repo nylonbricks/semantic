@@ -5,3 +5,4 @@ export * from './post-list';
 export * from './pagination';
 export * from './relative-time';
 export * from './toast';
+export * from './file-download';

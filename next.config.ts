@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'r2.stile.im',
+        hostname: 'img.stile.im',
       },
     ],
   },

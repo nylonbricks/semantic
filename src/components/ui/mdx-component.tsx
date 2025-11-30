@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import { ComponentProps, useEffect, useState } from 'react';
 
+import { FileDownload } from './file-download';
+
 const DownloadButton = ({
   children,
   href,
@@ -172,6 +174,7 @@ export const MdxComponent = ({ code, blurDataURLs = {} }: MdxComponentProps) => 
     DownloadButton: (props: ComponentProps<'a'> & { type?: 'default' | 'pdf' }) => (
       <DownloadButton {...props} />
     ),
+    FileDownload: (props: ComponentProps<typeof FileDownload>) => <FileDownload {...props} />,
     img: ({
       src,
       alt,

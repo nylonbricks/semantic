@@ -59,7 +59,7 @@ const AboutPage = async () => {
 
                 {/* Right: Contact Info */}
                 <div className="flex flex-col items-center tablet:items-end justify-center h-full gap-4">
-                  <div className="flex flex-col items-center tablet:items-end gap-1">
+                  <div className="flex flex-col items-center tablet:items-end gap-2">
                     <p
                       className="flex items-center gap-1.5 text-base"
                       style={{ color: PROFILE.contentTextColor }}
