@@ -162,26 +162,69 @@ const AboutPage = async () => {
         {/* Tools & Skills */}
         <section className="column gap-6">
           <h3 className="h3 text-[var(--color-gray-light)]">Tools & Skills</h3>
-          <div className="flex flex-wrap gap-2">
-            {[
-              'Figma',
-              'Sketch',
-              'Adobe XD',
-              'Photoshop',
-              'Illustrator',
-              'Jira',
-              'Notion',
-              'Slack',
-              'HTML/CSS',
-              'React',
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="px-3 py-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-mid)] text-sm font-medium"
-              >
-                {skill}
+          <div className="column gap-6">
+            {/* Professional Level */}
+            <div className="column gap-3">
+              <span className="text-sm font-medium text-[var(--color-gray-mid)]">
+                능숙하게 활용
               </span>
-            ))}
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { name: 'Figma', icon: '🎨' },
+                  { name: 'Notion', icon: '📝' },
+                  { name: 'Slack', icon: '💬' },
+                ].map((skill) => (
+                  <span
+                    key={skill.name}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors"
+                  >
+                    <span className="text-base">{skill.icon}</span>
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Proficient Level */}
+            <div className="column gap-3">
+              <span className="text-sm font-medium text-[var(--color-gray-mid)]">활용 가능</span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { name: 'Sketch', icon: '💎' },
+                  { name: 'Photoshop', icon: '🖼️' },
+                  { name: 'Jira', icon: '📊' },
+                  { name: 'HTML/CSS', icon: '💻' },
+                ].map((skill) => (
+                  <span
+                    key={skill.name}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors"
+                  >
+                    <span className="text-base">{skill.icon}</span>
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Basic Level */}
+            <div className="column gap-3">
+              <span className="text-sm font-medium text-[var(--color-gray-mid)]">기본 이해</span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { name: 'Adobe XD', icon: '🎯' },
+                  { name: 'Illustrator', icon: '✏️' },
+                  { name: 'React', icon: '⚛️' },
+                ].map((skill) => (
+                  <span
+                    key={skill.name}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors"
+                  >
+                    <span className="text-base">{skill.icon}</span>
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
