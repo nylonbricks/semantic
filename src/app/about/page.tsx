@@ -166,13 +166,13 @@ const AboutPage = async () => {
             {/* Professional Level */}
             <div className="column gap-3">
               <span className="text-sm font-medium text-[var(--color-gray-mid)]">
-                능숙하게 활용
+                능숙하게 활용할 수 있어요
               </span>
               <div className="flex flex-wrap gap-2">
+                {/* Design tools without certification */}
                 {[
                   { name: 'Figma', icon: '🎨' },
-                  { name: 'Notion', icon: '📝' },
-                  { name: 'Slack', icon: '💬' },
+                  { name: 'Sketch', icon: '💎' },
                 ].map((skill) => (
                   <span
                     key={skill.name}
@@ -182,18 +182,206 @@ const AboutPage = async () => {
                     {skill.name}
                   </span>
                 ))}
+                {/* Notion */}
+                <span className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors">
+                  <span className="text-base">📝</span>
+                  Notion
+                </span>
+                {/* LLM 활용 */}
+                <span className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors">
+                  <span className="text-base">🤖</span>
+                  LLM 활용
+                </span>
+                {/* Slack with Toss verification */}
+                <span className="relative inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors cursor-help [&:hover_.tooltip]:opacity-100">
+                  <span className="text-base"></span>
+                  Slack
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-blue-500">
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <div className="tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-xs rounded-lg opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                    <div className="flex flex-col gap-1">
+                      <div className="font-semibold">비바리퍼블리카(토스) 근무</div>
+                      <div className="text-gray-300">Facepay Onboarding Assistant</div>
+                      <div className="text-gray-400 text-[11px]">2025.07 - 2025.08</div>
+                    </div>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-[6px] border-transparent border-t-gray-900" />
+                  </div>
+                </span>
+                {/* 한글 with certification badge */}
+                <span className="relative inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors cursor-help [&:hover_.tooltip]:opacity-100">
+                  <span className="text-base">📄</span>
+                  한글
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-blue-500">
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <div className="tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-xs rounded-lg opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                    <div className="flex flex-col gap-1">
+                      <div className="font-semibold">워드프로세서 자격증 취득</div>
+                      <div className="text-gray-300">대한상공회의소</div>
+                      <div className="text-gray-400 text-[11px]">2021.12</div>
+                    </div>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-[6px] border-transparent border-t-gray-900" />
+                  </div>
+                </span>
+                {/* Word with MOS certification */}
+                <span className="relative inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors cursor-help [&:hover_.tooltip]:opacity-100">
+                  <span className="text-base">📘</span>
+                  Word
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-blue-500">
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <div className="tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-xs rounded-lg opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                    <div className="flex flex-col gap-1">
+                      <div className="font-semibold">MOS 2016 Master 자격증 취득</div>
+                      <div className="text-gray-300">Microsoft</div>
+                      <div className="text-gray-400 text-[11px]">2021.11</div>
+                    </div>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-[6px] border-transparent border-t-gray-900" />
+                  </div>
+                </span>
+                {/* Excel with both certifications */}
+                <span className="relative inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors cursor-help [&:hover_.tooltip]:opacity-100">
+                  <span className="text-base">📊</span>
+                  Excel
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-blue-500">
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <div className="tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-xs rounded-lg opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                    <div className="flex flex-col gap-2.5">
+                      <div className="flex flex-col gap-1">
+                        <div className="font-semibold">ITQ OA Master 자격증 취득</div>
+                        <div className="text-gray-300">한국생산성본부</div>
+                        <div className="text-gray-400 text-[11px]">2021.12</div>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <div className="font-semibold">MOS 2016 Master 자격증 취득</div>
+                        <div className="text-gray-300">Microsoft</div>
+                        <div className="text-gray-400 text-[11px]">2021.11</div>
+                      </div>
+                    </div>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-[6px] border-transparent border-t-gray-900" />
+                  </div>
+                </span>
+                {/* PowerPoint with both certifications */}
+                <span className="relative inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors cursor-help [&:hover_.tooltip]:opacity-100">
+                  <span className="text-base">📽️</span>
+                  PowerPoint
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-blue-500">
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <div className="tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-xs rounded-lg opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                    <div className="flex flex-col gap-2.5">
+                      <div className="flex flex-col gap-1">
+                        <div className="font-semibold">ITQ OA Master 자격증 취득</div>
+                        <div className="text-gray-300">한국생산성본부</div>
+                        <div className="text-gray-400 text-[11px]">2021.12</div>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <div className="font-semibold">MOS 2016 Master 자격증 취득</div>
+                        <div className="text-gray-300">Microsoft</div>
+                        <div className="text-gray-400 text-[11px]">2021.11</div>
+                      </div>
+                    </div>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-[6px] border-transparent border-t-gray-900" />
+                  </div>
+                </span>
+                {/* Outlook with MOS certification */}
+                <span className="relative inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background02)] text-[var(--color-gray-bold)] text-sm font-medium hover:bg-[var(--color-background03)] transition-colors cursor-help [&:hover_.tooltip]:opacity-100">
+                  <span className="text-base">📧</span>
+                  Outlook
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-blue-500">
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <div className="tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-4 py-3 bg-gray-900 text-white text-xs rounded-lg opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-xl">
+                    <div className="flex flex-col gap-1">
+                      <div className="font-semibold">MOS 2016 Master 자격증 취득</div>
+                      <div className="text-gray-300">Microsoft</div>
+                      <div className="text-gray-400 text-[11px]">2021.11</div>
+                    </div>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-[6px] border-transparent border-t-gray-900" />
+                  </div>
+                </span>
               </div>
             </div>
 
             {/* Proficient Level */}
             <div className="column gap-3">
-              <span className="text-sm font-medium text-[var(--color-gray-mid)]">활용 가능</span>
+              <span className="text-sm font-medium text-[var(--color-gray-mid)]">
+                상황에 맞게 활용할 수 있어요
+              </span>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { name: 'Sketch', icon: '💎' },
-                  { name: 'Photoshop', icon: '🖼️' },
-                  { name: 'Jira', icon: '📊' },
                   { name: 'HTML/CSS', icon: '💻' },
+                  { name: 'Photoshop', icon: '🖼️' },
+                  { name: 'Illustrator', icon: '✏️' },
+                  { name: 'AI Code Assistant', icon: '🧠' },
                 ].map((skill) => (
                   <span
                     key={skill.name}
@@ -208,12 +396,17 @@ const AboutPage = async () => {
 
             {/* Basic Level */}
             <div className="column gap-3">
-              <span className="text-sm font-medium text-[var(--color-gray-mid)]">기본 이해</span>
+              <span className="text-sm font-medium text-[var(--color-gray-mid)]">
+                기본적인 개념을 이해하고 있어요
+              </span>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { name: 'Adobe XD', icon: '🎯' },
-                  { name: 'Illustrator', icon: '✏️' },
-                  { name: 'React', icon: '⚛️' },
+                  { name: 'Git', icon: '🌿' },
+                  { name: 'SCSS', icon: '🎨' },
+                  { name: 'Zeplin', icon: '🔍' },
+                  { name: 'Abstract', icon: '🔷' },
+                  { name: 'Premiere Pro', icon: '🎬' },
+                  { name: 'After Effects', icon: '✨' },
                 ].map((skill) => (
                   <span
                     key={skill.name}
