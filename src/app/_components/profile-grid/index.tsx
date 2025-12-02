@@ -1,9 +1,10 @@
 import Image from 'next/image';
 
 import { createBlur } from '@libs/image';
-import { METADATA, PLAYLIST, PROFILE } from '@semantic/constants';
+import { METADATA, PROFILE } from '@semantic/constants';
 
 import Card from './card';
+import { ToolsSkillsCard } from './tools-skills-card';
 
 export const ProfileGrid = async () => {
   const blurDataURL = await createBlur(PROFILE.profileImage);
@@ -73,21 +74,10 @@ export const ProfileGrid = async () => {
       </div>
 
       <div className="column w-full">
-        <h3 id="playlist-heading" className="h3 text-[var(--color-gray-light)]">
-          Playlist
+        <h3 id="tools-skills-heading" className="h3 text-[var(--color-gray-light)]">
+          Tools & Skills
         </h3>
-        <Card.Root style={{ backgroundColor: '#F8F8FA' }}>
-          <iframe
-            title={`${METADATA.AUTHOR.NAME}'s embedded music playlist`}
-            aria-label={`${METADATA.AUTHOR.NAME}'s embedded music playlist`}
-            className="w-full h-full rounded-[0.875rem] overflow-hidden"
-            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-            frameBorder="0"
-            height="11.375rem"
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-            src={PLAYLIST}
-          />
-        </Card.Root>
+        <ToolsSkillsCard />
       </div>
     </section>
   );
