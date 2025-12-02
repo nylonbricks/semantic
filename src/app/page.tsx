@@ -7,6 +7,7 @@ import { ProjectList } from '@semantic/components/project/project-list';
 import { PostGrid } from '@semantic/components/ui';
 import { ROUTES } from '@semantic/constants';
 
+import { HeroSection } from './_components/hero-section';
 import { ProfileGrid } from './_components/profile-grid';
 
 const getSortedPosts = (posts: Post[]) => {
@@ -32,7 +33,10 @@ const HomePage = () => {
 
   return (
     <>
-      <ProfileGrid />
+      <HeroSection />
+      <div className="pt-[4.375rem]">
+        <ProfileGrid />
+      </div>
 
       <section className="column pt-[4.375rem] gap-[1.875rem]" aria-labelledby="projects-heading">
         <div className="row-between">
