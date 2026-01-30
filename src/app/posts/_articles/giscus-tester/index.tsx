@@ -28,7 +28,7 @@ export const GiscusTester = () => {
   const handleNext = useCallback(() => setStep((s) => s + 1), []);
 
   return (
-    <div className="flex flex-col bg-[var(--color-toggle)] rounded-lg border border-[var(--color-border)] overflow-hidden">
+    <div className="mt-6 flex flex-col bg-[var(--color-toggle)] rounded-lg border border-[var(--color-border)] overflow-hidden">
       {step === 0 && (
         <>
           <div className="p-[1.25rem]">
