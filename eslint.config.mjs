@@ -4,5 +4,5 @@ import { config } from '@hakui/eslint-config/next-js';
 export default [
   ...config,
   { rules: { 'react/prop-types': 'off' }, },
-  { ignores: ['.next/**', '.contentlayer/**'], },
+  { ignores: ['.next/**'], },
 ];
