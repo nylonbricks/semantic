@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { codeToHtml, createCssVariablesTheme } from 'shiki';
 import { twMerge } from 'tailwind-merge';
 
@@ -126,6 +126,40 @@ const HR = (props: ComponentProps<'hr'>) => (
   <hr className="mx-auto my-12 w-24 border-[var(--color-border)]" {...props} />
 );
 
+type CalloutType = 'note' | 'tip' | 'warning' | 'important';
+
+type CalloutProps = {
+  type?: CalloutType;
+  title?: string;
+  children: ReactNode;
+};
+
+const CALLOUT_STYLES: Record<CalloutType, { label: string; accent: string }> = {
+  note: { label: 'Note', accent: 'text-[var(--color-gray-bold)]' },
+  tip: { label: 'Tip', accent: 'text-[var(--color-gray-bold)]' },
+  warning: { label: 'Warning', accent: 'text-[var(--color-gray-bold)]' },
+  important: { label: 'Important', accent: 'text-[var(--color-gray-bold)]' },
+};
+
+const Callout = ({ type = 'note', title, children }: CalloutProps) => {
+  const { label, accent } = CALLOUT_STYLES[type];
+
+  return (
+    <aside
+      className={twMerge(
+        'mt-6 column gap-2 p-4 border border-[var(--color-border)] rounded-[0.875rem] bg-[var(--color-background02)]',
+        'text-[var(--color-gray-accent)]',
+        '[&_p]:mt-2 [&_p:first-child]:mt-0',
+        '[&_ul]:mt-2 [&_ol]:mt-2',
+      )}
+      data-callout={type}
+    >
+      <p className={twMerge('h6 font-mono font-medium', accent)}>{title ?? label}</p>
+      <div className="column gap-2">{children}</div>
+    </aside>
+  );
+};
+
 export const components = {
   h1: H1,
   h2: H2,
@@ -141,6 +175,7 @@ export const components = {
   code: Code,
   img: Img,
   hr: HR,
+  Callout,
   Image,
   GiscusTester,
 };

@@ -33,8 +33,9 @@ Next, let’s connect `Giscus` to your GitHub Discussions board.
 ### ① Install the `Giscus` App
 First, install the <a href="https://github.com/apps/giscus" target="_blank" rel="noopener noreferrer">Giscus GitHub App</a> and grant it access to the repository where comment discussions will be stored.
 
-> [!WARNING]
-> This repository must be{" "}`public` for comments to be visible.
+<Callout type="warning" title="Warning">
+  This repository must be <code>public</code> for comments to be visible.
+</Callout>
 
 We recommend using your forked `semantic` repository as the comment store — this keeps your blog and discussion threads in one place, which improves cohesion and maintainability.
 
@@ -54,5 +55,10 @@ Once the setup is complete, you can enter your repository path below to verify:
 ## Done!
 If you’ve updated the `giscus.ts` file using the tester above, make sure everything’s working by adding `comments: true` to the frontmatter of your Markdown post.
 
-> [!IMPORTANT]
-> Need help? Open an{" "}<a href="https://github.com/nylon-bricks/semantic/issues" target="_blank" rel="noopener noreferrer">issue</a> and we'll be happy to assist you.
+<Callout type="important" title="Important">
+  Need help? Open an{' '}
+  <a href="https://github.com/nylon-bricks/semantic/issues" target="_blank" rel="noopener noreferrer">
+    issue
+  </a>{' '}
+  and we'll be happy to assist you.
+</Callout>
