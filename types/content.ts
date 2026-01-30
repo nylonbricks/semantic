@@ -16,7 +16,3 @@ export interface Post extends PostMetadata {
   slug: string;
   coverImageBlur: BlurData;
 }
-
-export interface Page {
-  slug: string;
-}

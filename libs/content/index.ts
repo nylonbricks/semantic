@@ -1,13 +1,12 @@
-import { promises as fs } from 'node:fs';
+import { readdir } from 'node:fs/promises';
 import path from 'node:path';
 
 import type { Post, PostMetadata } from '@/types/content';
 
 import { createBlurData } from '../image';
 
-const MDX_EXTENSION_REGEX = /\.mdx$/;
-
-const POSTS_ARTICLES_DIR = path.join(process.cwd(), 'src', 'app', 'posts', '_articles');
+const MDX_EXTENSION = '.mdx';
+const POSTS_DIR = path.join(process.cwd(), 'src', 'app', 'posts', '_articles');
 const CONTENT_DIR = path.join(process.cwd(), 'content');
 
 type PostModule = {
@@ -15,18 +14,18 @@ type PostModule = {
   metadata?: PostMetadata;
 };
 
-const toSystemContentPath = (webPath: string) => {
+const toContentFsPath = (webPath: string) => {
   if (!webPath.startsWith('/content/')) {
     throw new Error(`Unsupported content webPath: ${webPath}`);
   }
   return path.join(CONTENT_DIR, webPath.replace(/^\/content\//, ''));
 };
 
-const createPostFromMetadata = async (slug: string, metadata: PostMetadata): Promise<Post> => {
+const buildPost = async (slug: string, metadata: PostMetadata): Promise<Post> => {
   let coverImageBlur = { blur: '', ratio: 0 };
 
   try {
-    coverImageBlur = await createBlurData(toSystemContentPath(metadata.coverImage));
+    coverImageBlur = await createBlurData(toContentFsPath(metadata.coverImage));
   } catch (error) {
     console.error(`Failed to create cover blur: ${slug}`, error);
   }
@@ -40,19 +39,19 @@ const createPostFromMetadata = async (slug: string, metadata: PostMetadata): Pro
 };
 
 export const getAllPosts = async (): Promise<Post[]> => {
-  const articles = await fs.readdir(POSTS_ARTICLES_DIR);
+  const entries = await readdir(POSTS_DIR);
 
   const items: Post[] = [];
-  for (const article of articles) {
-    if (!article.endsWith('.mdx')) continue;
+  for (const filename of entries) {
+    if (!filename.endsWith(MDX_EXTENSION)) continue;
 
-    const postModule = (await import(`@semantic/app/posts/_articles/${article}`)) as PostModule;
+    const postModule = (await import(`@semantic/app/posts/_articles/${filename}`)) as PostModule;
     if (!postModule.metadata) {
-      throw new Error(`Missing \`metadata\` in ${article}`);
+      throw new Error(`Missing \`metadata\` in ${filename}`);
     }
 
-    const slug = article.replace(MDX_EXTENSION_REGEX, '');
-    items.push(await createPostFromMetadata(slug, postModule.metadata));
+    const slug = filename.slice(0, -MDX_EXTENSION.length);
+    items.push(await buildPost(slug, postModule.metadata));
   }
 
   items.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
@@ -67,7 +66,7 @@ export const getPostBySlug = async (slug: string): Promise<Post> => {
       throw new Error(`Missing \`metadata\` in ${slug}.mdx`);
     }
 
-    return await createPostFromMetadata(slug, postModule.metadata);
+    return await buildPost(slug, postModule.metadata);
   } catch (error) {
     console.error(`Failed to load post: ${slug}`, error);
     throw new Error(`Post not found: ${slug}`);
