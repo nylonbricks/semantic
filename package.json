@@ -19,7 +19,6 @@
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.19",
     "gray-matter": "^4.0.3",
-    "motion": "^12.29.2",
     "next": "^16.1.6",
     "next-themes": "^0.4.6",
     "react": "^19.2.4",
