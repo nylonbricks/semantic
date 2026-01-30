@@ -1,10 +1,12 @@
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
-import { allPosts, type Post } from '@contentlayer/generated';
+import { getAllPosts } from '@libs/content';
 import { PlusIcon } from '@semantic/components/icon';
 import { PostGrid } from '@semantic/components/ui';
 import { ROUTES } from '@semantic/constants';
+
+import type { Post } from '@/types/content';
 
 import { ProfileGrid } from './_components/profile-grid';
 
@@ -14,7 +16,8 @@ const getSortedPosts = (posts: Post[]) => {
     .slice(0, 2);
 };
 
-const HomePage = () => {
+const HomePage = async () => {
+  const allPosts = await getAllPosts();
   const posts: Post[] = getSortedPosts(allPosts);
 
   return (

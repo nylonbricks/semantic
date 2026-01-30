@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { GiscusCodeBlock } from './giscus-codeblock';

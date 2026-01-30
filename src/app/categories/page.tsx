@@ -1,11 +1,12 @@
 import { type Metadata } from 'next';
 import Link from 'next/link';
 
-import { allPosts } from '@contentlayer/generated';
+import { getAllPosts } from '@libs/content';
 import { ROUTES } from '@semantic/constants';
 import { generatePageMetadata, slugify } from '@semantic/utils';
 
-const CategoryListPage = () => {
+const CategoryListPage = async () => {
+  const allPosts = await getAllPosts();
   const categories = [...new Set(allPosts.map((post) => post.category))];
   const categoryCounts = categories.reduce(
     (acc, category) => {

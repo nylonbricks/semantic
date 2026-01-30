@@ -1,11 +1,12 @@
 import { type Metadata } from 'next';
 import Link from 'next/link';
 
-import { allPosts } from '@contentlayer/generated';
+import { getAllPosts } from '@libs/content';
 import { ROUTES } from '@semantic/constants';
 import { generatePageMetadata, slugify } from '@semantic/utils';
 
-const TagListPage = () => {
+const TagListPage = async () => {
+  const allPosts = await getAllPosts();
   const tags = [...new Set(allPosts.flatMap((post) => post.tags ?? []))];
 
   const tagCounts = tags.reduce(

@@ -1,8 +1,9 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import type { ComponentType } from 'react';
 
-import { allPosts, Post } from '@contentlayer/generated';
-import { Divider, MdxComponent } from '@semantic/components/ui';
+import { getAllPosts, getPostBySlug, type Post } from '@libs/content';
+import { Divider } from '@semantic/components/ui';
 import { Giscus } from '@semantic/components/ui/giscus';
 import { ROUTES, METADATA } from '@semantic/constants';
 import { generatePageMetadata } from '@semantic/utils';
@@ -18,9 +19,17 @@ type PostPageProps = {
 
 const PostPage = async ({ params }: PostPageProps) => {
   const { slug } = await params;
-  const post = allPosts.find((post) => post.slug === slug);
 
-  if (!post) notFound();
+  let MDXContent: ComponentType;
+  try {
+    const mod = await import(`../_articles/${slug}.mdx`);
+    MDXContent = mod.default;
+  } catch {
+    notFound();
+  }
+
+  const post = await getPostBySlug(slug);
+  const allPosts = await getAllPosts();
 
   return (
     <>
@@ -28,7 +37,7 @@ const PostPage = async ({ params }: PostPageProps) => {
 
       <article>
         <Header {...post} />
-        <MdxComponent code={post.body.code} blurDataURLs={post.blurMap} />
+        <MDXContent />
 
         {post.comments && <Giscus className="mt-[3.5rem]" />}
 
@@ -46,28 +55,33 @@ export default PostPage;
 
 export const generateMetadata = async ({ params }: PostPageProps): Promise<Metadata> => {
   const { slug } = await params;
-  const post = allPosts.find((post) => post.slug === slug);
 
-  if (!post) {
+  try {
+    const { metadata } = await import(`../_articles/${slug}.mdx`);
+    if (!metadata) {
+      return generatePageMetadata({});
+    }
+
+    return generatePageMetadata({
+      title: metadata.title,
+      description: metadata.subtitle,
+      path: `${ROUTES.POSTS}/${slug}`,
+      image: metadata.coverImage,
+      type: 'article',
+      openGraph: {
+        publishedTime: metadata.createdAt,
+        modifiedTime: metadata.modifiedAt,
+        authors: [METADATA.AUTHOR.NAME],
+        tags: metadata.tags,
+      },
+    });
+  } catch {
     return generatePageMetadata({});
   }
-
-  return generatePageMetadata({
-    title: post.title,
-    description: post.subtitle,
-    path: `${ROUTES.POSTS}/${post.slug}`,
-    image: post.coverImage,
-    type: 'article',
-    openGraph: {
-      publishedTime: post.createdAt,
-      modifiedTime: post.modifiedAt,
-      authors: [METADATA.AUTHOR.NAME],
-      tags: post.tags,
-    },
-  });
 };
 
 export async function generateStaticParams() {
+  const allPosts = await getAllPosts();
   return allPosts.map((post) => ({ slug: post.slug }));
 }
 
