@@ -1,7 +1,6 @@
-import dayjs from 'dayjs';
 import { type Metadata } from 'next';
 
-import { allPosts } from '@contentlayer/generated';
+import { getAllPosts } from '@libs/content';
 import { Pagination, PostList } from '@semantic/components/ui';
 import { POST, ROUTES } from '@semantic/constants';
 import { generatePageMetadata, slugify } from '@semantic/utils';
@@ -17,11 +16,10 @@ const CategoriesPage = async ({ params, searchParams }: CategoriesPageProps) => 
   const { page } = await searchParams;
   const currentPage = parseInt(page || '1', 10);
 
+  const allPosts = await getAllPosts();
   const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
 
-  const sortedPosts = categoryPosts.sort((a, b) =>
-    dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1,
-  );
+  const sortedPosts = categoryPosts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
 
   const start = (currentPage - 1) * POST.PER_PAGE;
   const end = start + POST.PER_PAGE;
@@ -48,7 +46,8 @@ const CategoriesPage = async ({ params, searchParams }: CategoriesPageProps) => 
 
 export default CategoriesPage;
 
-export const generateStaticParams = () => {
+export const generateStaticParams = async () => {
+  const allPosts = await getAllPosts();
   const categories = [...new Set(allPosts.map((post) => post.category))];
 
   return categories.flatMap((category) => {
@@ -70,6 +69,7 @@ export const generateMetadata = async ({
 
   const { page } = await searchParams;
   const current = parseInt(page || '1', 10);
+  const allPosts = await getAllPosts();
   const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
   const categoryName = categoryPosts[0]?.category ?? category;
 
