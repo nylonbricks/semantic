@@ -9,13 +9,28 @@ import { GiscusTester } from '@semantic/app/posts/_articles/giscus-tester';
 const cssVariablesTheme = createCssVariablesTheme({});
 
 const H1 = (props: ComponentProps<'h1'>) => (
-  <h1 className="mb-6 text-balance font-semibold text-xl" {...props} />
+  <h1
+    className="mb-6 text-balance font-semibold text-xl text-[var(--color-gray-accent)]"
+    {...props}
+  />
 );
 const H2 = (props: ComponentProps<'h2'>) => (
-  <h2 className="mt-12 mb-6 text-balance font-semibold text-lg" {...props} />
+  <h2
+    className="mt-12 mb-6 text-balance font-semibold text-lg text-[var(--color-gray-accent)]"
+    {...props}
+  />
 );
 const H3 = (props: ComponentProps<'h3'>) => (
-  <h3 className="mt-12 mb-6 text-balance font-semibold" {...props} />
+  <h3
+    className="mt-12 mb-6 text-balance font-semibold text-[var(--color-gray-accent)]"
+    {...props}
+  />
+);
+const H4 = (props: ComponentProps<'h4'>) => (
+  <h4
+    className="mt-12 mb-6 text-balance font-semibold text-base text-[var(--color-gray-accent)]"
+    {...props}
+  />
 );
 const UL = (props: ComponentProps<'ul'>) => (
   <ul className="mt-6 flex list-outside list-disc flex-col gap-2 pl-5" {...props} />
@@ -166,6 +181,7 @@ export const components = {
   h1: H1,
   h2: H2,
   h3: H3,
+  h4: H4,
   ul: UL,
   ol: OL,
   li: LI,
