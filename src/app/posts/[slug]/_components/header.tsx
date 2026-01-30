@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Post } from '@contentlayer/generated';
 import { RelativeTime } from '@semantic/components/ui';
 import { ROUTES } from '@semantic/constants';
 import { slugify } from '@semantic/utils';
+
+import type { Post } from '@/types/content';
 
 export const Header = ({
   coverImage,
