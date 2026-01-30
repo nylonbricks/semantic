@@ -123,18 +123,18 @@
 
   /* Callout styles (dark) */
   --callout-bg: rgba(255, 255, 255, 0.02);
-  --callout-border: rgba(255, 255, 255, 0.06);
+  --callout-border: rgba(255, 255, 255, 0.05);
   --callout-title: var(--color-gray-bold);
-  --callout-note-bg: rgba(56, 139, 253, 0.12);
-  --callout-note-border: rgba(56, 139, 253, 0.32);
+  --callout-note-bg: rgba(56, 139, 253, 0.08);
+  --callout-note-border: rgba(56, 139, 253, 0.26);
   --callout-note-title: #58a6ff;
-  --callout-tip-bg: rgba(63, 185, 80, 0.12);
-  --callout-tip-border: rgba(63, 185, 80, 0.32);
+  --callout-tip-bg: rgba(63, 185, 80, 0.08);
+  --callout-tip-border: rgba(63, 185, 80, 0.26);
   --callout-tip-title: #3fb950;
-  --callout-warning-bg: rgba(210, 153, 34, 0.14);
-  --callout-warning-border: rgba(210, 153, 34, 0.34);
+  --callout-warning-bg: rgba(210, 153, 34, 0.09);
+  --callout-warning-border: rgba(210, 153, 34, 0.28);
   --callout-warning-title: #d29922;
-  --callout-important-bg: rgba(163, 113, 247, 0.12);
-  --callout-important-border: rgba(163, 113, 247, 0.32);
+  --callout-important-bg: rgba(163, 113, 247, 0.08);
+  --callout-important-border: rgba(163, 113, 247, 0.26);
   --callout-important-title: #a371f7;
 }
