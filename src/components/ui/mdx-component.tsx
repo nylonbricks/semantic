@@ -172,7 +172,7 @@ const Callout = ({ type = 'note', title, children }: CalloutProps) => {
       <div className="h6 font-mono font-medium" data-callout-title>
         {title ?? label}
       </div>
-      <div className="column gap-2">{children}</div>
+      <div className="mt-2">{children}</div>
     </aside>
   );
 };

@@ -154,6 +154,10 @@
   [data-callout='important'] [data-callout-title] {
     color: var(--callout-important-title);
   }
+
+  [data-callout] > :not([data-callout-title]) > * + * {
+    margin-top: 8px;
+  }
 }
 
 @supports (view-transition-name: none) {
