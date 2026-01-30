@@ -16,7 +16,7 @@ type PostListProps = ComponentProps<'ul'> & {
 
 export const PostList = ({ posts, className, ...props }: PostListProps) => {
   return (
-    <ul className={twMerge('column list-none gap-[1.875rem]', className)} {...props} data-animate>
+    <ul className={twMerge('column list-none gap-[1.875rem]', className)} {...props}>
       {posts.map(
         ({ _id, slug, title, subtitle, coverImage, coverImageBlur, category, createdAt }) => (
           <li key={_id}>
