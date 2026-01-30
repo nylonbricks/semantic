@@ -6,6 +6,8 @@ import { twMerge } from 'tailwind-merge';
 
 import { GiscusTester } from '@semantic/app/posts/_articles/giscus-tester';
 
+import { LazyImage } from './lazy-image';
+
 const cssVariablesTheme = createCssVariablesTheme({});
 
 const H1 = (props: ComponentProps<'h1'>) => (
@@ -123,8 +125,7 @@ const Img = ({ src, alt, ...props }: ImgProps) => {
 
   if (src.startsWith('https://') || src.startsWith('/content/')) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
+      <LazyImage
         alt={alt ?? ''}
         className="h-auto max-w-full border border-[var(--color-border)] rounded-[0.875rem]"
         draggable={false}
