@@ -134,27 +134,29 @@ type CalloutProps = {
   children: ReactNode;
 };
 
-const CALLOUT_STYLES: Record<CalloutType, { label: string; accent: string }> = {
-  note: { label: 'Note', accent: 'text-[var(--color-gray-bold)]' },
-  tip: { label: 'Tip', accent: 'text-[var(--color-gray-bold)]' },
-  warning: { label: 'Warning', accent: 'text-[var(--color-gray-bold)]' },
-  important: { label: 'Important', accent: 'text-[var(--color-gray-bold)]' },
+const CALLOUT_LABEL: Record<CalloutType, string> = {
+  note: 'Note',
+  tip: 'Tip',
+  warning: 'Warning',
+  important: 'Important',
 };
 
 const Callout = ({ type = 'note', title, children }: CalloutProps) => {
-  const { label, accent } = CALLOUT_STYLES[type];
+  const label = CALLOUT_LABEL[type];
 
   return (
     <aside
       className={twMerge(
-        'mt-6 column gap-2 p-4 border border-[var(--color-border)] rounded-[0.875rem] bg-[var(--color-background02)]',
-        'text-[var(--color-gray-accent)]',
+        'mt-6 column gap-2 p-4 border rounded-[0.875rem]',
+        'bg-[var(--callout-bg)] border-[var(--callout-border)] text-[var(--color-gray-accent)]',
         '[&_p]:mt-2 [&_p:first-child]:mt-0',
         '[&_ul]:mt-2 [&_ol]:mt-2',
       )}
       data-callout={type}
     >
-      <p className={twMerge('h6 font-mono font-medium', accent)}>{title ?? label}</p>
+      <div className="h6 font-mono font-medium" data-callout-title>
+        {title ?? label}
+      </div>
       <div className="column gap-2">{children}</div>
     </aside>
   );
