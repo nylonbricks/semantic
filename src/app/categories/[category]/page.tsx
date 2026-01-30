@@ -10,11 +10,16 @@ type CategoriesPageProps = {
   searchParams: Promise<{ page: string }>;
 };
 
+const parsePageParam = (raw: string | undefined) => {
+  const page = Number.parseInt(raw ?? '1', 10);
+  return Number.isFinite(page) && page > 0 ? page : 1;
+};
+
 const CategoriesPage = async ({ params, searchParams }: CategoriesPageProps) => {
   const { category } = await params;
 
   const { page } = await searchParams;
-  const currentPage = parseInt(page || '1', 10);
+  const currentPage = parsePageParam(page);
 
   const allPosts = await getAllPosts();
   const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
@@ -68,7 +73,7 @@ export const generateMetadata = async ({
   const { category } = await params;
 
   const { page } = await searchParams;
-  const current = parseInt(page || '1', 10);
+  const current = parsePageParam(page);
   const allPosts = await getAllPosts();
   const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
   const categoryName = categoryPosts[0]?.category ?? category;

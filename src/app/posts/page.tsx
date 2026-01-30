@@ -9,14 +9,19 @@ type PostsPageProps = {
   searchParams: Promise<{ page: string }>;
 };
 
+const parsePageParam = (raw: string | undefined) => {
+  const page = Number.parseInt(raw ?? '1', 10);
+  return Number.isFinite(page) && page > 0 ? page : 1;
+};
+
 const PostsPage = async ({ searchParams }: PostsPageProps) => {
   const { page } = await searchParams;
-  const currentPage = parseInt(page || '1', 10);
+  const currentPage = parsePageParam(page);
   const start = (currentPage - 1) * POST.PER_PAGE;
   const end = start + POST.PER_PAGE;
 
   const allPosts = await getAllPosts();
-  const sortedPosts = allPosts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+  const sortedPosts = [...allPosts].sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
 
   const currentPosts = sortedPosts.slice(start, end);
 
@@ -48,7 +53,7 @@ export const generateStaticParams = async () => {
 
 export const generateMetadata = async ({ searchParams }: PostsPageProps): Promise<Metadata> => {
   const { page } = await searchParams;
-  const current = parseInt(page || '1', 10);
+  const current = parsePageParam(page);
 
   return generatePageMetadata({
     title: current === 1 ? 'Posts' : `Posts - Page ${current}`,
