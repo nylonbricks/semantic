@@ -12,7 +12,10 @@ import { NavigateMenu } from './navigate-menu';
 import { ThemeToggle } from './theme-toggle';
 
 export const Header = () => {
-  const [accordionOpen, setAccordionOpen] = useState<boolean>(false);
+  const [accordionOpen, setAccordionOpen] = useState(false);
+
+  const overlayClassName =
+    'fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)] transition-opacity duration-300';
 
   return (
     <>
@@ -20,8 +23,8 @@ export const Header = () => {
         <div
           className={
             accordionOpen
-              ? 'fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)] opacity-100 transition-opacity duration-300'
-              : 'fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)] opacity-0 pointer-events-none transition-opacity duration-300'
+              ? `${overlayClassName} opacity-100`
+              : `${overlayClassName} opacity-0 pointer-events-none`
           }
           onClick={() => setAccordionOpen(false)}
         />
@@ -43,7 +46,7 @@ export const Header = () => {
             >
               <button
                 className="center h-10 py-[0.6875rem] px-[0.9375rem] text-[var(--color-gray-mid)] font-mono font-medium text-[0.8125rem] leading-[1.125rem] border border-[var(--color-border)] rounded-[0.625rem] bg-[var(--color-toggle)] cursor-pointer"
-                onClick={() => setAccordionOpen(!accordionOpen)}
+                onClick={() => setAccordionOpen((open) => !open)}
                 aria-controls="menu-accordion-content"
                 aria-expanded={accordionOpen}
               >
