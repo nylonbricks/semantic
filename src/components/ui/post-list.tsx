@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import { RelativeTime } from '@semantic/components/ui/index';
 import { ROUTES } from '@semantic/constants';
 
 import type { Post } from '@/types/content';
+
+import { RelativeTime } from './relative-time';
 
 type PostListProps = ComponentProps<'ul'> & {
   className?: string;
