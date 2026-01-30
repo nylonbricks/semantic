@@ -2,7 +2,6 @@
 
 import * as Accordion from '@radix-ui/react-accordion';
 import dayjs from 'dayjs';
-import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -18,18 +17,14 @@ export const Header = () => {
   return (
     <>
       <Accordion.Root type="single" value={accordionOpen ? 'menu' : ''} collapsible>
-        <AnimatePresence>
-          {accordionOpen && (
-            <motion.div
-              className="fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setAccordionOpen(false)}
-            />
-          )}
-        </AnimatePresence>
+        <div
+          className={
+            accordionOpen
+              ? 'fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)] opacity-100 transition-opacity duration-300'
+              : 'fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)] opacity-0 pointer-events-none transition-opacity duration-300'
+          }
+          onClick={() => setAccordionOpen(false)}
+        />
 
         <header className="fixed flex top-0 left-0 w-full px-[var(--spacing-inline)] bg-[var(--color-background)] z-[var(--z-header)] tablet:hidden">
           <div className="row-between w-full max-w-[var(--app-width)] py-[0.8125rem] mx-auto">
@@ -55,7 +50,7 @@ export const Header = () => {
                 {accordionOpen ? '-' : 'menu'}
               </button>
               <Accordion.Content
-                className="fixed top-[4.1875rem] left-0 w-full px-[var(--spacing-inline)] bg-[var(--color-background)] overflow-hidden data-[state=open]:animate-[var(--animate-accordion-slide-down)] data-[state=closed]:animate-[var(--animate-accordion-slide-up)]"
+                className="fixed top-[4.1875rem] left-0 w-full px-[var(--spacing-inline)] bg-[var(--color-background)] overflow-hidden"
                 id="menu-accordion-content"
                 aria-labelledby="menu-accordion-item"
               >
