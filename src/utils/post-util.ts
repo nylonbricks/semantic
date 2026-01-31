@@ -3,8 +3,6 @@ import path from "node:path";
 
 import type { Post, PostCoverImage, PostMetadata } from "@/types/content";
 
-export type { Post, PostMetadata } from "@/types/content";
-
 const MDX_EXTENSION = ".mdx";
 const POSTS_DIR = path.join(process.cwd(), "src", "app", "posts", "_articles");
 

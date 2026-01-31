@@ -5,7 +5,6 @@ import { ROUTES } from "@semantic/constants/menu";
 import { METADATA } from "@semantic/constants/metadata";
 
 import type { Post } from "@/types/content";
-
 import { BackButton } from "./back-button";
 
 export const Footer = ({ slug, title, subtitle }: Post) => {
