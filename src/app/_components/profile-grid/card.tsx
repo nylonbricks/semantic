@@ -19,7 +19,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   return (
     <Component
       className={twMerge(
-        "relative mt-[1.875rem] h-[11.4375rem] w-full overflow-hidden rounded-[0.875rem] border border-[rgba(0,0,0,0.03)] shadow-[inset_0_-0.125rem_0.125rem_rgba(255,255,255,0.3),inset_0_0.125rem_0.125rem_rgba(255,255,255,0.3)]",
+        "ui-card relative mt-[1.875rem] h-[11.4375rem] w-full overflow-hidden",
         className
       )}
       ref={ref}

@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "./theme.css";
 @import "./utilities.css";
-@import "./blockquote.css";
-@import "./code-highlight.css";
 
 @layer base {
   body {
@@ -70,19 +68,6 @@
     left: 0;
     color: var(--color-gray-mid);
     font-size: var(--text-base);
-  }
-
-  [data-mdx-article] p > code {
-    padding-block: 3px;
-    padding-inline: 6px;
-    color: var(--color-gray-accent);
-    font-family: var(--font-mono);
-    font-size: var(--text-code);
-    font-weight: 500;
-    line-height: 1.8;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background-color: var(--color-toggle);
   }
 
   [data-mdx-article] a {
@@ -157,6 +142,28 @@
 
   [data-callout] > :not([data-callout-title]) > * + * {
     margin-top: 8px;
+  }
+
+  pre {
+    padding: 4px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xs);
+    background-color: var(--color-background02);
+    line-height: 1.25;
+    contain: paint;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    word-spacing: -0.15em;
+  }
+
+  code:not(pre code) {
+    padding: 1px 2px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xs);
+    background-color: var(--color-background02);
   }
 }
 

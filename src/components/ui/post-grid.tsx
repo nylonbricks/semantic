@@ -16,7 +16,7 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
   return (
     <div
       className={twMerge(
-        "grid w-full grid-cols-1 tablet:grid-cols-2 gap-[4.0625rem]",
+        "grid w-full grid-cols-1 tablet:grid-cols-2 gap-16",
         className
       )}
       {...props}
@@ -36,7 +36,7 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
               href={`/posts/${slug}`}
               key={_id}
             >
-              <div className="relative aspect-[1.8/1] w-full overflow-hidden rounded-[0.875rem] border border-[var(--color-border)]">
+              <div className="relative aspect-[1.8/1] w-full overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)]">
                 <Image
                   alt={`${title} Cover Image`}
                   blurDataURL={coverImageBlur.blur}
@@ -51,12 +51,12 @@ export const PostGrid = ({ posts, className, ...props }: PostGridProps) => {
                 />
               </div>
 
-              <h2 className="title post-subtitle mx-[-0.625rem] mt-[1rem] mb-[-0.125rem] line-clamp-2 flex overflow-hidden text-ellipsis rounded-[0.5rem] px-[0.625rem] py-[0.125rem] transition-colors duration-250 ease-in-out">
+              <h2 className="title post-subtitle mx-[-0.625rem] mt-[1rem] mb-[-0.125rem] line-clamp-2 flex overflow-hidden text-ellipsis rounded-[var(--radius-sm)] px-[0.625rem] py-[0.125rem] transition-colors duration-250 ease-in-out">
                 {title}
               </h2>
 
               <RelativeTime
-                className="description h4 mx-[-0.625rem] mt-[1rem] mb-[-0.125rem] w-fit rounded-[0.5rem] px-[0.625rem] py-[0.125rem] text-[var(--color-gray-light)] transition-colors duration-250 ease-in-out"
+                className="description h4 mx-[-0.625rem] mt-[1rem] mb-[-0.125rem] w-fit rounded-[var(--radius-sm)] px-[0.625rem] py-[0.125rem] text-[var(--color-gray-light)] transition-colors duration-250 ease-in-out"
                 time={createdAt}
               />
             </Link>

@@ -29,6 +29,15 @@
   --spacing-inline: 1.5rem;
   --spacing-sidebar: 13.125rem;
 
+  --radius-xs: 4px;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+
+  --shadow-inset-soft:
+    inset 0 -0.125rem 0.125rem rgba(255, 255, 255, 0.3),
+    inset 0 0.125rem 0.125rem rgba(255, 255, 255, 0.3);
+
   --font-mono: "Geist Mono", Pretendard, "Courier New", Courier, monospace;
   --font-sans:
     Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
@@ -75,6 +84,16 @@
   --color-toggle: #ffffff;
   --color-license: #b5b5c3;
 
+  --shiki-token-comment: #6a737d;
+  --shiki-token-punctuation: #6a737d;
+  --shiki-token-keyword: #d73a49;
+  --shiki-token-function: #6f42c1;
+  --shiki-token-string: #032f62;
+  --shiki-token-string-expression: #032f62;
+  --shiki-token-constant: #005cc5;
+  --shiki-token-link: #032f62;
+  --shiki-token-parameter: #e36209;
+
   --color-gradient-sidebar-divider: radial-gradient(
     circle,
     #d9dbe7 0%,
@@ -118,6 +137,16 @@
 
   --color-toggle: rgb(1, 1, 1);
   --color-license: #b2b2b2;
+
+  --shiki-token-comment: #8b949e;
+  --shiki-token-punctuation: #c9d1d9;
+  --shiki-token-keyword: #ff7b72;
+  --shiki-token-function: #d2a8ff;
+  --shiki-token-string: #a5d6ff;
+  --shiki-token-string-expression: #a5d6ff;
+  --shiki-token-constant: #79c0ff;
+  --shiki-token-link: #58a6ff;
+  --shiki-token-parameter: #ffa657;
 
   --color-gradient-sidebar-divider: radial-gradient(
     circle,
