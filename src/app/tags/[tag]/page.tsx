@@ -1,7 +1,6 @@
-import dayjs from 'dayjs';
 import { type Metadata } from 'next';
 
-import { allPosts } from '@contentlayer/generated';
+import { getAllPosts } from '@libs/content';
 import { Pagination, PostList } from '@semantic/components/ui';
 import { POST, ROUTES } from '@semantic/constants';
 import { generatePageMetadata, slugify } from '@semantic/utils';
@@ -11,16 +10,20 @@ type TagsPageProps = {
   searchParams: Promise<{ page: string }>;
 };
 
+const parsePageParam = (raw: string | undefined) => {
+  const page = Number.parseInt(raw ?? '1', 10);
+  return Number.isFinite(page) && page > 0 ? page : 1;
+};
+
 const TagsPage = async ({ params, searchParams }: TagsPageProps) => {
   const { tag } = await params;
   const { page } = await searchParams;
-  const currentPage = parseInt(page || '1', 10);
+  const currentPage = parsePageParam(page);
 
+  const allPosts = await getAllPosts();
   const tagPosts = allPosts.filter((post) => post.tags?.some((t) => slugify(t) === tag));
 
-  const sortedPosts = tagPosts.sort((a, b) =>
-    dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1,
-  );
+  const sortedPosts = tagPosts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
 
   const start = (currentPage - 1) * POST.PER_PAGE;
   const end = start + POST.PER_PAGE;
@@ -45,7 +48,8 @@ const TagsPage = async ({ params, searchParams }: TagsPageProps) => {
 
 export default TagsPage;
 
-export const generateStaticParams = () => {
+export const generateStaticParams = async () => {
+  const allPosts = await getAllPosts();
   const tags = [...new Set(allPosts.flatMap((post) => post.tags || []))];
 
   return tags.flatMap((tag) => {
@@ -65,8 +69,9 @@ export const generateMetadata = async ({
 }: TagsPageProps): Promise<Metadata> => {
   const { tag } = await params;
   const { page } = await searchParams;
-  const current = parseInt(page || '1', 10);
+  const current = parsePageParam(page);
 
+  const allPosts = await getAllPosts();
   const tagPosts = allPosts.filter((post) => post.tags?.some((t) => slugify(t) === tag));
 
   const tagName = tagPosts[0]?.tags?.find((t) => slugify(t) === tag) ?? tag;

@@ -7,20 +7,11 @@ export type BlurData = {
   ratio: number;
 };
 
-export type BlurMap = Record<string, BlurData>;
-
-export type MdxDocument = {
-  body: { raw: string; code: string };
-  _raw: { sourceFilePath: string };
-};
-
 export interface BlurOptions {
   width?: number;
   height?: number;
   blur?: number;
 }
-
-const MDX_IMAGE_REGEX = /!\[.*?]\((.*?)\)/g;
 const BLUR_SIZE = 128;
 const BLUR_STRENGTH = 5;
 
@@ -104,90 +95,4 @@ export const createBlurData = async (imagePath: string): Promise<BlurData> => {
     console.error(`Failed to create blur data for image: ${imagePath}`, error);
     throw new Error(`createBlurData failed: ${errorMessage}`);
   }
-};
-
-export const extractImages = (mdxContent: string): string[] => {
-  const images: string[] = [];
-  let match: RegExpExecArray | null;
-
-  while ((match = MDX_IMAGE_REGEX.exec(mdxContent))) {
-    const imagePath = match[1]?.trim();
-    if (imagePath) {
-      images.push(imagePath);
-    }
-  }
-
-  return images;
-};
-
-export const resolveSystemPath = (mdxFilePath: string, imagePath: string): string => {
-  if (isUrl(imagePath)) {
-    return imagePath;
-  }
-
-  const mdxDir = path.dirname(mdxFilePath).replace(/^content[\\/]/, '');
-  const cleanPath = imagePath.startsWith('./') ? imagePath.slice(2) : imagePath;
-
-  return path.join(process.cwd(), 'content', mdxDir, cleanPath);
-};
-
-export const resolveWebPath = (mdxFilePath: string, imagePath: string): string => {
-  if (isUrl(imagePath)) {
-    return imagePath;
-  }
-
-  const mdxDir = path.dirname(mdxFilePath).replace(/^content[\\/]/, '');
-  const cleanPath = imagePath.startsWith('./') ? imagePath.slice(2) : imagePath;
-
-  return `/content/${path.join(mdxDir, cleanPath).replace(/\\/g, '/')}`;
-};
-
-export const resolveAssetPath = (directory: string, assetPath: string): string => {
-  if (isUrl(assetPath)) {
-    return assetPath;
-  }
-
-  const cleanPath = assetPath.startsWith('./') ? assetPath.slice(2) : assetPath;
-  return `/content/${directory}/${cleanPath}`;
-};
-
-export const createBlurMap = async (mdxFilePath: string, images: string[]): Promise<BlurMap> => {
-  const entries = await Promise.all(
-    images.map(async (imagePath) => {
-      try {
-        const systemPath = resolveSystemPath(mdxFilePath, imagePath);
-        const blurData = await createBlurData(systemPath);
-        return [imagePath, blurData] as const;
-      } catch (error) {
-        console.error(`Failed to process image: ${imagePath}`, error);
-        return [imagePath, { blur: '', ratio: 0 }] as const;
-      }
-    }),
-  );
-
-  return Object.fromEntries(entries);
-};
-
-export const transformMdxImages = (document: MdxDocument) => {
-  const images = extractImages(document.body.raw);
-  let rawContent = document.body.raw;
-  let codeContent = document.body.code;
-
-  for (const imagePath of images) {
-    if (!isUrl(imagePath)) {
-      const webPath = resolveWebPath(document._raw.sourceFilePath, imagePath);
-      const escapedPath = imagePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-      const markdownRegex = new RegExp(`!\\[.*?\\]\\(${escapedPath}\\)`, 'g');
-      rawContent = rawContent.replace(markdownRegex, `![image](${webPath})`);
-
-      const jsxRegex = new RegExp(`src:\\s*["']${escapedPath}["']`, 'g');
-      codeContent = codeContent.replace(jsxRegex, `src:"${webPath}"`);
-    }
-  }
-
-  return {
-    raw: rawContent,
-    code: codeContent,
-  };
 };

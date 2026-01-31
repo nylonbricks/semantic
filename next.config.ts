@@ -1,7 +1,19 @@
+import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
-import { withContentlayer } from 'next-contentlayer2';
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: ['remarkGfm'],
+  },
+});
 
 const nextConfig: NextConfig = {
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  experimental: {
+    mdxRs: {
+      mdxType: 'gfm',
+    },
+  },
   images: {
     remotePatterns: [
       {
@@ -12,4 +24,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withContentlayer(nextConfig);
+export default withMDX(nextConfig);

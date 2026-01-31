@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Post } from '@contentlayer/generated';
 import { PostGrid } from '@semantic/components/ui';
+
+import type { Post } from '@/types/content';
 
 type RecommendProps = {
   posts: Post[];

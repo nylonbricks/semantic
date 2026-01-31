@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import { type Post } from '@contentlayer/generated';
-import { RelativeTime } from '@semantic/components/ui';
+import type { Post } from '@/types/content';
+
+import { RelativeTime } from './relative-time';
 
 type PostGridProps = ComponentProps<'div'> & {
   className?: string;

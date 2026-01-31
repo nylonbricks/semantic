@@ -1,28 +1,37 @@
-import fs from 'fs';
 import { NextRequest, NextResponse } from 'next/server';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
-interface Params {
-  path: string[];
-}
 
-export const GET = async (request: NextRequest, { params }: { params: Promise<Params> }) => {
-  const { path: pathSegments } = await params;
+const ERRORS = {
+  INVALID_STATE: {
+    status: 500,
+    message: 'Invalid server state.',
+  },
+  FILE_NOT_FOUND: {
+    status: 404,
+    message: 'File not found.',
+  },
+} as const;
 
-  if (!pathSegments || pathSegments.length === 0) {
-    return NextResponse.json({ error: 'Path parameter is missing.' }, { status: 400 });
-  }
+export const GET = async (
+  _request: NextRequest,
+  context: { params: Promise<{ path: string[] }> },
+) => {
+  const { path: pathParams } = await context.params;
 
   try {
-    const relativePath = pathSegments.join('/');
-    const filePath: string = path.join(process.cwd(), 'content', relativePath);
+    const filePath = path.join(process.cwd(), 'content', ...pathParams);
 
     if (!fs.existsSync(filePath)) {
-      return NextResponse.json({ error: 'File not found.' }, { status: 404 });
+      return NextResponse.json(
+        { error: ERRORS.FILE_NOT_FOUND.message },
+        { status: ERRORS.FILE_NOT_FOUND.status },
+      );
     }
 
     const fileContent = fs.readFileSync(filePath);
-    const mimeType: string = getMimeType(filePath);
+    const mimeType = getMimeType(filePath);
 
     return new NextResponse(fileContent, {
       headers: {
@@ -30,9 +39,12 @@ export const GET = async (request: NextRequest, { params }: { params: Promise<Pa
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: 'Invalid server state.' }, { status: 500 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      { error: ERRORS.INVALID_STATE.message },
+      { status: ERRORS.INVALID_STATE.status },
+    );
   }
 };
 

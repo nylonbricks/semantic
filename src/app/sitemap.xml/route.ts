@@ -1,14 +1,14 @@
 import type { MetadataRoute } from 'next';
 
-import { allPosts } from '@contentlayer/generated';
+import { getAllPosts } from '@libs/content';
 import { METADATA, POST, ROUTES } from '@semantic/constants';
 import { slugify } from '@semantic/utils';
 
 export const dynamic = 'force-static';
 export const revalidate = false;
 
-const generateSitemapUrls = (): MetadataRoute.Sitemap => {
-  const posts = allPosts;
+const generateSitemapUrls = async (): Promise<MetadataRoute.Sitemap> => {
+  const posts = await getAllPosts();
   const postsPageCount = Math.ceil(posts.length / POST.PER_PAGE);
 
   const categoryCountMap = posts.reduce<Record<string, number>>((map, { category }) => {
@@ -28,7 +28,7 @@ const generateSitemapUrls = (): MetadataRoute.Sitemap => {
   });
 
   const tagCountMap = posts.reduce<Record<string, number>>((map, { tags }) => {
-    tags?.forEach((tag) => {
+    tags?.forEach((tag: string) => {
       map[tag] = (map[tag] || 0) + 1;
     });
     return map;
@@ -90,7 +90,7 @@ ${urls
 </urlset>`;
 
 export const GET = async (): Promise<Response> => {
-  const urls = generateSitemapUrls();
+  const urls = await generateSitemapUrls();
   const xml = sitemapToXml(urls);
   return new Response(xml, {
     headers: { 'Content-Type': 'text/xml; charset=utf-8' },

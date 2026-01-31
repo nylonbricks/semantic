@@ -1,24 +1,22 @@
----
-title: "Getting Started with `semantic`"
-subtitle: "Make your posts stand out with the simplicity of `semantic`."
-createdAt: "2025-04-23T06:54:47.000Z"
-modifiedAt: "2025-04-23T07:55:11.000Z"
-coverImage: "./cover.webp"
-category: "Build"
-tags:
-  - "semantic"
-  - "Blog"
-  - "Next.js"
-comments: true
----
+export const metadata = {
+  title: "Getting Started with `semantic`",
+  subtitle: "Make your posts stand out with the simplicity of `semantic`.",
+  createdAt: "2025-04-23T06:54:47.000Z",
+  modifiedAt: "2025-04-23T07:55:11.000Z",
+  coverImage: "/content/posts/getting-started-with-semantic/cover.webp",
+  category: "Build",
+  tags: ["semantic", "Blog", "Next.js"],
+  comments: true,
+};
 
 Welcome to `semantic` — a clean, modern blog starter built with `Next.js` and `Static Site Generation (SSG)`. Create a content-focused blog that looks great and performs even better.
 
 ## ① Fork the Repository
 Visit the <a href="https://github.com/nylon-bricks/semantic" target="_blank" rel="noopener noreferrer">GitHub repository</a> and fork the project to create your own version of `semantic`.
 
-> [!TIP]
-> If you find the project helpful, remember to ⭐ the repo ☺️
+<Callout type="tip" title="Tip">
+  If you find the project helpful, remember to ⭐ the repo.
+</Callout>
 
 ## ② Clone the Repository
 Clone the forked repository to your local machine:
@@ -44,19 +42,41 @@ These files control how your site looks and feels — make them your own.
 ### Create a Post
 To write a new blog post, add a folder (your post's `slug`) inside `/content/posts`, then create an `.mdx` file with the **required frontmatter**.
 
-> [!NOTE]
-> The following frontmatter fields are available for posts:
->
-> <p><strong>(Fields marked with <code>*</code> are required)</strong></p>
-> <br />
-> - <p><code>title*</code>: Main title of the post</p>
-> - <p><code>subtitle*</code>: Short description or subtitle</p>
-> - <p><code>createdAt*</code>: Original publication date</p>
-> - <p><code>modifiedAt*</code>: Last updated date</p>
-> - <p><code>coverImage*</code>: Top cover image (supports relative or absolute paths)</p>
-> - <p><code>category*</code>: Single category assigned to the post</p>
-> - <p><code>tags</code>: One or more keywords for filtering</p>
-> - <p><code>comments</code>: Enable comments via <a href="https://giscus.app/" target="_blank" rel="noopener noreferrer">Giscus</a> (default: <code>false</code>)</p>
+<Callout type="note" title="Note">
+  <p>
+    <strong>(Fields marked with <code>*</code> are required)</strong>
+  </p>
+  <ul>
+    <li>
+      <code>title*</code>: Main title of the post
+    </li>
+    <li>
+      <code>subtitle*</code>: Short description or subtitle
+    </li>
+    <li>
+      <code>createdAt*</code>: Original publication date
+    </li>
+    <li>
+      <code>modifiedAt*</code>: Last updated date
+    </li>
+    <li>
+      <code>coverImage*</code>: Top cover image (supports relative or absolute paths)
+    </li>
+    <li>
+      <code>category*</code>: Single category assigned to the post
+    </li>
+    <li>
+      <code>tags</code>: One or more keywords for filtering
+    </li>
+    <li>
+      <code>comments</code>: Enable comments via{' '}
+      <a href="https://giscus.app/" target="_blank" rel="noopener noreferrer">
+        Giscus
+      </a>{' '}
+      (default: <code>false</code>)
+    </li>
+  </ul>
+</Callout>
 
 To update the `/about` page, simply modify the `/content/pages/about.mdx` file.
 
@@ -81,5 +101,6 @@ This generates the output in the `out` directory — ready to be deployed.
 
 In the next post, we'll cover how to deploy your blog using `GitHub Pages`, with automatic builds and no local setup required.
 
-> [!IMPORTANT]
-> Need help? Open an{" "}<a href="https://github.com/nylon-bricks/semantic/issues" target="_blank" rel="noopener noreferrer">issue</a> and we'll be happy to assist you.
+<Callout type="important" title="Important">
+  Need help? Open an [issue](https://github.com/nylon-bricks/semantic/issues) and we'll be happy to assist you.
+</Callout>

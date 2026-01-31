@@ -1,8 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { useTheme } from 'next-themes';
-import { ComponentProps, useEffect, useRef, useState } from 'react';
+import { type ComponentProps, useEffect, useMemo, useRef, useState } from 'react';
 
 import { GISCUS } from '@semantic/constants';
 
@@ -10,13 +9,17 @@ type GiscusProps = ComponentProps<'section'>;
 
 export const Giscus = ({ ...props }: GiscusProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [mounted, setMounted] = useState<boolean>(false);
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme: appTheme } = useTheme();
 
-  const theme = appTheme === 'dark' ? 'noborder_gray' : 'noborder_light';
+  const theme = useMemo(
+    () => (appTheme === 'dark' ? 'noborder_gray' : 'noborder_light'),
+    [appTheme],
+  );
 
   useEffect(() => {
-    if (!ref.current) return;
+    const container = ref.current;
+    if (!container) return;
 
     const attributes = {
       src: 'https://giscus.app/client.js',
@@ -38,12 +41,14 @@ export const Giscus = ({ ...props }: GiscusProps) => {
     script.async = true;
 
     Object.entries(attributes).forEach(([key, value]) => script.setAttribute(key, value));
-    ref.current.appendChild(script);
+    container.appendChild(script);
 
     setMounted(true);
     return () => {
-      if (ref.current) ref.current.innerHTML = '';
+      container.innerHTML = '';
     };
+    // We intentionally mount the Giscus script once.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
