@@ -3,7 +3,7 @@ export const metadata = {
   subtitle: "Make your posts stand out with the simplicity of `semantic`.",
   createdAt: "2025-04-23T06:54:47.000Z",
   modifiedAt: "2025-04-23T07:55:11.000Z",
-  coverImage: "/content/posts/getting-started-with-semantic/cover.webp",
+  coverImage: "/media/posts/getting-started-with-semantic/cover.webp",
   category: "Build",
   tags: ["semantic", "Blog", "Next.js"],
   comments: true,
@@ -40,7 +40,7 @@ Key files are located under `/src/constants`:
 These files control how your site looks and feels — make them your own.
 
 ### Create a Post
-To write a new blog post, add a folder (your post's `slug`) inside `/content/posts`, then create an `.mdx` file with the **required frontmatter**.
+To write a new blog post, add a folder (your post's `slug`) inside `/src/media/posts`, then create an `.mdx` file with the **required frontmatter**.
 
 <Callout type="note" title="Note">
   <p>
@@ -78,7 +78,7 @@ To write a new blog post, add a folder (your post's `slug`) inside `/content/pos
   </ul>
 </Callout>
 
-To update the `/about` page, simply modify the `/content/pages/about.mdx` file.
+To update the `/about` page, modify `src/app/about/_content/about.mdx`.
 
 ## ④ Run the Project
 Let's run the project and get it up and running locally.

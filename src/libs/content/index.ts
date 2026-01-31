@@ -10,18 +10,18 @@ export type { Post, PostMetadata } from "@/types/content";
 const MDX_EXTENSION = ".mdx";
 const POSTS_DIR = path.join(process.cwd(), "src", "app", "posts", "_articles");
 const MEDIA_DIR = path.join(process.cwd(), "src", "media");
-const CONTENT_PATH_PREFIX = /^\/content\//;
+const MEDIA_PATH_PREFIX = /^\/media\//;
 
 interface PostModule {
   default: unknown;
   metadata?: PostMetadata;
 }
 
-const toContentFsPath = (webPath: string) => {
-  if (!webPath.startsWith("/content/")) {
-    throw new Error(`Unsupported content webPath: ${webPath}`);
+const toMediaFsPath = (webPath: string) => {
+  if (!webPath.startsWith("/media/")) {
+    throw new Error(`Unsupported media webPath: ${webPath}`);
   }
-  return path.join(MEDIA_DIR, webPath.replace(CONTENT_PATH_PREFIX, ""));
+  return path.join(MEDIA_DIR, webPath.replace(MEDIA_PATH_PREFIX, ""));
 };
 
 const buildPost = async (
@@ -31,7 +31,7 @@ const buildPost = async (
   let coverImageBlur = { blur: "", ratio: 0 };
 
   try {
-    coverImageBlur = await createBlurData(toContentFsPath(metadata.coverImage));
+    coverImageBlur = await createBlurData(toMediaFsPath(metadata.coverImage));
   } catch (error) {
     console.error(`Failed to create cover blur: ${slug}`, error);
   }

@@ -139,7 +139,7 @@ const Img = ({ src, alt, ...props }: ImgProps) => {
     return null;
   }
 
-  if (src.startsWith("https://") || src.startsWith("/content/")) {
+  if (src.startsWith("https://") || src.startsWith("/media/")) {
     return (
       <LazyImage
         alt={alt ?? ""}
