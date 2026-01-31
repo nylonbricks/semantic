@@ -1,6 +1,7 @@
 import { getAllPosts } from "@libs/content";
-import { ROUTES } from "@semantic/constants";
-import { generatePageMetadata, slugify } from "@semantic/utils";
+import { ROUTES } from "@semantic/constants/menu";
+import { generatePageMetadata } from "@semantic/utils/metadata-util";
+import { slugify } from "@semantic/utils/text-util";
 import type { Metadata } from "next";
 import Link from "next/link";
 

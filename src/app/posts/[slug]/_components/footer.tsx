@@ -1,7 +1,8 @@
 "use client";
 
-import { ShareIcon } from "@semantic/components/icon";
-import { METADATA, ROUTES } from "@semantic/constants";
+import { ShareIcon } from "@semantic/components/icon/components/semantic/ShareIcon";
+import { ROUTES } from "@semantic/constants/menu";
+import { METADATA } from "@semantic/constants/metadata";
 
 import type { Post } from "@/types/content";
 

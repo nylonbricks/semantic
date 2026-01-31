@@ -1,4 +1,4 @@
-import { METADATA } from "@semantic/constants";
+import { METADATA } from "@semantic/constants/metadata";
 import type { Metadata } from "next";
 
 interface GeneratePageMetadataParams {

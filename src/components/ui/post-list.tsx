@@ -1,4 +1,4 @@
-import { ROUTES } from "@semantic/constants";
+import { ROUTES } from "@semantic/constants/menu";
 import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps } from "react";

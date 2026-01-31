@@ -1,6 +1,7 @@
 import { getAllPosts } from "@libs/content";
-import { METADATA, ROUTES } from "@semantic/constants";
-import { slugify } from "@semantic/utils";
+import { ROUTES } from "@semantic/constants/menu";
+import { METADATA } from "@semantic/constants/metadata";
+import { slugify } from "@semantic/utils/text-util";
 import dayjs from "dayjs";
 
 export const dynamic = "force-static";

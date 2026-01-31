@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeftIcon } from "@semantic/components/icon";
+import { ChevronLeftIcon } from "@semantic/components/icon/components/semantic/ChevronLeftIcon";
 import { usePathname, useRouter } from "next/navigation";
 
 export const BackButton = () => {

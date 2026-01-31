@@ -6,9 +6,6 @@
       "correctness": {
         "noUnknownTypeSelector": "off"
       },
-      "performance": {
-        "noBarrelFile": "off"
-      },
       "style": {
         "useFilenamingConvention": "off"
       }

@@ -1,6 +1,6 @@
 "use client";
 
-import { GISCUS } from "@semantic/constants";
+import { GISCUS } from "@semantic/constants/giscus";
 import { useTheme } from "next-themes";
 import {
   type ComponentProps,

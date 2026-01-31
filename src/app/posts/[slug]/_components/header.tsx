@@ -1,6 +1,6 @@
 import { RelativeTime } from "@semantic/components/ui/relative-time";
-import { ROUTES } from "@semantic/constants";
-import { slugify } from "@semantic/utils";
+import { ROUTES } from "@semantic/constants/menu";
+import { slugify } from "@semantic/utils/text-util";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,5 +1,6 @@
 import { createBlur } from "@libs/image";
-import { METADATA, PLAYLIST, PROFILE } from "@semantic/constants";
+import { METADATA } from "@semantic/constants/metadata";
+import { PLAYLIST, PROFILE } from "@semantic/constants/profile";
 import Image from "next/image";
 
 import Card from "./card";

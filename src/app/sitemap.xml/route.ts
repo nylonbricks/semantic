@@ -1,6 +1,7 @@
 import { getAllPosts } from "@libs/content";
-import { METADATA, POST, ROUTES } from "@semantic/constants";
-import { slugify } from "@semantic/utils";
+import { ROUTES } from "@semantic/constants/menu";
+import { METADATA, POST } from "@semantic/constants/metadata";
+import { slugify } from "@semantic/utils/text-util";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";

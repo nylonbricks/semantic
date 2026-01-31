@@ -1,4 +1,4 @@
-import { PostGrid } from "@semantic/components/ui";
+import { PostGrid } from "@semantic/components/ui/post-grid";
 
 import type { Post } from "@/types/content";
 
