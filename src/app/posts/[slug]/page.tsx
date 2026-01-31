@@ -1,15 +1,14 @@
 import { getAllPosts, getPostBySlug, type Post } from "@libs/content";
 import { Divider } from "@semantic/components/ui/divider";
-import { Giscus } from "@semantic/components/ui/giscus";
 import { ROUTES } from "@semantic/constants/menu";
 import { METADATA } from "@semantic/constants/metadata";
 import { generatePageMetadata } from "@semantic/utils/metadata-util";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";
-
 import { BackButton } from "./_components/back-button";
 import { Footer } from "./_components/footer";
+import { Giscus } from "./_components/giscus";
 import { Header } from "./_components/header";
 import { Recommend } from "./_components/recommend";
 
