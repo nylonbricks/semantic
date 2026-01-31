@@ -20,9 +20,9 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["./src/*"],
       "@semantic/*": ["./src/*"],
-      "@libs/*": ["./libs/*"]
+      "@libs/*": ["./src/libs/*"]
     }
   },
   "include": [

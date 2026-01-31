@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 import { GiscusCodeBlock } from "./giscus-codeblock";
 import { StepController } from "./step-controller";
-import { useCategories } from "./useCategories";
+import { useCategories } from "./use-categories";
 
 const REPO_STATUS = {
   NORMAL: {

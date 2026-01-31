@@ -12,7 +12,7 @@ export const GET = async (
   const { path: pathParams } = await context.params;
 
   try {
-    const filePath = path.join(process.cwd(), "content", ...pathParams);
+    const filePath = path.join(process.cwd(), "src", "media", ...pathParams);
 
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(

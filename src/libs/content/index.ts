@@ -9,7 +9,7 @@ export type { Post, PostMetadata } from "@/types/content";
 
 const MDX_EXTENSION = ".mdx";
 const POSTS_DIR = path.join(process.cwd(), "src", "app", "posts", "_articles");
-const CONTENT_DIR = path.join(process.cwd(), "content");
+const MEDIA_DIR = path.join(process.cwd(), "src", "media");
 const CONTENT_PATH_PREFIX = /^\/content\//;
 
 interface PostModule {
@@ -21,7 +21,7 @@ const toContentFsPath = (webPath: string) => {
   if (!webPath.startsWith("/content/")) {
     throw new Error(`Unsupported content webPath: ${webPath}`);
   }
-  return path.join(CONTENT_DIR, webPath.replace(CONTENT_PATH_PREFIX, ""));
+  return path.join(MEDIA_DIR, webPath.replace(CONTENT_PATH_PREFIX, ""));
 };
 
 const buildPost = async (
