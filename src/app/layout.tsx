@@ -7,12 +7,12 @@ import { ThemeProvider } from "next-themes";
 import type { PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Pretendard, RobotoMono } from "./_fonts";
+import { GeistMono, Pretendard } from "./_fonts";
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang={METADATA.SITE.LANGUAGE} suppressHydrationWarning>
-      <body className={twMerge(RobotoMono.className, Pretendard.className)}>
+      <body className={twMerge(Pretendard.variable, GeistMono.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Layout>{children}</Layout>
         </ThemeProvider>
