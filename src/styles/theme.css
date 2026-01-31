@@ -29,11 +29,11 @@
   --spacing-inline: 1.5rem;
   --spacing-sidebar: 13.125rem;
 
-  --font-mono: "Roboto Mono", Pretendard, "Courier New", Courier, monospace;
+  --font-mono: "Geist Mono", Pretendard, "Courier New", Courier, monospace;
   --font-sans:
-    Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
-    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", sans-serif;
+    Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 
   --text-xxxl: 1.75rem;
   --text-xxl: 1.5rem;

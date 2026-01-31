@@ -1,4 +1,4 @@
-import { Roboto_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
 export const Pretendard = localFont({
@@ -6,11 +6,12 @@ export const Pretendard = localFont({
   display: "swap",
   weight: "45 920",
   preload: true,
+  variable: "--font-pretendard",
 });
 
-export const RobotoMono = Roboto_Mono({
+export const GeistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600"],
   preload: true,
+  variable: "--font-geist-mono",
 });
