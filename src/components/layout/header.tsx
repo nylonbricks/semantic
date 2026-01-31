@@ -39,7 +39,7 @@ export const Header = () => {
         <header className="fixed top-0 left-0 z-[var(--z-header)] flex tablet:hidden w-full bg-[var(--color-background)] px-[var(--spacing-inline)]">
           <div className="row-between mx-auto w-full max-w-[var(--app-width)] py-[0.8125rem]">
             <Link
-              className="font-medium font-mono text-[0.9375rem] text-[var(--color-gray-mid)] leading-[auto]"
+              className="h3 text-[var(--color-gray-mid)]"
               href={ROUTES.HOME}
             >
               {METADATA.SITE.NAME}
@@ -54,7 +54,7 @@ export const Header = () => {
               <button
                 aria-controls="menu-accordion-content"
                 aria-expanded={accordionOpen}
-                className="center h-10 cursor-pointer rounded-[0.625rem] border border-[var(--color-border)] bg-[var(--color-toggle)] px-[0.9375rem] py-[0.6875rem] font-medium font-mono text-[0.8125rem] text-[var(--color-gray-mid)] leading-[1.125rem]"
+                className="ui-button h4 px-4 text-[var(--color-gray-mid)] hover:bg-[var(--color-background02)]"
                 onClick={() => setAccordionOpen((open) => !open)}
                 type="button"
               >

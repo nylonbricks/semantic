@@ -44,7 +44,7 @@ export const PostList = ({ posts, className, ...props }: PostListProps) => {
               )}
               href={`${ROUTES.POSTS}/${slug}`}
             >
-              <div className="relative aspect-[1.8/1] tablet:w-[21.625rem] w-full overflow-hidden rounded-[0.875rem] border border-[var(--color-border)]">
+              <div className="relative aspect-[1.8/1] tablet:w-[21.625rem] w-full overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)]">
                 <Image
                   alt={`${title} Cover Image`}
                   blurDataURL={coverImageBlur.blur}
@@ -60,13 +60,13 @@ export const PostList = ({ posts, className, ...props }: PostListProps) => {
               </div>
 
               <div className="column flex-1">
-                <h2 className="title post-subtitle mx-[-0.625rem] mb-[-0.125rem] rounded-[0.5rem] px-[0.625rem] py-[0.125rem] text-[var(--color-gray-accent)] transition-colors duration-250 ease-in-out">
+                <h2 className="title post-subtitle mx-[-0.625rem] mb-[-0.125rem] rounded-[var(--radius-sm)] px-[0.625rem] py-[0.125rem] text-[var(--color-gray-accent)] transition-colors duration-250 ease-in-out">
                   {title}
                 </h2>
-                <p className="subtitle post-description mx-[-0.625rem] mt-[0.75rem] tablet:mt-[1.25rem] mb-[-0.125rem] rounded-[0.5rem] px-[0.625rem] py-[0.125rem] text-[var(--color-gray-mid)] transition-colors duration-250 ease-in-out">
+                <p className="subtitle post-description mx-[-0.625rem] mt-[0.75rem] tablet:mt-[1.25rem] mb-[-0.125rem] rounded-[var(--radius-sm)] px-[0.625rem] py-[0.125rem] text-[var(--color-gray-mid)] transition-colors duration-250 ease-in-out">
                   {subtitle}
                 </p>
-                <p className="description center-y h5 mx-[-0.625rem] mt-[0.5rem] tablet:mt-[1.125rem] mb-[-0.125rem] w-fit rounded-[0.5rem] px-[0.625rem] py-[0.125rem] text-[var(--color-gray-light)] transition-colors duration-250 ease-in-out">
+                <p className="description center-y h5 mx-[-0.625rem] mt-[0.5rem] tablet:mt-[1.125rem] mb-[-0.125rem] w-fit rounded-[var(--radius-sm)] px-[0.625rem] py-[0.125rem] text-[var(--color-gray-light)] transition-colors duration-250 ease-in-out">
                   <RelativeTime time={createdAt} />
                   {category && (
                     <>

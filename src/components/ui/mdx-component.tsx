@@ -85,7 +85,7 @@ const P = (props: ComponentProps<"p">) => (
 
 const Blockquote = (props: ComponentProps<"blockquote">) => (
   <blockquote
-    className="column -ml-6 rounded-[0.625rem] border border-[var(--color-border)] bg-[var(--color-background02)] p-4 pl-6 sm:-ml-10 sm:pl-10 md:-ml-14 md:pl-14"
+    className="column -ml-6 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-background02)] p-4 pl-6 sm:-ml-10 sm:pl-10 md:-ml-14 md:pl-14"
     {...props}
   />
 );
@@ -120,7 +120,7 @@ const Code = async (props: CodeProps) => {
 
     return (
       <code
-        className="shiki css-variables inline text-xs md:text-[13px]"
+        className="shiki css-variables inline text-xs md:text-sm"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: required to render the highlighted code.
         dangerouslySetInnerHTML={{ __html: await highlightedCode }}
       />
@@ -179,7 +179,7 @@ const Callout = ({ type = "note", title, children }: CalloutProps) => {
   return (
     <aside
       className={twMerge(
-        "column mt-6 gap-2 rounded-[0.875rem] border p-4",
+        "column mt-6 gap-2 rounded-[0.875rem] border p-3",
         "border-[var(--callout-border)] bg-[var(--callout-bg)] text-[var(--color-gray-accent)]",
         "[&_p:first-child]:mt-0 [&_p]:mt-2",
         "[&_ol]:mt-2 [&_ul]:mt-2"
@@ -189,7 +189,7 @@ const Callout = ({ type = "note", title, children }: CalloutProps) => {
       <div className="h6 font-medium font-mono" data-callout-title>
         {title ?? label}
       </div>
-      <div className="mt-2">{children}</div>
+      <div className="mt-1">{children}</div>
     </aside>
   );
 };

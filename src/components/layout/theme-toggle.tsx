@@ -9,12 +9,12 @@ export const ThemeToggle = () => {
   return (
     <ClientOnly
       fallback={
-        <div className="center h4 h-10 w-full rounded-[0.625rem] border border-[var(--color-border)] bg-[var(--color-toggle)] text-[var(--color-gray-accent)]" />
+        <div className="ui-button h4 w-full text-[var(--color-gray-accent)]" />
       }
     >
       <button
         aria-label="Toggle dark or light mode"
-        className="center h4 h-10 w-full cursor-pointer rounded-[0.625rem] border border-[var(--color-border)] bg-[var(--color-toggle)] text-[var(--color-gray-accent)]"
+        className="ui-button h4 w-full text-[var(--color-gray-accent)] hover:bg-[var(--color-background02)]"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         type="button"
       >
