@@ -21,8 +21,9 @@ export const ProfileGrid = () => {
               className="row-between m-0 h-full flex-col items-start border-0 p-0"
             >
               <div
-                className="relative h-[6.0625rem] w-[6.0625rem] select-none overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-toggle)]"
+                className="relative h-[6.0625rem] w-[6.0625rem] select-none overflow-hidden rounded-[var(--radius-md)] border bg-[var(--color-toggle)]"
                 style={{
+                  borderColor: PROFILE.profileImageBorderColor,
                   boxShadow: `0px 10px 39px ${PROFILE.profileImageShadowColor}`,
                   filter: PROFILE.profileImageFilter,
                 }}
