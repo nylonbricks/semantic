@@ -1,9 +1,9 @@
-import { getAllPosts } from "@libs/content";
 import { Pagination } from "@semantic/components/ui/pagination";
 import { PostList } from "@semantic/components/ui/post-list";
 import { ROUTES } from "@semantic/constants/menu";
 import { POST } from "@semantic/constants/metadata";
 import { generatePageMetadata } from "@semantic/utils/metadata-util";
+import { getAllPosts } from "@semantic/utils/post-util";
 import type { Metadata } from "next";
 
 interface PostsPageProps {

@@ -21,7 +21,7 @@ const resolveCoverImage = async (
   }
 
   try {
-    const image = await import(`../../../assets/images/${coverImage}`);
+    const image = await import(`../../assets/images/${coverImage}`);
     return image.default;
   } catch (error) {
     console.error(`Failed to load local image: ${coverImage}`, error);

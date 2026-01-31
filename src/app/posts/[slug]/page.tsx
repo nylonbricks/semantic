@@ -1,8 +1,12 @@
-import { getAllPosts, getPostBySlug, type Post } from "@libs/content";
 import { Divider } from "@semantic/components/ui/divider";
 import { ROUTES } from "@semantic/constants/menu";
 import { METADATA } from "@semantic/constants/metadata";
 import { generatePageMetadata } from "@semantic/utils/metadata-util";
+import {
+  getAllPosts,
+  getPostBySlug,
+  type Post,
+} from "@semantic/utils/post-util";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";

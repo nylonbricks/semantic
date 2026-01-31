@@ -21,8 +21,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@semantic/*": ["./src/*"],
-      "@libs/*": ["./src/libs/*"]
+      "@semantic/*": ["./src/*"]
     }
   },
   "include": [
