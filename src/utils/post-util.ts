@@ -1,46 +1,44 @@
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 
-import type { Post, PostMetadata } from "@/types/content";
-
-import { createBlurData } from "../image";
+import type { Post, PostCoverImage, PostMetadata } from "@/types/content";
 
 export type { Post, PostMetadata } from "@/types/content";
 
 const MDX_EXTENSION = ".mdx";
 const POSTS_DIR = path.join(process.cwd(), "src", "app", "posts", "_articles");
-const CONTENT_DIR = path.join(process.cwd(), "content");
-const CONTENT_PATH_PREFIX = /^\/content\//;
 
 interface PostModule {
   default: unknown;
   metadata?: PostMetadata;
 }
 
-const toContentFsPath = (webPath: string) => {
-  if (!webPath.startsWith("/content/")) {
-    throw new Error(`Unsupported content webPath: ${webPath}`);
+const resolveCoverImage = async (
+  coverImage: string
+): Promise<PostCoverImage> => {
+  if (coverImage.startsWith("https://")) {
+    return coverImage;
   }
-  return path.join(CONTENT_DIR, webPath.replace(CONTENT_PATH_PREFIX, ""));
+
+  try {
+    const image = await import(`../../assets/images/${coverImage}`);
+    return image.default;
+  } catch (error) {
+    console.error(`Failed to load local image: ${coverImage}`, error);
+    return coverImage;
+  }
 };
 
 const buildPost = async (
   slug: string,
   metadata: PostMetadata
 ): Promise<Post> => {
-  let coverImageBlur = { blur: "", ratio: 0 };
-
-  try {
-    coverImageBlur = await createBlurData(toContentFsPath(metadata.coverImage));
-  } catch (error) {
-    console.error(`Failed to create cover blur: ${slug}`, error);
-  }
-
+  const coverImage = await resolveCoverImage(metadata.coverImage);
   return {
     _id: slug,
     slug,
     ...metadata,
-    coverImageBlur,
+    coverImage,
   };
 };
 

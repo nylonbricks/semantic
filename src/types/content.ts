@@ -1,4 +1,4 @@
-import type { BlurData } from "@libs/image";
+import type { StaticImageData } from "next/image";
 
 export interface PostMetadata {
   title: string;
@@ -11,8 +11,10 @@ export interface PostMetadata {
   comments?: boolean;
 }
 
-export interface Post extends PostMetadata {
+export type PostCoverImage = string | StaticImageData;
+
+export interface Post extends Omit<PostMetadata, "coverImage"> {
   _id: string;
   slug: string;
-  coverImageBlur: BlurData;
+  coverImage: PostCoverImage;
 }

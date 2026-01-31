@@ -165,6 +165,23 @@
     border-radius: var(--radius-xs);
     background-color: var(--color-background02);
   }
+
+  .image-wrapper {
+    @apply mt-6 flex w-full flex-col gap-4 tablet:flex-row;
+  }
+
+  .image-wrapper.expand {
+    @apply static transform-none;
+    @apply desktop:relative desktop:left-[50%] desktop:w-[calc(var(--spacing-app)+10rem)] desktop:-translate-x-1/2;
+  }
+
+  img {
+    @apply h-auto w-auto flex-1 min-w-0 max-w-full border border-[var(--color-border)] rounded-[var(--radius-lg)];
+  }
+
+  .video-wrapper {
+    @apply mt-6 mx-auto w-full border border-[var(--color-border)] rounded-[var(--radius-lg)];
+  }
 }
 
 @supports (view-transition-name: none) {

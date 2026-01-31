@@ -4,6 +4,7 @@ export const PROFILE = {
   profileImage: "/static/profile.webp",
   profileImageShadowColor: "rgba(232, 114, 24, 0.43)",
   profileImageFilter: "",
+  profileImageBorderColor: "rgba(0, 0, 0, 0.06)",
   authorTextColor: "#302C1D",
 
   titleTextColor: "#CAA937",

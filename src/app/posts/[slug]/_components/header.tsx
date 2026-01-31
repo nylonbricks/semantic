@@ -8,7 +8,6 @@ import type { Post } from "@/types/content";
 
 export const Header = ({
   coverImage,
-  coverImageBlur,
   title,
   subtitle,
   createdAt,
@@ -20,11 +19,9 @@ export const Header = ({
       <div className="center relative aspect-[1.8/1] w-full select-none overflow-hidden rounded-[0.875rem] border border-[var(--color-border)]">
         <Image
           alt={`${title} Cover Image`}
-          blurDataURL={coverImageBlur.blur}
           className="h-full w-full object-cover object-center"
           draggable={false}
           fill
-          placeholder="blur"
           priority={false}
           quality={100}
           sizes="100vw"

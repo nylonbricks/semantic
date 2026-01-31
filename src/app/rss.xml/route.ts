@@ -1,6 +1,6 @@
-import { getAllPosts } from "@libs/content";
 import { ROUTES } from "@semantic/constants/menu";
 import { METADATA } from "@semantic/constants/metadata";
+import { getAllPosts } from "@semantic/utils/post-util";
 import { slugify } from "@semantic/utils/text-util";
 import dayjs from "dayjs";
 

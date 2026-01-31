@@ -20,16 +20,7 @@ export const PostList = ({ posts, className, ...props }: PostListProps) => {
       {...props}
     >
       {posts.map(
-        ({
-          _id,
-          slug,
-          title,
-          subtitle,
-          coverImage,
-          coverImageBlur,
-          category,
-          createdAt,
-        }) => (
+        ({ _id, slug, title, subtitle, coverImage, category, createdAt }) => (
           <li key={_id}>
             <Link
               aria-label={`Read post: ${title}`}
@@ -47,11 +38,9 @@ export const PostList = ({ posts, className, ...props }: PostListProps) => {
               <div className="relative aspect-[1.8/1] tablet:w-[21.625rem] w-full overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)]">
                 <Image
                   alt={`${title} Cover Image`}
-                  blurDataURL={coverImageBlur.blur}
                   className="h-full w-full object-cover object-center"
                   draggable={false}
                   fill
-                  placeholder="blur"
                   priority={false}
                   quality={100}
                   sizes="100vw"

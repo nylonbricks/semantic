@@ -1,7 +1,7 @@
-import { getAllPosts } from "@libs/content";
 import { PlusIcon } from "@semantic/components/icon/components/semantic/PlusIcon";
 import { PostGrid } from "@semantic/components/ui/post-grid";
 import { ROUTES } from "@semantic/constants/menu";
+import { getAllPosts } from "@semantic/utils/post-util";
 import dayjs from "dayjs";
 import Link from "next/link";
 

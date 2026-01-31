@@ -16,7 +16,7 @@ interface ErrorResponse {
 }
 type Status = "NORMAL" | "LOADING" | "SUCCESS" | "FAIL";
 
-const useDebounce = <T,>(value: T, delay = 500): T => {
+const useDebounce = <T>(value: T, delay = 500): T => {
   const [debounced, setDebounced] = useState(value);
   useEffect(() => {
     const timer = setTimeout(() => setDebounced(value), delay);
