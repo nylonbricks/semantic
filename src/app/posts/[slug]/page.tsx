@@ -1,8 +1,9 @@
 import { getAllPosts, getPostBySlug, type Post } from "@libs/content";
-import { Divider } from "@semantic/components/ui";
+import { Divider } from "@semantic/components/ui/divider";
 import { Giscus } from "@semantic/components/ui/giscus";
-import { METADATA, ROUTES } from "@semantic/constants";
-import { generatePageMetadata } from "@semantic/utils";
+import { ROUTES } from "@semantic/constants/menu";
+import { METADATA } from "@semantic/constants/metadata";
+import { generatePageMetadata } from "@semantic/utils/metadata-util";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";

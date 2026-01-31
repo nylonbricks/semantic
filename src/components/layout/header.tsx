@@ -2,8 +2,9 @@
 
 // biome-ignore lint/performance/noNamespaceImport: Radix Accordion namespace import is used for readability.
 import * as Accordion from "@radix-ui/react-accordion";
-import { Divider } from "@semantic/components/ui";
-import { METADATA, ROUTES } from "@semantic/constants";
+import { Divider } from "@semantic/components/ui/divider";
+import { ROUTES } from "@semantic/constants/menu";
+import { METADATA } from "@semantic/constants/metadata";
 import dayjs from "dayjs";
 import Link from "next/link";
 import { useState } from "react";

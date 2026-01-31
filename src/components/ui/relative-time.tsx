@@ -1,7 +1,7 @@
 "use client";
 
-import { ClientOnly } from "@semantic/components/util";
-import { formatRelativeTime } from "@semantic/utils";
+import { ClientOnly } from "@semantic/components/util/client-only";
+import { formatRelativeTime } from "@semantic/utils/date-util";
 import type { ComponentProps } from "react";
 
 type RelativeTimeProps = ComponentProps<"time"> & {

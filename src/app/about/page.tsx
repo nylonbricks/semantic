@@ -1,5 +1,5 @@
-import { ROUTES } from "@semantic/constants";
-import { generatePageMetadata } from "@semantic/utils";
+import { ROUTES } from "@semantic/constants/menu";
+import { generatePageMetadata } from "@semantic/utils/metadata-util";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 

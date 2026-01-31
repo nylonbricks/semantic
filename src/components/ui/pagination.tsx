@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronLeftIcon, ChevronRightIcon } from "@semantic/components/icon";
+import { ChevronLeftIcon } from "@semantic/components/icon/components/semantic/ChevronLeftIcon";
+import { ChevronRightIcon } from "@semantic/components/icon/components/semantic/ChevronRightIcon";
 import Link from "next/link";
 
 const TRAILING_SLASH = /\/$/;

@@ -1,6 +1,6 @@
 "use client";
 
-import { ClientOnly } from "@semantic/components/util";
+import { ClientOnly } from "@semantic/components/util/client-only";
 import { useTheme } from "next-themes";
 
 export const ThemeToggle = () => {

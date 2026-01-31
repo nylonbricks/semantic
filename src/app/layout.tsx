@@ -1,7 +1,7 @@
 import "@semantic/styles/globals.css";
 
 import { Layout } from "@semantic/components/layout/root";
-import { METADATA } from "@semantic/constants";
+import { METADATA } from "@semantic/constants/metadata";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import type { PropsWithChildren } from "react";
