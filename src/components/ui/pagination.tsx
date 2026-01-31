@@ -1,16 +1,22 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import { ChevronLeftIcon } from "@semantic/components/icon/components/semantic/ChevronLeftIcon";
+import { ChevronRightIcon } from "@semantic/components/icon/components/semantic/ChevronRightIcon";
+import Link from "next/link";
 
-import { ChevronLeftIcon, ChevronRightIcon } from '@semantic/components/icon';
+const TRAILING_SLASH = /\/$/;
 
-type PaginationProps = {
+interface PaginationProps {
   currentPage: number;
   totalPages: number;
   basePath: string;
-};
+}
 
-export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProps) => {
+export const Pagination = ({
+  currentPage,
+  totalPages,
+  basePath,
+}: PaginationProps) => {
   const generatePageRange = () => {
     let start = Math.max(1, currentPage - 2);
     let end = Math.min(totalPages, currentPage + 2);
@@ -25,7 +31,7 @@ export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProp
   };
 
   const buildPageHref = (page: number) => {
-    const path = basePath.replace(/\/$/, '');
+    const path = basePath.replace(TRAILING_SLASH, "");
     return `${path}?page=${page}`;
   };
 
@@ -33,15 +39,14 @@ export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProp
 
   return (
     <nav
-      className="center py-[28px] gap-[8px]"
       aria-label="Pagination navigation"
-      role="navigation"
+      className="center gap-[8px] py-[28px]"
     >
       {currentPage > 1 && (
         <Link
-          className="center w-[32px] h-[32px] text-[var(--color-gray-accent)] font-mono text-sm font-medium rounded-full border-[1px] border-[var(--color-border)] bg-[var(--color-toggle)] transition-colors duration-150 ease-in-out hover:bg-[var(--color-background02)]"
-          href={buildPageHref(currentPage - 1)}
           aria-label="Go to previous page"
+          className="center h-[32px] w-[32px] rounded-full border-[1px] border-[var(--color-border)] bg-[var(--color-toggle)] font-medium font-mono text-[var(--color-gray-accent)] text-sm transition-colors duration-150 ease-in-out hover:bg-[var(--color-background02)]"
+          href={buildPageHref(currentPage - 1)}
         >
           <ChevronLeftIcon />
         </Link>
@@ -50,30 +55,29 @@ export const Pagination = ({ currentPage, totalPages, basePath }: PaginationProp
       {pageList.map((pageNumber) =>
         pageNumber === currentPage ? (
           <span
-            key={pageNumber}
-            className="center w-[32px] h-[32px] text-[var(--color-background)] font-mono text-sm font-medium rounded-full border-[1px] border-[var(--color-background04)] bg-[var(--color-gray-bold)] transition-colors duration-150 ease-in-out hover:bg-[var(--color-gray-accent)]"
             aria-current="page"
-            role="link"
+            className="center h-[32px] w-[32px] rounded-full border-[1px] border-[var(--color-background04)] bg-[var(--color-gray-bold)] font-medium font-mono text-[var(--color-background)] text-sm transition-colors duration-150 ease-in-out hover:bg-[var(--color-gray-accent)]"
+            key={pageNumber}
           >
             {pageNumber}
           </span>
         ) : (
           <Link
-            key={pageNumber}
-            href={buildPageHref(pageNumber)}
-            className="center w-[32px] h-[32px] text-[var(--color-gray-accent)] font-mono text-sm font-medium rounded-full border-[1px] border-[var(--color-border)] bg-[var(--color-toggle)] transition-colors duration-150 ease-in-out hover:bg-[var(--color-background02)]"
             aria-label={`Go to page ${pageNumber}`}
+            className="center h-[32px] w-[32px] rounded-full border-[1px] border-[var(--color-border)] bg-[var(--color-toggle)] font-medium font-mono text-[var(--color-gray-accent)] text-sm transition-colors duration-150 ease-in-out hover:bg-[var(--color-background02)]"
+            href={buildPageHref(pageNumber)}
+            key={pageNumber}
           >
             {pageNumber}
           </Link>
-        ),
+        )
       )}
 
       {currentPage < totalPages && (
         <Link
-          href={buildPageHref(currentPage + 1)}
-          className="center w-[32px] h-[32px] text-[var(--color-gray-accent)] font-mono text-sm font-medium rounded-full border-[1px] border-[var(--color-border)] bg-[var(--color-toggle)] transition-colors duration-150 ease-in-out hover:bg-[var(--color-background02)]"
           aria-label="Go to next page"
+          className="center h-[32px] w-[32px] rounded-full border-[1px] border-[var(--color-border)] bg-[var(--color-toggle)] font-medium font-mono text-[var(--color-gray-accent)] text-sm transition-colors duration-150 ease-in-out hover:bg-[var(--color-background02)]"
+          href={buildPageHref(currentPage + 1)}
         >
           <ChevronRightIcon />
         </Link>

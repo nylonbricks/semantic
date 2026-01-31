@@ -1,14 +1,13 @@
-import '@semantic/styles/globals.css';
+import "@semantic/styles/globals.css";
 
-import { type Metadata, type Viewport } from 'next';
-import { ThemeProvider } from 'next-themes';
-import { PropsWithChildren } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { Layout } from "@semantic/components/layout/root";
+import { METADATA } from "@semantic/constants/metadata";
+import type { Metadata, Viewport } from "next";
+import { ThemeProvider } from "next-themes";
+import type { PropsWithChildren } from "react";
+import { twMerge } from "tailwind-merge";
 
-import { Layout } from '@semantic/components/layout/root';
-import { METADATA } from '@semantic/constants';
-
-import { Pretendard, RobotoMono } from './_fonts';
+import { Pretendard, RobotoMono } from "./_fonts";
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -40,10 +39,10 @@ export const metadata: Metadata = {
         height: 630,
       },
     ],
-    type: 'website',
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: METADATA.SITE.NAME,
     description: METADATA.SITE.DESCRIPTION,
     images: [METADATA.SITE.PREVIEW_IMAGE],
@@ -54,22 +53,22 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   alternates: {
     canonical: METADATA.SITE.URL,
   },
-  generator: 'Next.js',
+  generator: "Next.js",
   applicationName: METADATA.SITE.NAME,
   creator: METADATA.AUTHOR.NAME,
   publisher: METADATA.AUTHOR.NAME,
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,

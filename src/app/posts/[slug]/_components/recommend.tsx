@@ -1,19 +1,17 @@
-import React from 'react';
+import { PostGrid } from "@semantic/components/ui/post-grid";
 
-import { PostGrid } from '@semantic/components/ui';
+import type { Post } from "@/types/content";
 
-import type { Post } from '@/types/content';
-
-type RecommendProps = {
+interface RecommendProps {
   posts: Post[];
-};
+}
 
 export const Recommend = ({ posts }: RecommendProps) => {
   return (
     <section aria-labelledby="recommendation-heading">
       <h3
+        className="font-medium font-mono text-[var(--color-gray-accent)] text-lg"
         id="recommendation-heading"
-        className="text-[var(--color-gray-accent)] font-mono text-lg font-medium"
       >
         🦾 Check them out
       </h3>

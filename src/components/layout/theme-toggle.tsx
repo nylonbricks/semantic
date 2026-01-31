@@ -1,8 +1,7 @@
-'use client';
+"use client";
 
-import { useTheme } from 'next-themes';
-
-import { ClientOnly } from '@semantic/components/util';
+import { ClientOnly } from "@semantic/components/util/client-only";
+import { useTheme } from "next-themes";
 
 export const ThemeToggle = () => {
   const { resolvedTheme: theme, setTheme } = useTheme();
@@ -10,15 +9,16 @@ export const ThemeToggle = () => {
   return (
     <ClientOnly
       fallback={
-        <div className="center h4 w-full h-10 text-[var(--color-gray-accent)] border border-[var(--color-border)] rounded-[0.625rem] bg-[var(--color-toggle)]" />
+        <div className="center h4 h-10 w-full rounded-[0.625rem] border border-[var(--color-border)] bg-[var(--color-toggle)] text-[var(--color-gray-accent)]" />
       }
     >
       <button
-        className="center h4 w-full h-10 text-[var(--color-gray-accent)] border border-[var(--color-border)] rounded-[0.625rem] bg-[var(--color-toggle)] cursor-pointer"
-        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
         aria-label="Toggle dark or light mode"
+        className="center h4 h-10 w-full cursor-pointer rounded-[0.625rem] border border-[var(--color-border)] bg-[var(--color-toggle)] text-[var(--color-gray-accent)]"
+        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        type="button"
       >
-        {theme === 'light' ? '🌚 Dark mode' : '🌞 Light mode'}
+        {theme === "light" ? "🌚 Dark mode" : "🌞 Light mode"}
       </button>
     </ClientOnly>
   );

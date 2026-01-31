@@ -1,47 +1,46 @@
-import Image from 'next/image';
+import { createBlur } from "@libs/image";
+import { METADATA } from "@semantic/constants/metadata";
+import { PLAYLIST, PROFILE } from "@semantic/constants/profile";
+import Image from "next/image";
 
-import { createBlur } from '@libs/image';
-import { METADATA, PLAYLIST, PROFILE } from '@semantic/constants';
-
-import Card from './card';
+import Card from "./card";
 
 export const ProfileGrid = async () => {
   const blurDataURL = await createBlur(PROFILE.profileImage);
 
   return (
     <section
-      className="grid grid-cols-1 w-full gap-[4.0625rem] tablet:grid-cols-2"
       aria-label={`${METADATA.AUTHOR.NAME}'s profile and playlist`}
+      className="grid w-full grid-cols-1 tablet:grid-cols-2 gap-[4.0625rem]"
     >
       <div className="column w-full">
-        <h3 id="profile-heading" className="h3 text-[var(--color-gray-light)]">
+        <h3 className="h3 text-[var(--color-gray-light)]" id="profile-heading">
           Profile
         </h3>
         <Card.Root style={{ backgroundColor: PROFILE.cardBackgroundColor }}>
           <Card.Content>
-            <div
-              className="row-between flex-col h-full items-start"
-              role="group"
+            <fieldset
               aria-labelledby="profile-heading"
+              className="row-between m-0 h-full flex-col items-start border-0 p-0"
             >
               <div
-                className="relative w-[6.0625rem] h-[6.0625rem] select-none rounded overflow-hidden"
+                className="relative h-[6.0625rem] w-[6.0625rem] select-none overflow-hidden rounded"
                 style={{
                   boxShadow: `0px 10px 39px ${PROFILE.profileImageShadowColor}`,
                   filter: PROFILE.profileImageFilter,
                 }}
               >
                 <Image
-                  className="w-full h-full object-cover"
-                  src={PROFILE.profileImage}
                   alt={`${METADATA.AUTHOR.NAME} profile image`}
-                  role="img"
-                  placeholder="blur"
                   blurDataURL={blurDataURL}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="h-full w-full object-cover"
                   draggable={false}
-                  priority
                   fill
+                  placeholder="blur"
+                  priority
+                  role="img"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  src={PROFILE.profileImage}
                 />
               </div>
 
@@ -51,16 +50,19 @@ export const ProfileGrid = async () => {
               >
                 {METADATA.AUTHOR.NAME}
               </p>
-            </div>
+            </fieldset>
 
-            <dl className="row-between flex-col h-full items-start">
+            <dl className="row-between h-full flex-col items-start">
               {PROFILE.userDetails.map((item) => (
-                <div key={item.title} className="w-full">
-                  <dt className="profile-sub w-full" style={{ color: PROFILE.titleTextColor }}>
+                <div className="w-full" key={item.title}>
+                  <dt
+                    className="profile-sub w-full"
+                    style={{ color: PROFILE.titleTextColor }}
+                  >
                     {item.title}
                   </dt>
                   <dd
-                    className="profile-title text-[#302C1D] whitespace-pre-wrap"
+                    className="profile-title whitespace-pre-wrap text-[#302C1D]"
                     style={{ color: PROFILE.contentTextColor }}
                   >
                     {item.content}
@@ -73,19 +75,19 @@ export const ProfileGrid = async () => {
       </div>
 
       <div className="column w-full">
-        <h3 id="playlist-heading" className="h3 text-[var(--color-gray-light)]">
+        <h3 className="h3 text-[var(--color-gray-light)]" id="playlist-heading">
           Playlist
         </h3>
-        <Card.Root style={{ backgroundColor: '#F8F8FA' }}>
+        <Card.Root style={{ backgroundColor: "#F8F8FA" }}>
           <iframe
-            title={`${METADATA.AUTHOR.NAME}'s embedded music playlist`}
-            aria-label={`${METADATA.AUTHOR.NAME}'s embedded music playlist`}
-            className="w-full h-full rounded-[0.875rem] overflow-hidden"
             allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+            aria-label={`${METADATA.AUTHOR.NAME}'s embedded music playlist`}
+            className="h-full w-full overflow-hidden rounded-[0.875rem]"
             frameBorder="0"
             height="11.375rem"
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
             src={PLAYLIST}
+            title={`${METADATA.AUTHOR.NAME}'s embedded music playlist`}
           />
         </Card.Root>
       </div>

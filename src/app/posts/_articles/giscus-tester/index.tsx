@@ -1,26 +1,35 @@
-'use client';
+"use client";
 
-import { useCallback, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { useCallback, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
-import { GiscusCodeBlock } from './giscus-codeblock';
-import { StepController } from './step-controller';
-import { useCategories } from './useCategories';
+import { GiscusCodeBlock } from "./giscus-codeblock";
+import { StepController } from "./step-controller";
+import { useCategories } from "./useCategories";
 
 const REPO_STATUS = {
-  NORMAL: { MESSAGE: 'Please enter a public repository.', COLOR: 'text-[var(--color-gray-mid)]' },
-  LOADING: { MESSAGE: 'Verifying repository...', COLOR: 'text-[var(--color-gray-mid)]' },
-  SUCCESS: { MESSAGE: '✅ Repository verified successfully.', COLOR: 'text-green-600' },
+  NORMAL: {
+    MESSAGE: "Please enter a public repository.",
+    COLOR: "text-[var(--color-gray-mid)]",
+  },
+  LOADING: {
+    MESSAGE: "Verifying repository...",
+    COLOR: "text-[var(--color-gray-mid)]",
+  },
+  SUCCESS: {
+    MESSAGE: "✅ Repository verified successfully.",
+    COLOR: "text-green-600",
+  },
   FAIL: {
-    MESSAGE: '❌ Failed to verify. Please check the repository name again.',
-    COLOR: 'text-red-600',
+    MESSAGE: "❌ Failed to verify. Please check the repository name again.",
+    COLOR: "text-red-600",
   },
 } as const;
 
 export const GiscusTester = () => {
   const [step, setStep] = useState(0);
-  const [repository, setRepository] = useState('');
-  const [category, setCategory] = useState('');
+  const [repository, setRepository] = useState("");
+  const [category, setCategory] = useState("");
   const { data, status } = useCategories(repository);
   const { MESSAGE, COLOR } = REPO_STATUS[status];
 
@@ -28,28 +37,30 @@ export const GiscusTester = () => {
   const handleNext = useCallback(() => setStep((s) => s + 1), []);
 
   return (
-    <div className="mt-6 flex flex-col bg-[var(--color-toggle)] rounded-lg border border-[var(--color-border)] overflow-hidden">
+    <div className="mt-6 flex flex-col overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-toggle)]">
       {step === 0 && (
         <>
           <div className="p-[1.25rem]">
-            <p className="mb-[1rem] text-base text-[var(--color-gray-accent)] font-semibold">
+            <p className="mb-[1rem] font-semibold text-[var(--color-gray-accent)] text-base">
               ① Enter your repository
             </p>
             <input
-              type="text"
-              placeholder="owner/repo"
-              value={repository}
+              className="w-full rounded-md border border-[var(--color-background08)] bg-[var(--color-background)] px-[0.75rem] py-[0.5rem] font-mono text-sm focus:border-[var(--color-gray-light)] focus:outline-none"
               onChange={(e) => setRepository(e.target.value)}
-              className="w-full px-[0.75rem] py-[0.5rem] rounded-md text-sm font-mono border border-[var(--color-background08)] bg-[var(--color-background)] focus:outline-none focus:border-[var(--color-gray-light)]"
+              placeholder="owner/repo"
+              type="text"
+              value={repository}
             />
-            <p className={`mt-[0.5rem] text-xs font-medium ${COLOR}`}>{MESSAGE}</p>
+            <p className={`mt-[0.5rem] font-medium text-xs ${COLOR}`}>
+              {MESSAGE}
+            </p>
           </div>
           <StepController
+            canNext={status === "SUCCESS"}
             maxStep={3}
-            step={step}
-            onPrev={handlePrev}
             onNext={handleNext}
-            canNext={status === 'SUCCESS'}
+            onPrev={handlePrev}
+            step={step}
           />
         </>
       )}
@@ -57,16 +68,16 @@ export const GiscusTester = () => {
       {step === 1 && (
         <>
           <div className="p-[1.25rem]">
-            <p className="mb-[1rem] text-base text-[var(--color-gray-accent)] font-semibold">
+            <p className="mb-[1rem] font-semibold text-[var(--color-gray-accent)] text-base">
               ② Choose a discussion category
             </p>
             <select
+              className="w-full rounded-md border border-[var(--color-background08)] bg-[var(--color-background)] px-[0.75rem] py-[0.5rem] font-mono text-sm invalid:text-[var(--color-gray-light)] focus:border-[var(--color-gray-light)] focus:outline-none"
+              onChange={(e) => setCategory(e.target.value)}
               required
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-[0.75rem] py-[0.5rem] rounded-md text-sm font-mono border border-[var(--color-background08)] bg-[var(--color-background)] focus:outline-none focus:border-[var(--color-gray-light)] invalid:text-[var(--color-gray-light)]"
             >
-              <option value="" disabled>
+              <option disabled value="">
                 Select a category
               </option>
               {data?.categories.map((_category) => (
@@ -78,21 +89,21 @@ export const GiscusTester = () => {
 
             <p
               className={twMerge(
-                'mt-[0.5rem] text-xs font-medium',
-                category ? 'text-green-600' : 'text-[var(--color-gray-bold)]',
+                "mt-[0.5rem] font-medium text-xs",
+                category ? "text-green-600" : "text-[var(--color-gray-bold)]"
               )}
             >
               {category
-                ? '✅ This category looks good to go!'
-                : 'Please select a category to continue.'}
+                ? "✅ This category looks good to go!"
+                : "Please select a category to continue."}
             </p>
           </div>
           <StepController
-            maxStep={3}
-            step={step}
-            onPrev={handlePrev}
-            onNext={handleNext}
             canNext={!!category}
+            maxStep={3}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            step={step}
           />
         </>
       )}
@@ -100,26 +111,28 @@ export const GiscusTester = () => {
       {step === 2 && (
         <>
           <div className="p-[1.25rem]">
-            <p className="mb-[1rem] text-base text-[var(--color-gray-accent)] font-semibold">
+            <p className="mb-[1rem] font-semibold text-[var(--color-gray-accent)] text-base">
               ③ Paste the embed code
             </p>
-            <p className="text-[var(--color-gray-accent)] text-sm font-medium mb-[0.5rem]">
-              Copy the following snippet and paste it into your{' '}
+            <p className="mb-[0.5rem] font-medium text-[var(--color-gray-accent)] text-sm">
+              Copy the following snippet and paste it into your{" "}
               <code>/src/constants/giscus.ts</code> file.
             </p>
             <GiscusCodeBlock
-              repository={repository}
-              repositoryId={data?.repositoryId || ''}
-              category={data?.categories.find((c) => c.id === category)?.name || ''}
+              category={
+                data?.categories.find((c) => c.id === category)?.name || ""
+              }
               categoryId={category}
+              repository={repository}
+              repositoryId={data?.repositoryId || ""}
             />
           </div>
           <StepController
-            maxStep={3}
-            step={step}
-            onPrev={handlePrev}
-            onNext={handleNext}
             canNext={!!category}
+            maxStep={3}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            step={step}
           />
         </>
       )}

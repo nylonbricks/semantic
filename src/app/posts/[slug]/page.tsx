@@ -1,21 +1,21 @@
-import { type Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import type { ComponentType } from 'react';
+import { getAllPosts, getPostBySlug, type Post } from "@libs/content";
+import { Divider } from "@semantic/components/ui/divider";
+import { Giscus } from "@semantic/components/ui/giscus";
+import { ROUTES } from "@semantic/constants/menu";
+import { METADATA } from "@semantic/constants/metadata";
+import { generatePageMetadata } from "@semantic/utils/metadata-util";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import type { ComponentType } from "react";
 
-import { getAllPosts, getPostBySlug, type Post } from '@libs/content';
-import { Divider } from '@semantic/components/ui';
-import { Giscus } from '@semantic/components/ui/giscus';
-import { ROUTES, METADATA } from '@semantic/constants';
-import { generatePageMetadata } from '@semantic/utils';
+import { BackButton } from "./_components/back-button";
+import { Footer } from "./_components/footer";
+import { Header } from "./_components/header";
+import { Recommend } from "./_components/recommend";
 
-import { BackButton } from './_components/back-button';
-import { Footer } from './_components/footer';
-import { Header } from './_components/header';
-import { Recommend } from './_components/recommend';
-
-type PostPageProps = {
+interface PostPageProps {
   params: Promise<{ slug: string }>;
-};
+}
 
 const RECOMMEND_COUNT = 4;
 
@@ -55,7 +55,9 @@ const PostPage = async ({ params }: PostPageProps) => {
 
 export default PostPage;
 
-export const generateMetadata = async ({ params }: PostPageProps): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: PostPageProps): Promise<Metadata> => {
   const { slug } = await params;
 
   try {
@@ -69,7 +71,7 @@ export const generateMetadata = async ({ params }: PostPageProps): Promise<Metad
       description: metadata.subtitle,
       path: `${ROUTES.POSTS}/${slug}`,
       image: metadata.coverImage,
-      type: 'article',
+      type: "article",
       openGraph: {
         publishedTime: metadata.createdAt,
         modifiedTime: metadata.modifiedAt,
@@ -88,7 +90,9 @@ export async function generateStaticParams() {
 }
 
 const getRecommendedPosts = (posts: Post[], slug: string): Post[] => {
-  const sorted = [...posts].sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+  const sorted = [...posts].sort((a, b) =>
+    a.createdAt > b.createdAt ? -1 : 1
+  );
   const currentIndex = sorted.findIndex((p) => p.slug === slug);
 
   if (currentIndex === -1) {
@@ -106,7 +110,8 @@ const getRecommendedPosts = (posts: Post[], slug: string): Post[] => {
   if (recommended.length < RECOMMEND_COUNT) {
     const need = RECOMMEND_COUNT - recommended.length;
     const isFront = currentIndex < sorted.length / 2;
-    const isIncluded = (post: Post) => recommended.some((p) => p.slug === post.slug);
+    const isIncluded = (post: Post) =>
+      recommended.some((p) => p.slug === post.slug);
 
     if (isFront) {
       const more = sliceClamped(currentIndex + 3, currentIndex + 3 + need * 2)
