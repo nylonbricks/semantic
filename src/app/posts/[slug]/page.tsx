@@ -2,14 +2,11 @@ import { Divider } from "@semantic/components/ui/divider";
 import { ROUTES } from "@semantic/constants/menu";
 import { METADATA } from "@semantic/constants/metadata";
 import { generatePageMetadata } from "@semantic/utils/metadata-util";
-import {
-  getAllPosts,
-  getPostBySlug,
-  type Post,
-} from "@semantic/utils/post-util";
+import { getAllPosts, getPostBySlug } from "@semantic/utils/post-util";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";
+import type { Post } from "@/types/content";
 import { BackButton } from "./_components/back-button";
 import { Footer } from "./_components/footer";
 import { Giscus } from "./_components/giscus";

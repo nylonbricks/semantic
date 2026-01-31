@@ -1,5 +1,4 @@
 import { PostGrid } from "@semantic/components/ui/post-grid";
-
 import type { Post } from "@/types/content";
 
 interface RecommendProps {
