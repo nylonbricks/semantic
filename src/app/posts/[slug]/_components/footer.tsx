@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { ShareIcon } from '@semantic/components/icon';
-import { METADATA, ROUTES } from '@semantic/constants';
+import { ShareIcon } from "@semantic/components/icon";
+import { METADATA, ROUTES } from "@semantic/constants";
 
-import type { Post } from '@/types/content';
+import type { Post } from "@/types/content";
 
-import { BackButton } from './back-button';
+import { BackButton } from "./back-button";
 
 export const Footer = ({ slug, title, subtitle }: Post) => {
   const handleShare = async () => {
@@ -22,9 +22,10 @@ export const Footer = ({ slug, title, subtitle }: Post) => {
     <footer className="row-between">
       <BackButton />
       <button
-        onClick={handleShare}
         aria-label="Share this post"
-        className="center-y h3 w-fit py-[0.3125rem] pr-[0.5625rem] text-[var(--color-gray-accent)] cursor-pointer select-none gap-[0.5rem] opacity-100 transition-opacity duration-150 ease-in-out hover:opacity-70"
+        className="center-y h3 w-fit cursor-pointer select-none gap-[0.5rem] py-[0.3125rem] pr-[0.5625rem] text-[var(--color-gray-accent)] opacity-100 transition-opacity duration-150 ease-in-out hover:opacity-70"
+        onClick={handleShare}
+        type="button"
       >
         Share this post
         <ShareIcon size={18} />

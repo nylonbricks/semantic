@@ -1,69 +1,77 @@
-'use client';
+"use client";
 
-import * as Accordion from '@radix-ui/react-accordion';
-import dayjs from 'dayjs';
-import Link from 'next/link';
-import { useState } from 'react';
+// biome-ignore lint/performance/noNamespaceImport: Radix Accordion namespace import is used for readability.
+import * as Accordion from "@radix-ui/react-accordion";
+import { Divider } from "@semantic/components/ui";
+import { METADATA, ROUTES } from "@semantic/constants";
+import dayjs from "dayjs";
+import Link from "next/link";
+import { useState } from "react";
 
-import { Divider } from '@semantic/components/ui';
-import { METADATA, ROUTES } from '@semantic/constants';
-
-import { NavigateMenu } from './navigate-menu';
-import { ThemeToggle } from './theme-toggle';
+import { NavigateMenu } from "./navigate-menu";
+import { ThemeToggle } from "./theme-toggle";
 
 export const Header = () => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   const overlayClassName =
-    'fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)] transition-opacity duration-300';
+    "fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)] transition-opacity duration-300";
 
   return (
     <>
-      <Accordion.Root type="single" value={accordionOpen ? 'menu' : ''} collapsible>
-        <div
+      <Accordion.Root
+        collapsible
+        type="single"
+        value={accordionOpen ? "menu" : ""}
+      >
+        <button
+          aria-label="Close menu"
           className={
             accordionOpen
               ? `${overlayClassName} opacity-100`
-              : `${overlayClassName} opacity-0 pointer-events-none`
+              : `${overlayClassName} pointer-events-none opacity-0`
           }
           onClick={() => setAccordionOpen(false)}
+          type="button"
         />
 
-        <header className="fixed flex top-0 left-0 w-full px-[var(--spacing-inline)] bg-[var(--color-background)] z-[var(--z-header)] tablet:hidden">
-          <div className="row-between w-full max-w-[var(--app-width)] py-[0.8125rem] mx-auto">
+        <header className="fixed top-0 left-0 z-[var(--z-header)] flex tablet:hidden w-full bg-[var(--color-background)] px-[var(--spacing-inline)]">
+          <div className="row-between mx-auto w-full max-w-[var(--app-width)] py-[0.8125rem]">
             <Link
+              className="font-medium font-mono text-[0.9375rem] text-[var(--color-gray-mid)] leading-[auto]"
               href={ROUTES.HOME}
-              className="text-[var(--color-gray-mid)] font-mono font-medium text-[0.9375rem] leading-[auto]"
             >
               {METADATA.SITE.NAME}
             </Link>
 
             <Accordion.Item
+              aria-label="Menu Accordion"
               className="mt-[1px] overflow-hidden"
               id="menu-accordion-item"
               value="menu"
-              aria-label="Menu Accordion"
             >
               <button
-                className="center h-10 py-[0.6875rem] px-[0.9375rem] text-[var(--color-gray-mid)] font-mono font-medium text-[0.8125rem] leading-[1.125rem] border border-[var(--color-border)] rounded-[0.625rem] bg-[var(--color-toggle)] cursor-pointer"
-                onClick={() => setAccordionOpen((open) => !open)}
                 aria-controls="menu-accordion-content"
                 aria-expanded={accordionOpen}
+                className="center h-10 cursor-pointer rounded-[0.625rem] border border-[var(--color-border)] bg-[var(--color-toggle)] px-[0.9375rem] py-[0.6875rem] font-medium font-mono text-[0.8125rem] text-[var(--color-gray-mid)] leading-[1.125rem]"
+                onClick={() => setAccordionOpen((open) => !open)}
+                type="button"
               >
-                {accordionOpen ? '-' : 'menu'}
+                {accordionOpen ? "-" : "menu"}
               </button>
               <Accordion.Content
-                className="fixed top-[4.1875rem] left-0 w-full px-[var(--spacing-inline)] bg-[var(--color-background)] overflow-hidden"
-                id="menu-accordion-content"
                 aria-labelledby="menu-accordion-item"
+                className="fixed top-[4.1875rem] left-0 w-full overflow-hidden bg-[var(--color-background)] px-[var(--spacing-inline)]"
+                id="menu-accordion-content"
               >
-                <div className="column w-full max-w-[var(--app-width)] pt-[1.5625rem] pb-[1.1875rem] mx-auto">
+                <div className="column mx-auto w-full max-w-[var(--app-width)] pt-[1.5625rem] pb-[1.1875rem]">
                   <div className="column w-full max-w-[122px] gap-[1.875rem]">
                     <NavigateMenu />
                     <ThemeToggle />
                   </div>
-                  <p className="h7 w-full mt-[2.6875rem] text-[var(--color-license)] text-center">
-                    Copyright © {dayjs().year()} {METADATA.AUTHOR.NAME}, All rights reserved.
+                  <p className="h7 mt-[2.6875rem] w-full text-center text-[var(--color-license)]">
+                    Copyright © {dayjs().year()} {METADATA.AUTHOR.NAME}, All
+                    rights reserved.
                   </p>
                 </div>
               </Accordion.Content>
@@ -72,7 +80,7 @@ export const Header = () => {
         </header>
       </Accordion.Root>
 
-      <div className="block pt-[4.1875rem] tablet:hidden">
+      <div className="block tablet:hidden pt-[4.1875rem]">
         <Divider />
       </div>
     </>

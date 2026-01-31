@@ -1,28 +1,34 @@
-import { readdir } from 'node:fs/promises';
-import path from 'node:path';
+import { readdir } from "node:fs/promises";
+import path from "node:path";
 
-import type { Post, PostMetadata } from '@/types/content';
+import type { Post, PostMetadata } from "@/types/content";
 
-import { createBlurData } from '../image';
+import { createBlurData } from "../image";
 
-const MDX_EXTENSION = '.mdx';
-const POSTS_DIR = path.join(process.cwd(), 'src', 'app', 'posts', '_articles');
-const CONTENT_DIR = path.join(process.cwd(), 'content');
+export type { Post, PostMetadata } from "@/types/content";
 
-type PostModule = {
+const MDX_EXTENSION = ".mdx";
+const POSTS_DIR = path.join(process.cwd(), "src", "app", "posts", "_articles");
+const CONTENT_DIR = path.join(process.cwd(), "content");
+const CONTENT_PATH_PREFIX = /^\/content\//;
+
+interface PostModule {
   default: unknown;
   metadata?: PostMetadata;
-};
+}
 
 const toContentFsPath = (webPath: string) => {
-  if (!webPath.startsWith('/content/')) {
+  if (!webPath.startsWith("/content/")) {
     throw new Error(`Unsupported content webPath: ${webPath}`);
   }
-  return path.join(CONTENT_DIR, webPath.replace(/^\/content\//, ''));
+  return path.join(CONTENT_DIR, webPath.replace(CONTENT_PATH_PREFIX, ""));
 };
 
-const buildPost = async (slug: string, metadata: PostMetadata): Promise<Post> => {
-  let coverImageBlur = { blur: '', ratio: 0 };
+const buildPost = async (
+  slug: string,
+  metadata: PostMetadata
+): Promise<Post> => {
+  let coverImageBlur = { blur: "", ratio: 0 };
 
   try {
     coverImageBlur = await createBlurData(toContentFsPath(metadata.coverImage));
@@ -43,9 +49,13 @@ export const getAllPosts = async (): Promise<Post[]> => {
 
   const items: Post[] = [];
   for (const filename of entries) {
-    if (!filename.endsWith(MDX_EXTENSION)) continue;
+    if (!filename.endsWith(MDX_EXTENSION)) {
+      continue;
+    }
 
-    const postModule = (await import(`@semantic/app/posts/_articles/${filename}`)) as PostModule;
+    const postModule = (await import(
+      `@semantic/app/posts/_articles/${filename}`
+    )) as PostModule;
     if (!postModule.metadata) {
       throw new Error(`Missing \`metadata\` in ${filename}`);
     }
@@ -60,7 +70,9 @@ export const getAllPosts = async (): Promise<Post[]> => {
 
 export const getPostBySlug = async (slug: string): Promise<Post> => {
   try {
-    const postModule = (await import(`@semantic/app/posts/_articles/${slug}.mdx`)) as PostModule;
+    const postModule = (await import(
+      `@semantic/app/posts/_articles/${slug}.mdx`
+    )) as PostModule;
 
     if (!postModule.metadata) {
       throw new Error(`Missing \`metadata\` in ${slug}.mdx`);
@@ -72,5 +84,3 @@ export const getPostBySlug = async (slug: string): Promise<Post> => {
     throw new Error(`Post not found: ${slug}`);
   }
 };
-
-export type { Post, PostMetadata };

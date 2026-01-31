@@ -1,8 +1,8 @@
-@import 'tailwindcss';
-@import './theme.css';
-@import './utilities.css';
-@import './blockquote.css';
-@import './code-highlight.css';
+@import "tailwindcss";
+@import "./theme.css";
+@import "./utilities.css";
+@import "./blockquote.css";
+@import "./code-highlight.css";
 
 @layer base {
   body {
@@ -56,7 +56,7 @@
   }
 
   [data-mdx-article] ol li::before {
-    content: counter(basics-ol) '. ';
+    content: counter(basics-ol) ". ";
     counter-increment: basics-ol;
     position: absolute;
     left: 0;
@@ -65,7 +65,7 @@
   }
 
   [data-mdx-article] ul li::before {
-    content: '•';
+    content: "•";
     position: absolute;
     left: 0;
     color: var(--color-gray-mid);
@@ -98,18 +98,18 @@
     opacity: 0.7;
   }
 
-  [data-mdx-article] a[target='_blank']::after {
+  [data-mdx-article] a[target="_blank"]::after {
     display: inline-block;
     width: 12px;
     height: 12px;
     margin: 0;
-    content: '';
+    content: "";
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23393960" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>');
     background-repeat: no-repeat;
     background-size: cover;
   }
 
-  .dark [data-mdx-article] a[target='_blank']::after {
+  .dark [data-mdx-article] a[target="_blank"]::after {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23DDDDDD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>');
     background-repeat: no-repeat;
     background-size: cover;
@@ -119,39 +119,39 @@
     font-weight: 600;
   }
 
-  [data-callout='note'] {
+  [data-callout="note"] {
     --callout-bg: var(--callout-note-bg);
     --callout-border: var(--callout-note-border);
   }
 
-  [data-callout='tip'] {
+  [data-callout="tip"] {
     --callout-bg: var(--callout-tip-bg);
     --callout-border: var(--callout-tip-border);
   }
 
-  [data-callout='warning'] {
+  [data-callout="warning"] {
     --callout-bg: var(--callout-warning-bg);
     --callout-border: var(--callout-warning-border);
   }
 
-  [data-callout='important'] {
+  [data-callout="important"] {
     --callout-bg: var(--callout-important-bg);
     --callout-border: var(--callout-important-border);
   }
 
-  [data-callout='note'] [data-callout-title] {
+  [data-callout="note"] [data-callout-title] {
     color: var(--callout-note-title);
   }
 
-  [data-callout='tip'] [data-callout-title] {
+  [data-callout="tip"] [data-callout-title] {
     color: var(--callout-tip-title);
   }
 
-  [data-callout='warning'] [data-callout-title] {
+  [data-callout="warning"] [data-callout-title] {
     color: var(--callout-warning-title);
   }
 
-  [data-callout='important'] [data-callout-title] {
+  [data-callout="important"] [data-callout-title] {
     color: var(--callout-important-title);
   }
 

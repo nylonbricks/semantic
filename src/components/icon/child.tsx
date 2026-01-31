@@ -1,9 +1,9 @@
-import { Children, cloneElement, isValidElement, ReactNode } from 'react';
+import { Children, cloneElement, isValidElement, type ReactNode } from "react";
 
-type ChildProps = {
+interface ChildProps {
   children: ReactNode;
   [key: string]: unknown;
-};
+}
 
 const Child = ({ children, ...props }: ChildProps) => {
   const child: ReactNode = Children.only(children);

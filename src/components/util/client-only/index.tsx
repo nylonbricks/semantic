@@ -1,11 +1,11 @@
-import { type ReactNode } from 'react';
+import type { ReactNode } from "react";
 
-import { useIsClient } from './hooks';
+import { useIsClient } from "./hooks";
 
-export type ClientOnlyProps = {
+export interface ClientOnlyProps {
   children: ReactNode;
   fallback?: ReactNode;
-};
+}
 
 export const ClientOnly = ({ children, fallback }: ClientOnlyProps) => (
   <>{useIsClient() ? children : fallback}</>

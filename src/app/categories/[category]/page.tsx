@@ -1,30 +1,36 @@
-import { type Metadata } from 'next';
+import { getAllPosts } from "@libs/content";
+import { Pagination, PostList } from "@semantic/components/ui";
+import { POST, ROUTES } from "@semantic/constants";
+import { generatePageMetadata, slugify } from "@semantic/utils";
+import type { Metadata } from "next";
 
-import { getAllPosts } from '@libs/content';
-import { Pagination, PostList } from '@semantic/components/ui';
-import { POST, ROUTES } from '@semantic/constants';
-import { generatePageMetadata, slugify } from '@semantic/utils';
-
-type CategoriesPageProps = {
+interface CategoriesPageProps {
   params: Promise<{ category: string }>;
   searchParams: Promise<{ page: string }>;
-};
+}
 
 const parsePageParam = (raw: string | undefined) => {
-  const page = Number.parseInt(raw ?? '1', 10);
+  const page = Number.parseInt(raw ?? "1", 10);
   return Number.isFinite(page) && page > 0 ? page : 1;
 };
 
-const CategoriesPage = async ({ params, searchParams }: CategoriesPageProps) => {
+const CategoriesPage = async ({
+  params,
+  searchParams,
+}: CategoriesPageProps) => {
   const { category } = await params;
 
   const { page } = await searchParams;
   const currentPage = parsePageParam(page);
 
   const allPosts = await getAllPosts();
-  const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
+  const categoryPosts = allPosts.filter(
+    (post) => slugify(post.category) === category
+  );
 
-  const sortedPosts = categoryPosts.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+  const sortedPosts = categoryPosts.sort((a, b) =>
+    a.createdAt > b.createdAt ? -1 : 1
+  );
 
   const start = (currentPage - 1) * POST.PER_PAGE;
   const end = start + POST.PER_PAGE;
@@ -41,9 +47,9 @@ const CategoriesPage = async ({ params, searchParams }: CategoriesPageProps) => 
       <PostList posts={currentPosts} />
 
       <Pagination
+        basePath={`${ROUTES.CATEGORIES}/${category}`}
         currentPage={currentPage}
         totalPages={Math.ceil(categoryPosts.length / POST.PER_PAGE)}
-        basePath={`${ROUTES.CATEGORIES}/${category}`}
       />
     </>
   );
@@ -75,7 +81,9 @@ export const generateMetadata = async ({
   const { page } = await searchParams;
   const current = parsePageParam(page);
   const allPosts = await getAllPosts();
-  const categoryPosts = allPosts.filter((post) => slugify(post.category) === category);
+  const categoryPosts = allPosts.filter(
+    (post) => slugify(post.category) === category
+  );
   const categoryName = categoryPosts[0]?.category ?? category;
 
   return generatePageMetadata({

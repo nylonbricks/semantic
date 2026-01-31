@@ -1,23 +1,22 @@
 @layer base {
-  [class^='blockquote-'] {
-    @apply flex flex-col relative py-4 pr-4 pl-[3.125rem]
-    border border-solid rounded-[0.625rem];
+  [class^="blockquote-"] {
+    @apply flex flex-col relative py-4 pr-4 pl-[3.125rem] border border-solid rounded-[0.625rem];
   }
 
-  [class^='blockquote-'] > p {
+  [class^="blockquote-"] > p {
     @apply p-0 m-0 text-base font-medium break-keep;
   }
 
-  [class^='blockquote-']::before {
+  [class^="blockquote-"]::before {
     @apply absolute top-1/2 left-4 w-[1.125rem] h-[1.125rem];
-    content: '';
+    content: "";
     background-repeat: no-repeat;
     background-size: 1.125rem 1.125rem;
     background-position: left center;
     transform: translateY(-50%);
   }
 
-  [class^='blockquote-'] code {
+  [class^="blockquote-"] code {
     @apply inline-flex items-center py-1 px-1 border border-solid rounded;
     background-color: var(--color-background03) !important;
     border-color: var(--color-background06) !important;

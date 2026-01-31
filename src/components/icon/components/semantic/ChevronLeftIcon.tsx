@@ -1,23 +1,24 @@
-import Icon from '../../icon';
-import { IconProps } from '../../types';
+import Icon from "../../icon";
+import type { IconProps } from "../../types";
 
 export const ChevronLeftIcon = (props: IconProps) => (
   <Icon {...props}>
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      className="lucide lucide-chevron-left-icon lucide-chevron-left"
       fill="none"
+      height="24"
       stroke="currentColor"
-      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="lucide lucide-chevron-left-icon lucide-chevron-left"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
     >
+      <title>Chevron left</title>
       <path d="m15 18-6-6 6-6" />
     </svg>
   </Icon>
 );
 
-ChevronLeftIcon.displayName = 'ChevronLeftIcon';
+ChevronLeftIcon.displayName = "ChevronLeftIcon";

@@ -1,6 +1,6 @@
-import { useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from "react";
 
-const noop = (): void => {};
+const noop = (): void => undefined;
 
 const emptySubscribe = () => noop;
 const getSnapshot = () => true;

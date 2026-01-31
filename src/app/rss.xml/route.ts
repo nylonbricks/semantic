@@ -1,10 +1,9 @@
-import dayjs from 'dayjs';
+import { getAllPosts } from "@libs/content";
+import { METADATA, ROUTES } from "@semantic/constants";
+import { slugify } from "@semantic/utils";
+import dayjs from "dayjs";
 
-import { getAllPosts } from '@libs/content';
-import { METADATA, ROUTES } from '@semantic/constants';
-import { slugify } from '@semantic/utils';
-
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 export const revalidate = false;
 
 const generateRssItems = async (): Promise<
@@ -35,15 +34,17 @@ const generateRssItems = async (): Promise<
     });
 };
 
-type RssItem = {
+interface RssItem {
   title: string;
   link: string;
   slug: string;
   description: string;
   pubDate: string;
-};
+}
 
-const rssToXml = (items: RssItem[]): string => `<?xml version="1.0" encoding="UTF-8"?>
+const rssToXml = (
+  items: RssItem[]
+): string => `<?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title><![CDATA[${METADATA.SITE.NAME}]]></title>
@@ -67,9 +68,9 @@ ${items
       <description><![CDATA[${description}]]></description>
       <guid isPermaLink="true">${slug}</guid>
       <pubDate>${pubDate}</pubDate>
-    </item>`,
+    </item>`
   )
-  .join('')}
+  .join("")}
   </channel>
 </rss>`;
 
@@ -77,6 +78,6 @@ export const GET = async (): Promise<Response> => {
   const items = await generateRssItems();
   const xml = rssToXml(items);
   return new Response(xml, {
-    headers: { 'Content-Type': 'text/xml; charset=utf-8' },
+    headers: { "Content-Type": "text/xml; charset=utf-8" },
   });
 };

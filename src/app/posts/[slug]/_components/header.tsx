@@ -1,11 +1,10 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import { RelativeTime } from "@semantic/components/ui/relative-time";
+import { ROUTES } from "@semantic/constants";
+import { slugify } from "@semantic/utils";
+import Image from "next/image";
+import Link from "next/link";
 
-import { RelativeTime } from '@semantic/components/ui/relative-time';
-import { ROUTES } from '@semantic/constants';
-import { slugify } from '@semantic/utils';
-
-import type { Post } from '@/types/content';
+import type { Post } from "@/types/content";
 
 export const Header = ({
   coverImage,
@@ -18,35 +17,39 @@ export const Header = ({
 }: Post) => {
   return (
     <header className="mt-[1.25rem] mb-[3.5rem]">
-      <div className="center relative w-full aspect-[1.8/1] border border-[var(--color-border)] rounded-[0.875rem] select-none overflow-hidden">
+      <div className="center relative aspect-[1.8/1] w-full select-none overflow-hidden rounded-[0.875rem] border border-[var(--color-border)]">
         <Image
-          className="object-cover object-center w-full h-full"
-          src={coverImage}
           alt={`${title} Cover Image`}
-          placeholder="blur"
           blurDataURL={coverImageBlur.blur}
+          className="h-full w-full object-cover object-center"
           draggable={false}
+          fill
+          placeholder="blur"
           priority={false}
           quality={100}
           sizes="100vw"
-          fill
+          src={coverImage}
         />
       </div>
 
-      <h1 className="post-title p-0 mt-[1.0625rem] text-[var(--color-gray-accent)] break-keep">
+      <h1 className="post-title mt-[1.0625rem] break-keep p-0 text-[var(--color-gray-accent)]">
         {title}
       </h1>
 
-      <h2 className="post-subtitle p-0 mt-[0.5rem] text-[var(--color-gray-bold)]">{subtitle}</h2>
+      <h2 className="post-subtitle mt-[0.5rem] p-0 text-[var(--color-gray-bold)]">
+        {subtitle}
+      </h2>
 
-      <p className="center-y h5 mt-[1.125rem] text-[var(--color-gray-light)] break-keep">
+      <p className="center-y h5 mt-[1.125rem] break-keep text-[var(--color-gray-light)]">
         <RelativeTime time={createdAt} />
         {category && (
           <>
-            <span className="text-[var(--color-gray-bold)]">&nbsp;&middot;&nbsp;</span>
+            <span className="text-[var(--color-gray-bold)]">
+              &nbsp;&middot;&nbsp;
+            </span>
             <Link
+              className="no-underline opacity-100 transition-opacity duration-200 ease-in-out hover:opacity-70"
               href={`/categories/${slugify(category)}`}
-              className="opacity-100 no-underline transition-opacity duration-200 ease-in-out hover:opacity-70"
             >
               {category}
             </Link>
@@ -55,11 +58,11 @@ export const Header = ({
       </p>
 
       {tags && tags?.length > 0 && (
-        <ul className="center-y flex-wrap w-full mt-[1.5rem] gap-[0.5rem]">
+        <ul className="center-y mt-[1.5rem] w-full flex-wrap gap-[0.5rem]">
           {tags.map((tag) => (
             <li
+              className="center rounded-[0.5rem] border border-[var(--color-background03)] bg-[var(--color-background02)] px-[0.375rem] py-[0.125rem] font-medium font-mono text-[var(--color-gray-mid)] text-xs transition-colors duration-150 ease-in-out hover:bg-[var(--color-background04)]"
               key={tag}
-              className="center py-[0.125rem] px-[0.375rem] text-[var(--color-gray-mid)] text-xs font-mono font-medium border border-[var(--color-background03)] rounded-[0.5rem] bg-[var(--color-background02)] transition-colors duration-150 ease-in-out hover:bg-[var(--color-background04)]"
             >
               <Link href={`${ROUTES.TAGS}/${slugify(tag)}`}>{tag}</Link>
             </li>

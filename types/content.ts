@@ -1,6 +1,6 @@
-import type { BlurData } from '@libs/image';
+import type { BlurData } from "@libs/image";
 
-export type PostMetadata = {
+export interface PostMetadata {
   title: string;
   subtitle: string;
   createdAt: string;
@@ -9,7 +9,7 @@ export type PostMetadata = {
   category: string;
   tags?: string[];
   comments?: boolean;
-};
+}
 
 export interface Post extends PostMetadata {
   _id: string;
