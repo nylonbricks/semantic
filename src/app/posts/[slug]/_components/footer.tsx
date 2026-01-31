@@ -67,7 +67,11 @@ export const Footer = ({ slug, title, subtitle }: Post) => {
     const copied = await copyText(shareData.url);
     if (!copied) {
       window.open(shareData.url, "_blank", "noopener,noreferrer");
+      return;
     }
+
+    // biome-ignore lint/suspicious/noAlert: user requested clipboard copy confirmation.
+    alert("Link copied to clipboard.");
   };
 
   return (
