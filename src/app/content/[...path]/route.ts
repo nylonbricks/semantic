@@ -2,16 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { type NextRequest, NextResponse } from "next/server";
 
-const ERRORS = {
-  INVALID_STATE: {
-    status: 500,
-    message: "Invalid server state.",
-  },
-  FILE_NOT_FOUND: {
-    status: 404,
-    message: "File not found.",
-  },
-} as const;
+const INVALID_STATE_STATUS = 500;
+const FILE_NOT_FOUND_STATUS = 404;
 
 export const GET = async (
   _request: NextRequest,
@@ -24,8 +16,8 @@ export const GET = async (
 
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(
-        { error: ERRORS.FILE_NOT_FOUND.message },
-        { status: ERRORS.FILE_NOT_FOUND.status }
+        { error: "File not found." },
+        { status: FILE_NOT_FOUND_STATUS }
       );
     }
 
@@ -41,8 +33,8 @@ export const GET = async (
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: ERRORS.INVALID_STATE.message },
-      { status: ERRORS.INVALID_STATE.status }
+      { error: "Invalid server state." },
+      { status: INVALID_STATE_STATUS }
     );
   }
 };
