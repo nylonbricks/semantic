@@ -1,13 +1,10 @@
-import { createBlur } from "@libs/image";
 import { METADATA } from "@semantic/constants/metadata";
 import { PLAYLIST, PROFILE } from "@semantic/constants/profile";
 import Image from "next/image";
 
 import Card from "./card";
 
-export const ProfileGrid = async () => {
-  const blurDataURL = await createBlur(PROFILE.profileImage);
-
+export const ProfileGrid = () => {
   return (
     <section
       aria-label={`${METADATA.AUTHOR.NAME}'s profile and playlist`}
@@ -32,13 +29,10 @@ export const ProfileGrid = async () => {
               >
                 <Image
                   alt={`${METADATA.AUTHOR.NAME} profile image`}
-                  blurDataURL={blurDataURL}
                   className="h-full w-full object-cover"
                   draggable={false}
                   fill
-                  placeholder="blur"
                   priority
-                  role="img"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   src={PROFILE.profileImage}
                 />

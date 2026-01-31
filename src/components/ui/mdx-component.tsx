@@ -134,16 +134,16 @@ type ImgProps = Omit<ComponentProps<"img">, "src" | "alt"> & {
   src?: string;
   alt?: string;
 };
-const Img = ({ src, alt, ...props }: ImgProps) => {
+const Img = async ({ src, alt, ...props }: ImgProps) => {
   if (!src) {
     return null;
   }
 
-  if (src.startsWith("https://") || src.startsWith("/media/")) {
+  if (src.startsWith("https://")) {
     return (
       <LazyImage
         alt={alt ?? ""}
-        className="h-auto max-w-full rounded-[0.875rem] border border-[var(--color-border)]"
+        className="h-auto max-w-full"
         draggable={false}
         src={src}
         {...props}
@@ -151,7 +151,22 @@ const Img = ({ src, alt, ...props }: ImgProps) => {
     );
   }
 
-  return <p>Image Loading Error (src: {src})</p>;
+  try {
+    const image = await import(`../../../assets/images/${src}`);
+
+    return (
+      <Image
+        alt={alt ?? ""}
+        draggable={false}
+        placeholder="blur"
+        quality={95}
+        src={image.default}
+      />
+    );
+  } catch (error) {
+    console.error(error);
+    return <p>Image Loading Error (src: {src})</p>;
+  }
 };
 
 const HR = (props: ComponentProps<"hr">) => (
