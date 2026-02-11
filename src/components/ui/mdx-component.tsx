@@ -163,8 +163,7 @@ const Img = async ({ src, alt, ...props }: ImgProps) => {
         src={image.default}
       />
     );
-  } catch (error) {
-    console.error(error);
+  } catch {
     return <p>Image Loading Error (src: {src})</p>;
   }
 };
