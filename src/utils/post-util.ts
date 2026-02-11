@@ -21,8 +21,8 @@ const resolveCoverImage = async (
   try {
     const image = await import(`../../assets/images/${coverImage}`);
     return image.default;
-  } catch (error) {
-    console.error(`Failed to load local image: ${coverImage}`, error);
+  } catch {
+    // Error is handled by falling back to the original coverImage string
     return coverImage;
   }
 };
@@ -75,8 +75,7 @@ export const getPostBySlug = async (slug: string): Promise<Post> => {
     }
 
     return await buildPost(slug, postModule.metadata);
-  } catch (error) {
-    console.error(`Failed to load post: ${slug}`, error);
+  } catch {
     throw new Error(`Post not found: ${slug}`);
   }
 };
