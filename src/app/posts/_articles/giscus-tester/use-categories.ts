@@ -8,8 +8,8 @@ interface Category {
   name: string;
 }
 interface CategoriesResponse {
-  repositoryId: string;
   categories: Category[];
+  repositoryId: string;
 }
 interface ErrorResponse {
   error: string;

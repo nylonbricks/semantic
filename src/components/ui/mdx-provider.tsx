@@ -9,6 +9,6 @@ interface MdxProviderProps {
   children: ReactNode;
 }
 
-export const MdxProvider = ({ children }: MdxProviderProps) => {
-  return <MDXProvider components={components}>{children}</MDXProvider>;
-};
+export const MdxProvider = ({ children }: MdxProviderProps) => (
+  <MDXProvider components={components}>{children}</MDXProvider>
+);

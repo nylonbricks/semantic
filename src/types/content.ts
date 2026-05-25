@@ -1,20 +1,20 @@
 import type { StaticImageData } from "next/image";
 
 export interface PostMetadata {
-  title: string;
-  subtitle: string;
+  category: string;
+  comments?: boolean;
+  coverImage: string;
   createdAt: string;
   modifiedAt: string;
-  coverImage: string;
-  category: string;
+  subtitle: string;
   tags?: string[];
-  comments?: boolean;
+  title: string;
 }
 
 export type PostCoverImage = string | StaticImageData;
 
 export interface Post extends Omit<PostMetadata, "coverImage"> {
   _id: string;
-  slug: string;
   coverImage: PostCoverImage;
+  slug: string;
 }

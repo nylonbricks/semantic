@@ -2,17 +2,17 @@ import { METADATA } from "@semantic/constants/metadata";
 import type { Metadata } from "next";
 
 interface GeneratePageMetadataParams {
-  title?: string;
   description?: string;
-  path?: string;
   image?: string;
-  type?: "website" | "article";
   openGraph?: {
     publishedTime?: string;
     modifiedTime?: string;
     authors?: string[];
     tags?: string[];
   };
+  path?: string;
+  title?: string;
+  type?: "website" | "article";
 }
 
 export const generatePageMetadata = ({

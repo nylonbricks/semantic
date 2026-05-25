@@ -9,11 +9,10 @@ import type { Post } from "@/types/content";
 
 import { ProfileGrid } from "./_components/profile-grid";
 
-const getSortedPosts = (posts: Post[]) => {
-  return posts
+const getSortedPosts = (posts: Post[]) =>
+  posts
     .sort((a, b) => (dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? -1 : 1))
     .slice(0, 2);
-};
 
 const HomePage = async () => {
   const allPosts = await getAllPosts();

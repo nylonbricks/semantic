@@ -14,6 +14,5 @@ const AboutPage = async () => {
 
 export default AboutPage;
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  return generatePageMetadata({ title: "About", path: ROUTES.ABOUT });
-};
+export const generateMetadata = async (): Promise<Metadata> =>
+  generatePageMetadata({ title: "About", path: ROUTES.ABOUT });

@@ -8,10 +8,8 @@ type RelativeTimeProps = ComponentProps<"time"> & {
   time: string | Date;
 };
 
-export const RelativeTime = ({ time, ...props }: RelativeTimeProps) => {
-  return (
-    <ClientOnly>
-      <time {...props}>{formatRelativeTime(time)}</time>
-    </ClientOnly>
-  );
-};
+export const RelativeTime = ({ time, ...props }: RelativeTimeProps) => (
+  <ClientOnly>
+    <time {...props}>{formatRelativeTime(time)}</time>
+  </ClientOnly>
+);

@@ -9,17 +9,15 @@ import { Layout } from "./_components/layout/root";
 
 import { GeistMono, Pretendard } from "./_fonts";
 
-const RootLayout = ({ children }: PropsWithChildren) => {
-  return (
-    <html lang={METADATA.SITE.LANGUAGE} suppressHydrationWarning>
-      <body className={twMerge(Pretendard.variable, GeistMono.variable)}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Layout>{children}</Layout>
-        </ThemeProvider>
-      </body>
-    </html>
-  );
-};
+const RootLayout = ({ children }: PropsWithChildren) => (
+  <html lang={METADATA.SITE.LANGUAGE} suppressHydrationWarning>
+    <body className={twMerge(Pretendard.variable, GeistMono.variable)}>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Layout>{children}</Layout>
+      </ThemeProvider>
+    </body>
+  </html>
+);
 
 export default RootLayout;
 

@@ -11,12 +11,11 @@ const Icon = ({
   height,
   size = DEFAULT_ICON_SIZE,
   ...props
-}: IconProps) => {
-  return cloneElement(<Child>{children}</Child>, {
+}: IconProps) =>
+  cloneElement(<Child>{children}</Child>, {
     width: width ?? size,
     height: height ?? size,
     ...props,
   });
-};
 
 export default Icon;
