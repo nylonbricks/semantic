@@ -175,9 +175,9 @@ const HR = (props: ComponentProps<"hr">) => (
 type CalloutType = "note" | "tip" | "warning" | "important";
 
 interface CalloutProps {
-  type?: CalloutType;
-  title?: string;
   children: ReactNode;
+  title?: string;
+  type?: CalloutType;
 }
 
 const CALLOUT_LABEL: Record<CalloutType, string> = {

@@ -1,10 +1,10 @@
 import type { CSSProperties } from "react";
 
 interface GiscusCodeBlockProps {
-  repository: string;
-  repositoryId: string;
   category: string;
   categoryId: string;
+  repository: string;
+  repositoryId: string;
 }
 
 export const GiscusCodeBlock = ({

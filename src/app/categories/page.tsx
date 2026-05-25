@@ -58,6 +58,5 @@ const CategoryListPage = async () => {
 
 export default CategoryListPage;
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  return generatePageMetadata({ title: "Categories", path: ROUTES.CATEGORIES });
-};
+export const generateMetadata = async (): Promise<Metadata> =>
+  generatePageMetadata({ title: "Categories", path: ROUTES.CATEGORIES });

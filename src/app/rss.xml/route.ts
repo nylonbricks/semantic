@@ -36,11 +36,11 @@ const generateRssItems = async (): Promise<
 };
 
 interface RssItem {
-  title: string;
-  link: string;
-  slug: string;
   description: string;
+  link: string;
   pubDate: string;
+  slug: string;
+  title: string;
 }
 
 const rssToXml = (

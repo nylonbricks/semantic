@@ -7,9 +7,9 @@ import Link from "next/link";
 const TRAILING_SLASH = /\/$/;
 
 interface PaginationProps {
+  basePath: string;
   currentPage: number;
   totalPages: number;
-  basePath: string;
 }
 
 export const Pagination = ({
