@@ -43,7 +43,7 @@
     "typescript": "^6.0.3",
     "ultracite": "^7.7.0"
   },
-  "packageManager": "pnpm@10.29.3",
+  "packageManager": "pnpm@10.33.4",
   "pnpm": {
     "overrides": {
       "postcss": "8.5.15"
