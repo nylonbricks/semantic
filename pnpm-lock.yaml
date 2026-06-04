@@ -15,7 +15,7 @@ importers:
         specifier: ^1.2.12
         version: 1.2.12(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       dayjs:
-        specifier: ^1.11.20
+        specifier: ^1.11.21
         version: 1.11.21
       next:
         specifier: ^16.2.6
