@@ -40,7 +40,7 @@
     "remark-gfm": "^4.0.1",
     "shiki": "4.3.1",
     "tailwindcss": "4.3.2",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.0",
     "ultracite": "7.8.3"
   },
   "packageManager": "pnpm@11.9.0"
