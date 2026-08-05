@@ -41,7 +41,7 @@
     "shiki": "4.3.1",
     "tailwindcss": "4.3.2",
     "typescript": "^6.0.3",
-    "ultracite": "7.9.4"
+    "ultracite": "7.10.1"
   },
   "packageManager": "pnpm@11.17.0"
 }
