@@ -4,13 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --port 1113 --hostname 0.0.0.0",
     "build": "next build",
-    "start": "next start",
+    "check": "ultracite check",
+    "dev": "next dev --port 1113 --hostname 0.0.0.0",
+    "fix": "ultracite fix",
     "lint": "ultracite check",
     "prepare": "husky",
-    "check": "ultracite check",
-    "fix": "ultracite fix"
+    "start": "next start"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc,css}": "pnpm dlx ultracite fix"
@@ -40,7 +40,7 @@
     "remark-gfm": "^4.0.1",
     "shiki": "4.4.3",
     "tailwindcss": "4.3.2",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.0",
     "ultracite": "7.10.7"
   },
   "packageManager": "pnpm@11.25.0"
