@@ -61,10 +61,10 @@ const generateSitemapUrls = async (): Promise<MetadataRoute.Sitemap> => {
       url: `${METADATA.SITE.URL}${ROUTES.POSTS}/p/${pageIndex + 1}`,
     })),
     ...posts.map(({ slug, modifiedAt, createdAt }) => ({
-      url: `${METADATA.SITE.URL}${ROUTES.POSTS}/${slug}`,
-      lastModified: modifiedAt ?? createdAt,
       changeFrequency: "monthly",
+      lastModified: modifiedAt ?? createdAt,
       priority: 0.9,
+      url: `${METADATA.SITE.URL}${ROUTES.POSTS}/${slug}`,
     })),
   ];
 };

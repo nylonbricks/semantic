@@ -64,8 +64,8 @@ const A = ({ href, ...props }: AnchorProps) => (
     href={href ?? ""}
     {...(href?.startsWith("https://")
       ? {
-          target: "_blank",
           rel: "noopener noreferrer",
+          target: "_blank",
         }
       : {})}
     {...props}
@@ -102,6 +102,9 @@ const Code = async (props: CodeProps) => {
       theme: cssVariablesTheme,
       transformers: [
         {
+          postprocess(html) {
+            return html.replace(/^<code>|<\/code>$/g, "");
+          },
           pre: (hast) => {
             if (hast.children.length !== 1) {
               throw new Error("<pre>: Expected a single <code> child");
@@ -110,9 +113,6 @@ const Code = async (props: CodeProps) => {
               throw new Error("<pre>: Expected a <code> child");
             }
             return hast.children[0];
-          },
-          postprocess(html) {
-            return html.replace(/^<code>|<\/code>$/g, "");
           },
         },
       ],
@@ -181,10 +181,10 @@ interface CalloutProps {
 }
 
 const CALLOUT_LABEL: Record<CalloutType, string> = {
+  important: "Important",
   note: "Note",
   tip: "Tip",
   warning: "Warning",
-  important: "Important",
 };
 
 const Callout = ({ type = "note", title, children }: CalloutProps) => {
@@ -209,22 +209,22 @@ const Callout = ({ type = "note", title, children }: CalloutProps) => {
 };
 
 export const components = {
+  a: A,
+  blockquote: Blockquote,
+  Callout,
+  code: Code,
+  GiscusTester,
   h1: H1,
   h2: H2,
   h3: H3,
   h4: H4,
-  ul: UL,
-  ol: OL,
-  li: LI,
-  a: A,
-  strong: Strong,
-  p: P,
-  blockquote: Blockquote,
-  pre: Pre,
-  code: Code,
-  img: Img,
   hr: HR,
-  Callout,
   Image,
-  GiscusTester,
+  img: Img,
+  li: LI,
+  ol: OL,
+  p: P,
+  pre: Pre,
+  strong: Strong,
+  ul: UL,
 };

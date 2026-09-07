@@ -22,52 +22,52 @@ const RootLayout = ({ children }: PropsWithChildren) => (
 export default RootLayout;
 
 export const metadata: Metadata = {
-  title: METADATA.SITE.NAME,
-  description: METADATA.SITE.DESCRIPTION,
-  metadataBase: new URL(METADATA.SITE.URL),
-  openGraph: {
-    title: METADATA.SITE.NAME,
-    description: METADATA.SITE.DESCRIPTION,
-    url: METADATA.SITE.URL,
-    siteName: METADATA.SITE.NAME,
-    images: [
-      {
-        url: METADATA.SITE.PREVIEW_IMAGE,
-        width: 1200,
-        height: 630,
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: METADATA.SITE.NAME,
-    description: METADATA.SITE.DESCRIPTION,
-    images: [METADATA.SITE.PREVIEW_IMAGE],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   alternates: {
     canonical: METADATA.SITE.URL,
   },
-  generator: "Next.js",
   applicationName: METADATA.SITE.NAME,
   creator: METADATA.AUTHOR.NAME,
+  description: METADATA.SITE.DESCRIPTION,
+  generator: "Next.js",
+  metadataBase: new URL(METADATA.SITE.URL),
+  openGraph: {
+    description: METADATA.SITE.DESCRIPTION,
+    images: [
+      {
+        height: 630,
+        url: METADATA.SITE.PREVIEW_IMAGE,
+        width: 1200,
+      },
+    ],
+    siteName: METADATA.SITE.NAME,
+    title: METADATA.SITE.NAME,
+    type: "website",
+    url: METADATA.SITE.URL,
+  },
   publisher: METADATA.AUTHOR.NAME,
+  robots: {
+    follow: true,
+    googleBot: {
+      follow: true,
+      index: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+    index: true,
+  },
+  title: METADATA.SITE.NAME,
+  twitter: {
+    card: "summary_large_image",
+    description: METADATA.SITE.DESCRIPTION,
+    images: [METADATA.SITE.PREVIEW_IMAGE],
+    title: METADATA.SITE.NAME,
+  },
 };
 
 export const viewport: Viewport = {
-  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  width: "device-width",
 };

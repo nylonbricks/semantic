@@ -90,10 +90,10 @@ export const generateMetadata = async ({
   const categoryName = categoryPosts[0]?.category ?? category;
 
   return generatePageMetadata({
-    title: current === 1 ? categoryName : `${categoryName} - Page ${current}`,
     path:
       current === 1
         ? `${ROUTES.CATEGORIES}/${category}`
         : `${ROUTES.CATEGORIES}/${category}?page=${current}`,
+    title: current === 1 ? categoryName : `${categoryName} - Page ${current}`,
   });
 };

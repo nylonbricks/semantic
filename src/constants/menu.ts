@@ -1,13 +1,13 @@
 export const MENU = [
-  { title: "🚽 Home", link: "/" },
-  { title: "🎲 About", link: "/about" },
-  { title: "📟 Posts", link: "/posts" },
+  { link: "/", title: "🚽 Home" },
+  { link: "/about", title: "🎲 About" },
+  { link: "/posts", title: "📟 Posts" },
 ] as const;
 
 export const ROUTES = {
-  HOME: "/",
   ABOUT: "/about",
-  POSTS: "/posts",
   CATEGORIES: "/categories",
+  HOME: "/",
+  POSTS: "/posts",
   TAGS: "/tags",
 } as const;

@@ -29,19 +29,19 @@ export const Giscus = ({ ...props }: GiscusProps) => {
     }
 
     const attributes = {
-      src: "https://giscus.app/client.js",
-      "data-repo": GISCUS.REPO,
-      "data-repo-id": GISCUS.REPO_ID,
+      crossorigin: "anonymous",
       "data-category": GISCUS.CATEGORY,
       "data-category-id": GISCUS.CATEGORY_ID,
-      "data-mapping": GISCUS.MAPPING,
-      "data-strict": "0",
-      "data-reactions-enabled": "1",
       "data-emit-metadata": "0",
       "data-input-position": "bottom",
-      "data-theme": theme,
       "data-lang": "en",
-      crossorigin: "anonymous",
+      "data-mapping": GISCUS.MAPPING,
+      "data-reactions-enabled": "1",
+      "data-repo": GISCUS.REPO,
+      "data-repo-id": GISCUS.REPO_ID,
+      "data-strict": "0",
+      "data-theme": theme,
+      src: "https://giscus.app/client.js",
     };
 
     const script = document.createElement("script");
