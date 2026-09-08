@@ -15,8 +15,8 @@ export const GiscusCodeBlock = ({
 }: GiscusCodeBlockProps) => {
   const styleProps = {
     "--shiki-dark": "#adbac7",
-    "--shiki-light": "#24292e",
     "--shiki-dark-bg": "#22272e",
+    "--shiki-light": "#24292e",
     "--shiki-light-bg": "#fff",
   } as CSSProperties;
 

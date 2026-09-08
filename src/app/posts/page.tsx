@@ -63,7 +63,7 @@ export const generateMetadata = async ({
   const current = parsePageParam(page);
 
   return generatePageMetadata({
-    title: current === 1 ? "Posts" : `Posts - Page ${current}`,
     path: current === 1 ? ROUTES.POSTS : `${ROUTES.POSTS}/p/${current}`,
+    title: current === 1 ? "Posts" : `Posts - Page ${current}`,
   });
 };

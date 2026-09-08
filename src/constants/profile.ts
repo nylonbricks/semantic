@@ -1,18 +1,18 @@
 export const PROFILE = {
-  cardBackgroundColor: "#FAEE5D",
-
-  profileImage: "/static/profile.webp",
-  profileImageShadowColor: "rgba(232, 114, 24, 0.43)",
-  profileImageFilter: "",
-  profileImageBorderColor: "rgba(0, 0, 0, 0.06)",
   authorTextColor: "#302C1D",
-
-  titleTextColor: "#CAA937",
+  cardBackgroundColor: "#FAEE5D",
   contentTextColor: "#302C1D",
 
+  profileImage: "/static/profile.webp",
+  profileImageBorderColor: "rgba(0, 0, 0, 0.06)",
+  profileImageFilter: "",
+  profileImageShadowColor: "rgba(232, 114, 24, 0.43)",
+
+  titleTextColor: "#CAA937",
+
   userDetails: [
-    { title: "Studying", content: "Product design\nUI/UX design" },
-    { title: "Location", content: "Seoul, South Korea" },
+    { content: "Product design\nUI/UX design", title: "Studying" },
+    { content: "Seoul, South Korea", title: "Location" },
   ],
 };
 

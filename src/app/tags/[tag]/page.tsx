@@ -63,8 +63,8 @@ export const generateStaticParams = async () => {
     const totalPages = Math.ceil(tagPosts.length / POST.PER_PAGE);
 
     return Array.from({ length: totalPages }, (_, i) => ({
-      tag: slugify(tag),
       page: (i + 1).toString(),
+      tag: slugify(tag),
     }));
   });
 };
@@ -85,10 +85,10 @@ export const generateMetadata = async ({
   const tagName = tagPosts[0]?.tags?.find((t) => slugify(t) === tag) ?? tag;
 
   return generatePageMetadata({
-    title: current === 1 ? tagName : `${tagName} - Page ${current}`,
     path:
       current === 1
         ? `${ROUTES.TAGS}/${tag}`
         : `${ROUTES.TAGS}/${tag}?page=${current}`,
+    title: current === 1 ? tagName : `${tagName} - Page ${current}`,
   });
 };

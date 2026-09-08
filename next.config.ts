@@ -8,7 +8,6 @@ const withMDX = createMDX({
 });
 
 const nextConfig: NextConfig = {
-  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   experimental: {
     mdxRs: {
       mdxType: "gfm",
@@ -18,11 +17,12 @@ const nextConfig: NextConfig = {
     qualities: [75, 100],
     remotePatterns: [
       {
-        protocol: "http",
         hostname: "localhost",
+        protocol: "http",
       },
     ],
   },
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
 };
 
 export default withMDX(nextConfig);

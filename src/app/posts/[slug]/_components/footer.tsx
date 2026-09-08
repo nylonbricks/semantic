@@ -37,8 +37,8 @@ export const Footer = ({ slug, title, subtitle }: Post) => {
 
   const handleShare = async () => {
     const shareData = {
-      title,
       text: subtitle,
+      title,
       url: `${METADATA.SITE.URL}${ROUTES.POSTS}/${slug}`,
     };
 

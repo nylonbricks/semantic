@@ -67,17 +67,17 @@ export const generateMetadata = async ({
     }
 
     return generatePageMetadata({
-      title: metadata.title,
       description: metadata.subtitle,
-      path: `${ROUTES.POSTS}/${slug}`,
       image: metadata.coverImage,
-      type: "article",
       openGraph: {
-        publishedTime: metadata.createdAt,
-        modifiedTime: metadata.modifiedAt,
         authors: [METADATA.AUTHOR.NAME],
+        modifiedTime: metadata.modifiedAt,
+        publishedTime: metadata.createdAt,
         tags: metadata.tags,
       },
+      path: `${ROUTES.POSTS}/${slug}`,
+      title: metadata.title,
+      type: "article",
     });
   } catch {
     return generatePageMetadata({});

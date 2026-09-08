@@ -66,4 +66,4 @@ const TagListPage = async () => {
 export default TagListPage;
 
 export const generateMetadata = async (): Promise<Metadata> =>
-  generatePageMetadata({ title: "Tags", path: ROUTES.TAGS });
+  generatePageMetadata({ path: ROUTES.TAGS, title: "Tags" });

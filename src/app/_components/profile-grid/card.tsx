@@ -49,4 +49,4 @@ const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
   }
 );
 
-export default { Root: Card, Content: CardContent };
+export default { Content: CardContent, Root: Card };

@@ -26,11 +26,11 @@ const generateRssItems = async (): Promise<
       const description = subtitle;
 
       return {
-        title,
-        link: `${METADATA.SITE.URL}${ROUTES.POSTS}/${slugify(slug)}`,
-        slug: slugify(slug),
         description,
+        link: `${METADATA.SITE.URL}${ROUTES.POSTS}/${slugify(slug)}`,
         pubDate,
+        slug: slugify(slug),
+        title,
       };
     });
 };

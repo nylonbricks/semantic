@@ -13,8 +13,8 @@ const Icon = ({
   ...props
 }: IconProps) =>
   cloneElement(<Child>{children}</Child>, {
-    width: width ?? size,
     height: height ?? size,
+    width: width ?? size,
     ...props,
   });
 

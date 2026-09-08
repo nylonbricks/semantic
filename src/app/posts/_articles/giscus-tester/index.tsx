@@ -8,21 +8,21 @@ import { StepController } from "./step-controller";
 import { useCategories } from "./use-categories";
 
 const REPO_STATUS = {
-  NORMAL: {
-    MESSAGE: "Please enter a public repository.",
-    COLOR: "text-[var(--color-gray-mid)]",
+  FAIL: {
+    COLOR: "text-red-600",
+    MESSAGE: "❌ Failed to verify. Please check the repository name again.",
   },
   LOADING: {
-    MESSAGE: "Verifying repository...",
     COLOR: "text-[var(--color-gray-mid)]",
+    MESSAGE: "Verifying repository...",
+  },
+  NORMAL: {
+    COLOR: "text-[var(--color-gray-mid)]",
+    MESSAGE: "Please enter a public repository.",
   },
   SUCCESS: {
-    MESSAGE: "✅ Repository verified successfully.",
     COLOR: "text-green-600",
-  },
-  FAIL: {
-    MESSAGE: "❌ Failed to verify. Please check the repository name again.",
-    COLOR: "text-red-600",
+    MESSAGE: "✅ Repository verified successfully.",
   },
 } as const;
 
