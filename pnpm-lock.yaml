@@ -84,7 +84,7 @@ importers:
         version: 7.0.2
       ultracite:
         specifier: 7.11.1
-        version: 7.11.1(@biomejs/biome@2.5.12)
+        version: 7.11.1(@biomejs/biome@2.5.13)
 
 packages:
 
@@ -3584,7 +3584,7 @@ snapshots:
 
   ufo@1.6.4: {}
 
-  ultracite@7.11.1(@biomejs/biome@2.5.12):
+  ultracite@7.11.1(@biomejs/biome@2.5.13):
     dependencies:
       '@clack/prompts': 1.7.0
       cli-truncate: 6.1.1
@@ -3604,7 +3604,7 @@ snapshots:
       yaml: 2.9.0
       zod: 4.5.4
     optionalDependencies:
-      '@biomejs/biome': 2.5.12
+      '@biomejs/biome': 2.5.13
 
   undici-types@8.9.0: {}
 
