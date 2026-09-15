@@ -7,13 +7,19 @@ import { ROUTES } from "@semantic/constants/menu";
 import { METADATA } from "@semantic/constants/metadata";
 import dayjs from "dayjs";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { NavigateMenu } from "./navigate-menu";
 import { ThemeToggle } from "./theme-toggle";
 
 export const Header = () => {
   const [accordionOpen, setAccordionOpen] = useState(false);
+
+  const handleCloseMenu = useCallback(() => setAccordionOpen(false), []);
+  const handleToggleMenu = useCallback(
+    () => setAccordionOpen((open) => !open),
+    []
+  );
 
   const overlayClassName =
     "fixed inset-0 bg-[rgba(0,0,0,0.2)] backdrop-blur-[11px] z-[var(--z-overlay)] transition-opacity duration-300";
@@ -32,7 +38,7 @@ export const Header = () => {
               ? `${overlayClassName} opacity-100`
               : `${overlayClassName} pointer-events-none opacity-0`
           }
-          onClick={() => setAccordionOpen(false)}
+          onClick={handleCloseMenu}
           type="button"
         />
 
@@ -55,7 +61,7 @@ export const Header = () => {
                 aria-controls="menu-accordion-content"
                 aria-expanded={accordionOpen}
                 className="ui-button h4 px-4 text-[var(--color-gray-mid)] hover:bg-[var(--color-background02)]"
-                onClick={() => setAccordionOpen((open) => !open)}
+                onClick={handleToggleMenu}
                 type="button"
               >
                 {accordionOpen ? "-" : "menu"}

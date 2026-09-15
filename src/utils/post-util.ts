@@ -43,22 +43,21 @@ const buildPost = async (
 export const getAllPosts = async (): Promise<Post[]> => {
   const entries = await readdir(POSTS_DIR);
 
-  const items: Post[] = [];
-  for (const filename of entries) {
-    if (!filename.endsWith(MDX_EXTENSION)) {
-      continue;
-    }
+  const items = await Promise.all(
+    entries
+      .filter((filename) => filename.endsWith(MDX_EXTENSION))
+      .map(async (filename) => {
+        const postModule = (await import(
+          `@semantic/app/posts/_articles/${filename}`
+        )) as PostModule;
+        if (!postModule.metadata) {
+          throw new Error(`Missing \`metadata\` in ${filename}`);
+        }
 
-    const postModule = (await import(
-      `@semantic/app/posts/_articles/${filename}`
-    )) as PostModule;
-    if (!postModule.metadata) {
-      throw new Error(`Missing \`metadata\` in ${filename}`);
-    }
-
-    const slug = filename.slice(0, -MDX_EXTENSION.length);
-    items.push(await buildPost(slug, postModule.metadata));
-  }
+        const slug = filename.slice(0, -MDX_EXTENSION.length);
+        return buildPost(slug, postModule.metadata);
+      })
+  );
 
   items.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
   return items;
@@ -75,7 +74,7 @@ export const getPostBySlug = async (slug: string): Promise<Post> => {
     }
 
     return await buildPost(slug, postModule.metadata);
-  } catch {
-    throw new Error(`Post not found: ${slug}`);
+  } catch (error) {
+    throw new Error(`Post not found: ${slug}`, { cause: error });
   }
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { type ChangeEvent, useCallback, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { GiscusCodeBlock } from "./giscus-codeblock";
@@ -33,6 +33,15 @@ export const GiscusTester = () => {
   const { data, status } = useCategories(repository);
   const { MESSAGE, COLOR } = REPO_STATUS[status];
 
+  const handleRepositoryChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => setRepository(event.target.value),
+    []
+  );
+  const handleCategoryChange = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => setCategory(event.target.value),
+    []
+  );
+
   const handlePrev = useCallback(() => setStep((s) => s - 1), []);
   const handleNext = useCallback(() => setStep((s) => s + 1), []);
 
@@ -46,7 +55,7 @@ export const GiscusTester = () => {
             </p>
             <input
               className="w-full rounded-md border border-[var(--color-background08)] bg-[var(--color-background)] px-[0.75rem] py-[0.5rem] font-mono text-sm focus:border-[var(--color-gray-light)] focus:outline-none"
-              onChange={(e) => setRepository(e.target.value)}
+              onChange={handleRepositoryChange}
               placeholder="owner/repo"
               type="text"
               value={repository}
@@ -73,7 +82,7 @@ export const GiscusTester = () => {
             </p>
             <select
               className="w-full rounded-md border border-[var(--color-background08)] bg-[var(--color-background)] px-[0.75rem] py-[0.5rem] font-mono text-sm invalid:text-[var(--color-gray-light)] focus:border-[var(--color-gray-light)] focus:outline-none"
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={handleCategoryChange}
               required
               value={category}
             >

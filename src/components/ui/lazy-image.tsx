@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type LazyImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
@@ -16,6 +16,7 @@ export const LazyImage = ({
 }: LazyImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const handleLoad = useCallback(() => setIsLoaded(true), []);
 
   useEffect(() => {
     if (imgRef.current?.complete) {
@@ -36,7 +37,7 @@ export const LazyImage = ({
       )}
       decoding="async"
       loading="lazy"
-      onLoad={() => setIsLoaded(true)}
+      onLoad={handleLoad}
       ref={imgRef}
       src={src}
       {...props}
