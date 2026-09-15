@@ -12,7 +12,7 @@ type CardProps = {
   children: ReactNode;
 } & ComponentPropsWithoutRef<"div">;
 
-const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+const Card = forwardRef<HTMLDivElement, CardProps>(function CardBase(
   { as: Component = "div", className, children, ...props },
   ref
 ) {
@@ -35,7 +35,7 @@ type CardContentProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
-  function CardContent({ children, gap = 0, className, ...props }, ref) {
+  function CardContentBase({ children, gap = 0, className, ...props }, ref) {
     return (
       <div
         className={twMerge("row-between h-full w-full p-[1.875rem]", className)}
