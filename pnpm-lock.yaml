@@ -241,8 +241,8 @@ importers:
         specifier: ^7.0.0
         version: 7.0.2
       ultracite:
-        specifier: 7.12.0
-        version: 7.12.0(@biomejs/biome@2.5.14)
+        specifier: 7.12.2
+        version: 7.12.2(@biomejs/biome@2.5.14)
 
 packages:
 
@@ -1803,6 +1803,10 @@ packages:
     resolution: {integrity: sha512-GaPUh5gfdrYzqeVNZvUfT23vYYxXzKYidUcnMtJg/3rxRV63EFZy3k6xfKlmfeJD0176lnUV/Usr3XcwSvFzpg==}
     engines: {node: '>=20'}
 
+  string-width@8.3.0:
+    resolution: {integrity: sha512-ZbmZM0JCihQN91dWnxoipT2KOEyHqEyfRXUyjuRhW8b/xnqPDoq4gWEVApTVa9db2wN8mmoikgFBbjh71+cGeQ==}
+    engines: {node: '>=20'}
+
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
 
@@ -1868,14 +1872,14 @@ packages:
   ufo@1.6.4:
     resolution: {integrity: sha512-JFNbkD1Svwe0KvGi8GOeLcP4kAWQ609twvCdcHxq1oSL8svv39ZuSvajcD8B+5D0eL4+s1Is2D/O6KN3qcTeRA==}
 
-  ultracite@7.12.0:
-    resolution: {integrity: sha512-thOrO9IMaEcGjQrwp44W5UNm9muLIY/vVD83hVPhQ5wZncSAQB+qWq6U78QgVAoWaD3mDpkZDvfwF+JLSQtZzg==}
+  ultracite@7.12.2:
+    resolution: {integrity: sha512-0FQE7EuVFnX1FjtlIBklkfBTiZ5bJxknXSxcsjKos5Y73FlkasubWH7uVLS8jgOAI204B7xaIq+buE3vUybuwQ==}
     hasBin: true
     peerDependencies:
       '@biomejs/biome': ^2.5.0
       eslint: ^10.0.0
-      oxfmt: '>=0.40.0'
-      oxlint: ^1.79.0
+      oxfmt: '>=0.59.0'
+      oxlint: ^1.82.0
       prettier: ^3.0.0
       stylelint: ^17.0.0
     peerDependenciesMeta:
@@ -3675,6 +3679,11 @@ snapshots:
       get-east-asian-width: 1.7.0
       strip-ansi: 7.2.0
 
+  string-width@8.3.0:
+    dependencies:
+      get-east-asian-width: 1.7.0
+      strip-ansi: 7.2.0
+
   stringify-entities@4.0.4:
     dependencies:
       character-entities-html4: 2.1.0
@@ -3742,7 +3751,7 @@ snapshots:
 
   ufo@1.6.4: {}
 
-  ultracite@7.12.0(@biomejs/biome@2.5.14):
+  ultracite@7.12.2(@biomejs/biome@2.5.14):
     dependencies:
       '@clack/prompts': 1.8.1
       cli-truncate: 6.1.1
@@ -3758,7 +3767,7 @@ snapshots:
       nypm: 0.6.10
       resolve.exports: 2.0.3
       semver: 7.8.5
-      string-width: 8.2.2
+      string-width: 8.3.0
       yaml: 2.9.1
       zod: 4.6.5
     optionalDependencies:
