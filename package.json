@@ -38,7 +38,7 @@
     "lint-staged": "^17.0.8",
     "postcss": "^8.5.15",
     "remark-gfm": "^4.0.1",
-    "shiki": "4.4.3",
+    "shiki": "4.5.0",
     "tailwindcss": "4.3.3",
     "typescript": "^7.0.0",
     "ultracite": "7.12.2"
