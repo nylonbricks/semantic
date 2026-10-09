@@ -226,7 +226,7 @@ importers:
         specifier: ^17.0.8
         version: 17.6.0
       postcss:
-        specifier: 8.5.28
+        specifier: ^8.5.15
         version: 8.5.28
       remark-gfm:
         specifier: ^4.0.1
